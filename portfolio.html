@@ -1,0 +1,575 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portfolio Ameth Samb</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout : barre de navigation dégradée bleu marine, bannière, sections en cartes blanches sur fond gris-bleu, pied de page sombre à accents jaunes (même charte que le site ameth_samb_GMS). Thème clair unique, assumé. */
+:root{
+  --primary:#1e3c72; --secondary:#2a5298; --accent:#4a90e2; --gold:#f1c40f;
+  --ink:#2b3440; --muted:#6b7686; --line:#e4e9f1; --bg:#f5f7fa; --card:#ffffff;
+  --footer-a:#1a252f; --footer-b:#2c3e50; --footer-ink:#d1d1d1;
+  --shadow-sm:0 2px 4px rgba(0,0,0,.1); --shadow-md:0 4px 8px rgba(0,0,0,.15); --shadow-lg:0 10px 24px rgba(20,40,80,.18);
+  --f-display:'Montserrat',system-ui,sans-serif; --f-body:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --radius:12px; color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--primary)}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;line-height:1.25;text-wrap:balance;margin:0}
+a{color:var(--secondary)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ico{width:1.1em;height:1.1em;flex:none;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Navbar */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);box-shadow:var(--shadow-md)}
+.nav .wrap{display:flex;align-items:center;gap:16px;min-height:60px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:var(--f-display);font-weight:700;letter-spacing:.5px;font-size:1.1rem}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;flex-wrap:wrap}
+.nav ul a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.82);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem;transition:all .3s ease}
+.nav ul a:hover{color:#fff;background:rgba(255,255,255,.12)}
+
+/* Credits banner */
+.credits{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding-block:14px;box-shadow:0 4px 10px rgba(0,0,0,.2);font-size:1rem}
+.credits strong{color:var(--gold)}
+.badge-acad{display:inline-block;background:rgba(255,255,255,.15);padding:4px 14px;border-radius:20px;font-size:.9rem;margin-left:8px}
+
+/* Hero */
+.hero{padding-block:48px 24px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.hero-main{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:36px;position:relative;overflow:hidden}
+.hero-main::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,226,.16),transparent 70%)}
+.eyebrow{font-family:var(--f-display);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2rem,4.5vw,3rem);color:var(--primary);margin-top:8px;font-weight:800}
+.hero .role{font-family:var(--f-display);font-size:1.15rem;color:var(--secondary);margin-top:6px;font-weight:600}
+.hero p.lead{max-width:62ch;color:#4a5568;margin:16px 0 0;font-size:1.05rem}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-weight:500;text-decoration:none;transition:all .3s ease;border:2px solid transparent;font-size:.95rem;cursor:pointer;font-family:var(--f-body)}
+.btn-primary{background:var(--secondary);color:#fff}
+.btn-primary:hover{background:var(--primary);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--secondary);color:var(--secondary);background:transparent}
+.btn-ghost:hover{background:var(--secondary);color:#fff}
+.hero-side{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 16px;text-align:center;display:flex;flex-direction:column;justify-content:center;transition:all .3s ease}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.stat .ico{width:2rem;height:2rem;color:var(--accent);margin:0 auto 8px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.9rem;color:var(--secondary);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* Sections */
+section.block{padding-block:36px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sec-head h2{font-size:clamp(1.5rem,3vw,2rem);color:var(--primary);display:flex;align-items:center;gap:10px}
+.sec-head h2 .ico{color:var(--accent)}
+.sec-head p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+
+/* Filters */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tab{background:none;border:none;border-bottom:3px solid transparent;padding:10px 16px;font:500 .95rem var(--f-body);color:var(--ink);cursor:pointer;transition:all .3s ease}
+.tab[aria-selected="true"]{color:var(--secondary);border-bottom-color:var(--secondary)}
+.tab:hover{color:var(--secondary)}
+
+/* Project groups */
+.project{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:28px;overflow:hidden}
+.project-head{padding:24px 28px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
+.project-head h3{font-size:1.35rem;color:var(--primary)}
+.project-head .meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;color:var(--muted);font-size:.9rem}
+.project-head .meta span{display:inline-flex;align-items:center;gap:6px}
+.project-head p{margin:12px 0 0;max-width:80ch}
+.pill{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:20px;white-space:nowrap;letter-spacing:.3px}
+.pill.gold{background:var(--gold);color:var(--footer-a)}
+.island{padding:22px 28px 6px}
+.island h4{font-size:1rem;color:var(--secondary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.island h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px;padding-bottom:22px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));align-items:start}
+.map{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:all .3s ease}
+.map:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.thumb{position:relative;display:block;width:100%;padding:0;border:0;cursor:zoom-in;background:#eef2f7;aspect-ratio:4/3;overflow:hidden}
+.thumb.portrait{aspect-ratio:3/4}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease}
+.map:hover .thumb img{transform:scale(1.03)}
+.thumb .zoom{position:absolute;right:10px;bottom:10px;background:rgba(30,60,114,.88);color:#fff;border-radius:8px;padding:6px 10px;font-size:.8rem;display:flex;gap:6px;align-items:center}
+.map .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.map h5{font:600 1.02rem var(--f-display);margin:0;color:var(--ink)}
+.map p{margin:0;font-size:.92rem;color:#4a5568}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.key{font-size:.76rem;background:#eef3fb;color:var(--secondary);padding:3px 9px;border-radius:6px;font-weight:500}
+.src{font-size:.78rem;color:var(--muted)}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px;padding:0 28px 26px}
+.finding{background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--accent)}
+.finding b{display:block;font-family:var(--f-display);font-size:1.5rem;color:var(--secondary);font-variant-numeric:tabular-nums}
+.finding span{font-size:.86rem;color:var(--muted)}
+.finding.ok{border-left-color:#28a745}.finding.warn{border-left-color:#ffc107}.finding.bad{border-left-color:#dc3545}
+.method{padding:0 28px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.step{border:1px dashed #c8d3e4;border-radius:10px;padding:14px 16px}
+.step h6{margin:0 0 4px;font:600 .95rem var(--f-display);color:var(--primary);display:flex;gap:8px;align-items:center}
+.step p{margin:0;font-size:.88rem;color:#4a5568}
+.web-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;padding:22px 28px 26px}
+.web{border:1px solid var(--line);border-radius:10px;padding:20px}
+.web .ico{width:2.2rem;height:2.2rem;color:var(--accent)}
+.web h5{font:600 1.05rem var(--f-display);margin:10px 0 6px}
+.web p{margin:0;font-size:.92rem;color:#4a5568}
+
+/* Timeline */
+.two-col{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start}
+.panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline>li{position:relative;padding-left:32px;padding-bottom:22px}
+.timeline>li:last-child{padding-bottom:0}
+.timeline>li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--secondary)}
+.timeline>li.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(241,196,15,.25)}
+.when{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.timeline h4{font-size:1.02rem;margin-top:2px}
+.org{color:var(--muted);font-size:.9rem}
+.timeline ul{margin:6px 0 0;padding-left:18px;font-size:.92rem;color:#4a5568}
+.panel h3{font-size:1.1rem;color:var(--primary);margin-bottom:14px;display:flex;gap:8px;align-items:center}
+.panel h3 .ico{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{border:1px solid #cfdaeb;border-radius:20px;padding:5px 12px;font-size:.86rem;background:#f8fafd}
+.chip.strong{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.sub{font:600 .8rem var(--f-display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 8px}
+.lang{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.lang:last-child{border-bottom:0}
+.dots{display:flex;gap:4px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--secondary)}
+.edu{list-style:none;padding:0;margin:0}
+.edu li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.edu li:last-child{border-bottom:0}
+.edu .y{font-weight:700;color:var(--secondary);font-variant-numeric:tabular-nums}
+.edu small{display:block;color:var(--muted)}
+
+/* Footer */
+.footer{background:linear-gradient(135deg,var(--footer-a),var(--footer-b));color:#fff;padding-block:48px 28px;margin-top:40px;box-shadow:0 -4px 10px rgba(0,0,0,.2)}
+.footer h5{color:var(--gold);font:700 1rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;margin:0 0 16px;display:flex;gap:8px;align-items:center}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px}
+.footer p,.footer a{color:var(--footer-ink);font-size:.93rem}
+.footer a:hover{color:var(--gold)}
+.footer .ico{color:var(--gold)}
+.f-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.f-row p{margin:0}.f-row b{color:#fff;display:block;font-weight:500}
+.copy{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:6px;cursor:pointer;font:500 .85rem var(--f-body);margin-top:8px;transition:all .3s ease}
+.copy:hover{background:var(--gold);color:var(--footer-a)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.6)}
+.f-bottom a{color:rgba(255,255,255,.75);font-size:.85rem}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,20,40,.92);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 12px) max(12px,env(safe-area-inset-left,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;padding:4px 4px 10px}
+.lb-top h6{margin:0;font:600 1rem var(--f-display)}
+.lb-top small{color:rgba(255,255,255,.65)}
+.lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:10px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;flex:none}
+.lb-btn:hover{background:var(--gold);color:var(--footer-a)}
+.lb-cap{color:rgba(255,255,255,.85);font-size:.9rem;text-align:center;padding-top:10px;max-width:90ch;margin:0 auto}
+
+.reveal{animation:fadeIn .6s ease both}
+@keyframes fadeIn{from{opacity:.001;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (max-width:900px){.hero-grid,.two-col{grid-template-columns:1fr}.project-head{grid-template-columns:1fr}.nav ul{margin-left:0}}
+@media (max-width:560px){.hero-main{padding:24px}.project-head,.island{padding-left:18px;padding-right:18px}.findings,.method,.web-grid{padding-left:18px;padding-right:18px}.lb-btn.side{display:none}.badge-acad{margin:6px 0 0}}
+</style>
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></symbol>
+  <symbol id="i-sat" viewBox="0 0 24 24"><path d="m13 7 4 4M7 13l4 4M10 10l4 4M5 19l2-2M15 3l6 6-3 3-6-6zM3 15l6 6-3 3"/><path d="M17 17a4 4 0 0 0 4-4"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16"/><path d="M4 21c4-6 8-9 12-11"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z"/><path d="M8 21l1-2M12 21l1-2M16 21l1-2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 4-4 4 4M12 16V8"/></symbol>
+</svg>
+
+<nav class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#profil"><svg class="ico"><use href="#i-globe"/></svg> Ameth Samb · Géomatique</a>
+    <ul>
+      <li><a href="#projets"><svg class="ico"><use href="#i-map"/></svg> Projets</a></li>
+      <li><a href="#parcours"><svg class="ico"><use href="#i-brief"/></svg> Parcours</a></li>
+      <li><a href="#competences"><svg class="ico"><use href="#i-tools"/></svg> Compétences</a></li>
+      <li><a href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="credits">
+  <div class="wrap">
+    <span>Portfolio de <strong>Ameth Samb</strong> · Géomaticien SIG &amp; cartographie <span class="badge-acad">Master 2 Géomatique et Modélisation Spatiale · AMU</span></span>
+  </div>
+</div>
+
+<header class="hero" id="profil">
+  <div class="wrap hero-grid">
+    <div class="hero-main reveal">
+      <div class="eyebrow">Géomaticien · SIG &amp; Cartographie</div>
+      <h1>Ameth Samb</h1>
+      <div class="role">Cartographie thématique, télédétection et bases de données spatiales</div>
+      <p class="lead">Formé en géomatique à Aix-Marseille Université, j'ai travaillé en France et au Sénégal sur des SIG, des bases de données spatiales et des cartes appliquées à l'aménagement du territoire et au climat. Je contribue actuellement aux Schémas d'Aménagement du Territoire (SAT) des Comores.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projets"><svg class="ico"><use href="#i-map"/></svg> Voir les travaux</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ameth-samb-12b45724a" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in"/></svg> LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-side reveal">
+      <div class="stat"><svg class="ico"><use href="#i-map"/></svg><b>13</b><span>cartes présentées</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-pin"/></svg><b>3</b><span>territoires étudiés</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-brief"/></svg><b>5</b><span>expériences en France et au Sénégal</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-sat"/></svg><b>2014–2024</b><span>séries Landsat et Sentinel-2</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="block" id="projets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-layers"/></svg> Résultats de mes travaux</h2>
+        <p>Cartes et analyses produites en entreprise et pendant le Master. Cliquez sur une carte pour l'ouvrir en grand.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Filtrer les projets">
+      <button class="tab" role="tab" id="tab-all" aria-selected="true" data-filter="all">Tous les projets</button>
+      <button class="tab" role="tab" id="tab-km" aria-selected="false" data-filter="comores">Comores · SAT</button>
+      <button class="tab" role="tab" id="tab-bdr" aria-selected="false" data-filter="bdr">Bouches-du-Rhône · Télédétection</button>
+      <button class="tab" role="tab" id="tab-web" aria-selected="false" data-filter="web">Climat &amp; webmapping</button>
+    </div>
+
+    <!-- PROJET 1 : COMORES -->
+    <article class="project reveal" data-cat="comores">
+      <div class="project-head">
+        <div>
+          <h3>Schémas d'Aménagement du Territoire des Comores</h3>
+          <div class="meta">
+            <span><svg class="ico"><use href="#i-brief"/></svg> Groupe Huit · Marseille</span>
+            <span><svg class="ico"><use href="#i-cal"/></svg> 2026</span>
+            <span><svg class="ico"><use href="#i-pin"/></svg> Grande Comore (Ngazidja) et Anjouan (Ndzuani)</span>
+          </div>
+          <p>Atlas cartographique réalisé pour le diagnostic territorial du projet AMCC : localisation, occupation du sol, accessibilité routière, filière pêche et ressources en eau. J'ai collecté, harmonisé et structuré les données (OCHA, OSM, SRTM, Sentinel-2, sources nationales) puis produit les cartes sous SIG.</p>
+        </div>
+        <span class="pill gold">Projet professionnel</span>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-pin"/></svg> Grande Comore · Ngazidja</h4>
+        <div class="grid two">
+          <figure class="map" style="margin:0">
+            <button class="thumb portrait" data-full="img/gc-ocs.jpg" data-title="Changement d'occupation du sol 2018–2024" data-cap="Grande Comore. Sources : ESRI, OCHA, OSM, Sentinel-2, Projet AMCC, DGEF/PNC 2025. Réalisation : Groupe Huit, 2026."><img src="img/gc-ocs.jpg" alt="Carte du changement d'occupation du sol entre 2018 et 2024 en Grande Comore" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Changement d'occupation du sol 2018–2024</h5>
+              <p>Classification Sentinel-2 en 7 classes (forêt, agroforesterie, mélange cultures et savanes, végétation arbustive et herbacée, sol nu, surface bâtie, eau et plage) et détection des changements entre 2018 et 2024.</p>
+              <p>L'expansion urbaine se concentre autour de Moroni et le long du littoral. Des foyers de déforestation sans urbanisation apparaissent sur les pentes du Karthala, au cœur du parc national.</p>
+              <div class="keys"><span class="key">Sentinel-2</span><span class="key">Classification</span><span class="key">Détection de changement</span><span class="key">Aires protégées</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb portrait" data-full="img/gc-situation.jpg" data-title="Situation géographique de la Grande Comore" data-cap="Île de la Grande Comore (Ngazidja). Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/gc-situation.jpg" alt="Carte de situation géographique de la Grande Comore" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Situation géographique</h5>
+              <p>Carte de référence de Ngazidja : limites communales, taches urbaines, réseau routier hiérarchisé (national, régional, autres routes) et capitale Moroni.</p>
+              <p>Elle situe les trois aires protégées (parcs nationaux Coelacanthe, Karthala et Mitsamiouli Ndroude) avec deux encarts : l'Afrique et l'archipel des Comores.</p>
+              <div class="keys"><span class="key">Carte de localisation</span><span class="key">Réseau routier</span><span class="key">Encarts</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-pin"/></svg> Anjouan · Ndzuani</h4>
+        <div class="grid two">
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-situation.jpg" data-title="Situation géographique d'Anjouan" data-cap="Île d'Anjouan (Ndzuani). Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-situation.jpg" alt="Carte de situation géographique d'Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Situation géographique</h5>
+              <p>Localisation d'Anjouan et de son chef-lieu Mutsamudu, communes, taches urbaines et réseau routier. Elle montre aussi les parcs nationaux du Mont Ntringui et de Shisiwani (aire marine).</p>
+              <div class="keys"><span class="key">Carte de localisation</span><span class="key">Aires protégées</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-routes.jpg" data-title="État du réseau routier et taux de dégradation par commune" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-routes.jpg" alt="Carte de l'état du réseau routier et du taux de dégradation par commune à Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>État du réseau routier et taux de dégradation</h5>
+              <p>Tronçons classés bon ou dégradé, puis agrégés en taux de dégradation par commune (5 classes, de 0 à 100 %).</p>
+              <p>L'ouest (Mutsamudu, Vouani, Moya) reste sous 20 %. L'est et le sud (Jimlimé, Bazimini, Koni, Ngandzalé, Mrémani, Chaweni) dépassent 80 %.</p>
+              <div class="keys"><span class="key">Analyse spatiale</span><span class="key">Agrégation communale</span><span class="key">Choroplèthe</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-peche.jpg" data-title="Répartition des ports de pêche et des marchés de poisson" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-peche.jpg" alt="Carte des ports de pêche et marchés de poisson à Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Ports de pêche et marchés de poisson</h5>
+              <p>Inventaire des ports de pêche, marchés de poisson, port international et aéroport, croisé avec l'état des routes, l'hydrographie et les zones protégées.</p>
+              <p>La carte montre que de nombreux points de débarquement de l'est et du sud ne sont desservis que par des routes dégradées.</p>
+              <div class="keys"><span class="key">Infrastructures</span><span class="key">Accessibilité</span><span class="key">Économie bleue</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-eau.jpg" data-title="Ressources en eau : domaines hydrologiques et réseau hydrographique" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC. Réalisation : Groupe Huit, 2026."><img src="img/anj-eau.jpg" alt="Carte des domaines hydrologiques et du réseau hydrographique d'Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Ressources en eau</h5>
+              <p>Quatre domaines hydrologiques : Est (171 km³), Sud-Ouest (120 km³), Nord-Ouest (100 km³), Nord (24 km³). La carte montre aussi les bassins versants, les cours d'eau pérennes et temporaires, les lacs et l'ouvrage de captage.</p>
+              <p>Le domaine Est concentre les principales rivières (Tratringa, Jomani, Ajaho), qui descendent du Mont Ntringui (1 595 m).</p>
+              <div class="keys"><span class="key">Hydrologie</span><span class="key">Bassins versants</span><span class="key">MNT SRTM</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 2 : BOUCHES-DU-RHONE -->
+    <article class="project reveal" data-cat="bdr">
+      <div class="project-head">
+        <div>
+          <h3>Cartographie des espèces d'arbres et évolution de la végétation</h3>
+          <div class="meta">
+            <span><svg class="ico"><use href="#i-cap"/></svg> Master Géomatique · Aix-Marseille Université</span>
+            <span><svg class="ico"><use href="#i-user"/></svg> Sous la direction de Sébastien Bridier</span>
+            <span><svg class="ico"><use href="#i-pin"/></svg> Bouches-du-Rhône</span>
+          </div>
+          <p>Approche combinant télédétection multispectrale et inventaire forestier (IFN) pour cartographier la répartition des essences et mesurer l'évolution de l'occupation du sol sur dix ans. Traitements sous Google Colab (Python), intégration et analyse sous QGIS, puis publication en carte web interactive avec qgis2web.</p>
+        </div>
+        <span class="pill">Projet académique</span>
+      </div>
+
+      <div class="findings">
+        <div class="finding ok"><b>65 %</b><span>de la superficie stable entre 2014 et 2024</span></div>
+        <div class="finding"><b>22 %</b><span>en régénération de la végétation</span></div>
+        <div class="finding bad"><b>13 %</b><span>en dégradation</span></div>
+        <div class="finding warn"><b>10 classes</b><span>K-means sur Landsat 8 (30 m) et Sentinel-2 (10 m)</span></div>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-layers"/></svg> Occupation du sol 2014–2024</h4>
+        <div class="grid">
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-classification_2014.jpg" data-title="Classification de l'occupation du sol 2014" data-cap="Landsat 8, juillet–août 2014, K-means 10 classes, résolution 30 m."><img src="img/bdr-classification_2014.jpg" alt="Classification de l'occupation du sol en 2014" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>Classification 2014</h5><p>Landsat 8, été 2014. Classification non supervisée K-means en 10 classes à 30 m.</p><div class="keys"><span class="key">Landsat 8</span><span class="key">K-means</span></div></div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-classification_2024.jpg" data-title="Classification de l'occupation du sol 2024" data-cap="Sentinel-2, juillet–août 2024, K-means 10 classes, résolution 10/20 m."><img src="img/bdr-classification_2024.jpg" alt="Classification de l'occupation du sol en 2024" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>Classification 2024</h5><p>Sentinel-2, été 2024. Même méthode, à 10/20 m, pour comparer les deux dates.</p><div class="keys"><span class="key">Sentinel-2</span><span class="key">K-means</span></div></div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-change.jpg" data-title="Carte des changements 2014–2024" data-cap="Zones stables, en régénération et en dégradation entre 2014 et 2024."><img src="img/bdr-change.jpg" alt="Carte des changements d'occupation du sol 2014-2024" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>Analyse des changements</h5><p>Croisement des deux classifications : 65 % de zones stables, 22 % de régénération et 13 % de dégradation.</p><div class="keys"><span class="key">Détection de changement</span></div></div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-leaf"/></svg> Indice de végétation NDVI</h4>
+        <div class="grid">
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-ndvi_2004.jpg" data-title="NDVI 2004" data-cap="Indice de végétation normalisé, période estivale 2004."><img src="img/bdr-ndvi_2004.jpg" alt="Carte NDVI 2004" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>NDVI 2004</h5><p>État de la couverture végétale avant les changements récents (Landsat 5).</p><div class="keys"><span class="key">NDVI</span></div></div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-ndvi_2024.jpg" data-title="NDVI 2024" data-cap="Indice de végétation normalisé, période estivale 2024 (Sentinel-2)."><img src="img/bdr-ndvi_2024.jpg" alt="Carte NDVI 2024" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>NDVI 2024</h5><p>État actuel de la couverture végétale (Sentinel-2, 10 m).</p><div class="keys"><span class="key">NDVI</span><span class="key">Sentinel-2</span></div></div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-ndvi_diff.jpg" data-title="Différence NDVI 2024 – 2004" data-cap="Valeurs positives : amélioration de la végétation. Valeurs négatives : dégradation."><img src="img/bdr-ndvi_diff.jpg" alt="Carte de différence NDVI entre 2004 et 2024" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>Différence NDVI sur 20 ans</h5><p>Différence 2024 − 2004 : les valeurs positives signalent une amélioration, les négatives une dégradation.</p><div class="keys"><span class="key">Analyse diachronique</span></div></div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-map"/></svg> Résultat final</h4>
+        <div class="grid two">
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/bdr-inventaire.jpg" data-title="Carte classifiée des espèces d'arbres" data-cap="Bouches-du-Rhône. Sources : Copernicus S2_SR, Copernicus S1_GRD, IFN."><img src="img/bdr-inventaire.jpg" alt="Carte classifiée des espèces d'arbres des Bouches-du-Rhône" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body"><h5>Carte classifiée des espèces végétales</h5><p>Répartition des essences dominantes (chêne vert, pin brutia, chêne pubescent, frêne oxyphylle) et des autres occupations (habitat, hydrographie, sol nu et surfaces agricoles). Images Sentinel-2 et Sentinel-1, calées sur les placettes de l'Inventaire Forestier National.</p><div class="keys"><span class="key">Classification supervisée</span><span class="key">Sentinel-1/2</span><span class="key">IFN</span><span class="key">qgis2web</span></div></div>
+          </figure>
+          <div class="map" style="border-style:dashed">
+            <div class="body">
+              <h5>Méthode</h5>
+              <div class="method" style="padding:0">
+                <div class="step"><h6><svg class="ico"><use href="#i-sat"/></svg> Télédétection</h6><p>Imagerie Sentinel-2 et Landsat, indices spectraux, classifications supervisée et non supervisée.</p></div>
+                <div class="step"><h6><svg class="ico"><use href="#i-db"/></svg> Inventaire</h6><p>Données IFN, échantillonnage, stratification écologique et validation terrain.</p></div>
+                <div class="step"><h6><svg class="ico"><use href="#i-code"/></svg> Google Colab</h6><p>Traitements Python automatisés, statistiques et visualisations intermédiaires.</p></div>
+                <div class="step"><h6><svg class="ico"><use href="#i-globe"/></svg> QGIS et qgis2web</h6><p>Intégration des couches, analyse spatiale et export en carte web interactive.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 3 : WEB -->
+    <article class="project reveal" data-cat="web">
+      <div class="project-head">
+        <div>
+          <h3>Analyse climatique et applications de webmapping</h3>
+          <div class="meta">
+            <span><svg class="ico"><use href="#i-cap"/></svg> Master Géomatique · Aix-Marseille Université</span>
+            <span><svg class="ico"><use href="#i-code"/></svg> Python, HTML/CSS, JavaScript</span>
+          </div>
+          <p>Applications web développées pour le site de projet : traitement de données Météo-France, graphiques interactifs et cartes en ligne.</p>
+        </div>
+        <span class="pill">Projet académique</span>
+      </div>
+      <div class="web-grid">
+        <div class="web"><svg class="ico"><use href="#i-cloud"/></svg><h5>Analyse climatique de Marseille (2024–2025)</h5><p>Traitement des relevés mensuels Météo-France avec Pandas et graphiques Plotly : températures, précipitations, vent, humidité, fréquence des canicules, rose des vents et résumé saisonnier.</p><div class="keys" style="margin-top:12px"><span class="key">Pandas</span><span class="key">Plotly</span><span class="key">Météo-France</span></div></div>
+        <div class="web"><svg class="ico"><use href="#i-chart"/></svg><h5>Dashboard climatique national</h5><p>Tableau de bord interactif sur les principales villes françaises : carte Leaflet, indicateurs climatiques, satellitaires (NDVI, température de surface) et démographiques, comparaisons entre villes et export des données.</p><div class="keys" style="margin-top:12px"><span class="key">Leaflet</span><span class="key">Chart.js</span><span class="key">Bootstrap</span></div></div>
+        <div class="web"><svg class="ico"><use href="#i-map"/></svg><h5>Carte interactive des espèces</h5><p>Carte qgis2web des Bouches-du-Rhône : arrondissements, communes et placettes d'inventaire, avec légendes interactives, mesure de distances et fonds de carte configurés.</p><div class="keys" style="margin-top:12px"><span class="key">qgis2web</span><span class="key">Leaflet</span><span class="key">Webmapping</span></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="parcours">
+  <div class="wrap two-col">
+    <div class="panel reveal">
+      <div class="sec-head" style="margin-bottom:18px"><h2><svg class="ico"><use href="#i-brief"/></svg> Expériences</h2></div>
+      <ol class="timeline">
+        <li class="now"><div class="when">Octobre – décembre 2026</div><h4>Chargé d'étude cartographie (intérim)</h4><div class="org">RH Avenir · France</div>
+          <ul><li>Appui à l'élaboration des Schémas d'Aménagement du Territoire (SAT) des Comores</li><li>Collecte, traitement et harmonisation des données géographiques du projet</li><li>Mise à jour et structuration des bases de données spatiales</li></ul></li>
+        <li><div class="when">Octobre 2025 – septembre 2026</div><h4>Chargé d'étude cartographie (alternance)</h4><div class="org">Groupe Huit · Marseille</div>
+          <ul><li>Cartes thématiques pour des études d'urbanisme et d'aménagement</li><li>Collecte, traitement et analyse spatiale de données géographiques</li><li>Gestion et contrôle qualité des bases de données spatiales</li></ul></li>
+        <li><div class="when">Avril – juin 2024</div><h4>Stagiaire recherche, traitement de données</h4><div class="org">CNRS · Dijon</div>
+          <ul><li>Traitement statistique et analyse de données climatiques (R, Python)</li><li>Exploitation d'imagerie satellitaire pour des études climatiques</li></ul></li>
+        <li><div class="when">Mars – août 2023</div><h4>Géomaticien</h4><div class="org">Cabinet GEOSIG · Saint-Louis, Sénégal</div>
+          <ul><li>Cartes thématiques pour les clients du cabinet</li><li>Conception de sites cartographiques interactifs</li><li>Administration de bases PostgreSQL/PostGIS</li></ul></li>
+        <li><div class="when">Mai – décembre 2022</div><h4>Stagiaire géomaticien</h4><div class="org">Cabinet GEOMATICA · Saint-Louis, Sénégal</div>
+          <ul><li>Cartographie et analyse spatiale</li><li>Animation de formations aux outils géomatiques</li><li>Développement web et webmapping</li></ul></li>
+      </ol>
+    </div>
+    <div class="panel reveal">
+      <div class="sec-head" style="margin-bottom:18px"><h2><svg class="ico"><use href="#i-cap"/></svg> Formation</h2></div>
+      <ul class="edu">
+        <li><span class="y">2025–2026</span><span>Master 2 Géomatique et Modélisation Spatiale<small>Aix-Marseille Université</small></span></li>
+        <li><span class="y">2024–2025</span><span>Master 1 Géomatique et Modélisation Spatiale<small>Aix-Marseille Université</small></span></li>
+        <li><span class="y">2023–2024</span><span>Master 1 Changement Climatique, Adaptation et Territoires<small>Université de Bourgogne</small></span></li>
+        <li><span class="y">2019–2022</span><span>Licence Géomatique et Climatologie<small>Université du Sine-Saloum, Sénégal</small></span></li>
+        <li><span class="y">2017–2018</span><span>Baccalauréat littéraire<small>Lycée Leona, Sénégal</small></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="competences">
+  <div class="wrap">
+    <div class="sec-head"><h2><svg class="ico"><use href="#i-tools"/></svg> Compétences</h2></div>
+    <div class="two-col" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-sat"/></svg> SIG et télédétection</h3>
+        <div class="chips"><span class="chip strong">SIG</span><span class="chip strong">Analyse spatiale</span><span class="chip strong">Télédétection</span><span class="chip">Bases de données spatiales</span><span class="chip">Google Earth Engine</span></div>
+        <p class="sub">Domaines</p>
+        <div class="chips" style="margin:0"><span class="chip">Aménagement du territoire</span><span class="chip">Climatologie</span><span class="chip">Qualité de l'air</span><span class="chip">Végétalisation urbaine</span></div>
+      </div>
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-code"/></svg> Logiciels et programmation</h3>
+        <div class="chips"><span class="chip strong">QGIS</span><span class="chip strong">ArcGIS</span><span class="chip">ENVI</span><span class="chip">TerrSet</span><span class="chip">Agisoft</span><span class="chip">PostgreSQL / PostGIS</span><span class="chip">QField</span><span class="chip">Mergin</span><span class="chip">KoboToolbox</span><span class="chip">GPS / DGPS</span><span class="chip">Photoshop</span></div>
+        <div class="chips" style="margin:0"><span class="chip strong">Python</span><span class="chip strong">R</span><span class="chip">Google Colab</span><span class="chip">HTML / CSS</span><span class="chip">Webmapping</span><span class="chip">uMap</span></div>
+      </div>
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-globe"/></svg> Langues</h3>
+        <div class="lang"><span>Wolof <small style="color:var(--muted)">· langue maternelle</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="lang"><span>Français <small style="color:var(--muted)">· courant</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="lang"><span>Anglais <small style="color:var(--muted)">· bon niveau</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h5><svg class="ico"><use href="#i-user"/></svg> Profil</h5>
+        <div class="f-row"><svg class="ico"><use href="#i-cap"/></svg><p><b>Ameth Samb</b>Géomaticien · SIG &amp; cartographie<br>Master 2 Géomatique et Modélisation Spatiale</p></div>
+        <div class="f-row"><svg class="ico"><use href="#i-pin"/></svg><p><b>Localisation</b>Marseille, France</p></div>
+      </div>
+      <div>
+        <h5><svg class="ico"><use href="#i-mail"/></svg> Contact</h5>
+        <div class="f-row"><svg class="ico"><use href="#i-mail"/></svg><p><b>E-mail</b><span id="email">amethsamb43@gmail.com</span><br><button class="copy" id="copy-email" type="button"><svg class="ico"><use href="#i-copy"/></svg> <span>Copier l'adresse</span></button></p></div>
+        <div class="f-row"><svg class="ico"><use href="#i-in"/></svg><p><b>LinkedIn</b><a href="https://www.linkedin.com/in/ameth-samb-12b45724a" target="_blank" rel="noopener">linkedin.com/in/ameth-samb-12b45724a</a></p></div>
+      </div>
+      <div>
+        <h5><svg class="ico"><use href="#i-layers"/></svg> Sources des cartes</h5>
+        <p>Comores : OCHA, ESRI, SRTM, OSM, Sentinel-2, Projet AMCC, DGEF/PNC, PROGEAU, IPAC. Cartes réalisées chez Groupe Huit, 2026.</p>
+        <p>Bouches-du-Rhône : Copernicus (Sentinel-1, Sentinel-2), USGS Landsat, IFN, Météo-France.</p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Ameth Samb · Portfolio géomatique</span>
+      <a href="#top"><svg class="ico"><use href="#i-up"/></svg> Retour en haut</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top">
+    <div><h6 id="lb-title"></h6><small id="lb-count"></small></div>
+    <button class="lb-btn" id="lb-close" type="button" aria-label="Fermer"><svg class="ico"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="lb-stage">
+    <button class="lb-btn side" id="lb-prev" type="button" aria-label="Carte précédente"><svg class="ico"><use href="#i-l"/></svg></button>
+    <img id="lb-img" alt="">
+    <button class="lb-btn side" id="lb-next" type="button" aria-label="Carte suivante"><svg class="ico"><use href="#i-r"/></svg></button>
+  </div>
+  <p class="lb-cap" id="lb-cap"></p>
+</div>
+
+<script>
+(function(){
+  // Filtres
+  const tabs=[...document.querySelectorAll('.tab')], projects=[...document.querySelectorAll('.project')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected',x===t));
+    const f=t.dataset.filter;
+    projects.forEach(p=>p.hidden=!(f==='all'||p.dataset.cat===f));
+  }));
+
+  // Visionneuse
+  const lb=document.getElementById('lb'), img=document.getElementById('lb-img');
+  const ttl=document.getElementById('lb-title'), cap=document.getElementById('lb-cap'), cnt=document.getElementById('lb-count');
+  let list=[], i=0, last=null;
+  function visible(){return [...document.querySelectorAll('.thumb')].filter(b=>!b.closest('.project').hidden)}
+  function show(){const b=list[i]; img.src=b.dataset.full; img.alt=b.querySelector('img').alt; ttl.textContent=b.dataset.title; cap.textContent=b.dataset.cap||''; cnt.textContent=(i+1)+' / '+list.length}
+  function open(b){list=visible(); i=list.indexOf(b); last=b; show(); lb.hidden=false; document.body.style.overflow='hidden'; document.getElementById('lb-close').focus()}
+  function close(){lb.hidden=true; document.body.style.overflow=''; if(last) last.focus()}
+  function step(d){i=(i+d+list.length)%list.length; show()}
+  document.querySelectorAll('.thumb').forEach(b=>b.addEventListener('click',()=>open(b)));
+  document.getElementById('lb-close').addEventListener('click',close);
+  document.getElementById('lb-prev').addEventListener('click',()=>step(-1));
+  document.getElementById('lb-next').addEventListener('click',()=>step(1));
+  lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb-stage')) close()});
+  document.addEventListener('keydown',e=>{if(lb.hidden) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') step(-1); if(e.key==='ArrowRight') step(1)});
+  let x0=null; lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{if(x0===null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) step(dx<0?1:-1); x0=null});
+
+  // Copier l'e-mail
+  const cb=document.getElementById('copy-email');
+  cb.addEventListener('click',()=>{
+    const t=document.getElementById('email').textContent, lab=cb.querySelector('span');
+    const done=()=>{lab.textContent='Adresse copiée'; setTimeout(()=>lab.textContent="Copier l'adresse",2000)};
+    const sel=()=>{const r=document.createRange(); r.selectNodeContents(document.getElementById('email')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); lab.textContent='Adresse sélectionnée'};
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body></html>

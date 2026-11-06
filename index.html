@@ -1,0 +1,866 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portfolio Ameth Samb</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout : barre de navigation dégradée bleu marine, bannière, sections en cartes blanches sur fond gris-bleu, pied de page sombre à accents jaunes (même charte que le site ameth_samb_GMS). Thème clair unique, assumé. */
+:root{
+  --primary:#1e3c72; --secondary:#2a5298; --accent:#4a90e2; --gold:#f1c40f;
+  --ink:#2b3440; --muted:#6b7686; --line:#e4e9f1; --bg:#f5f7fa; --card:#ffffff;
+  --footer-a:#1a252f; --footer-b:#2c3e50; --footer-ink:#d1d1d1;
+  --shadow-sm:0 2px 4px rgba(0,0,0,.1); --shadow-md:0 4px 8px rgba(0,0,0,.15); --shadow-lg:0 10px 24px rgba(20,40,80,.18);
+  --f-display:'Montserrat',system-ui,sans-serif; --f-body:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --radius:12px; color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--primary)}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:600;line-height:1.25;text-wrap:balance;margin:0}
+a{color:var(--secondary)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ico{width:1.1em;height:1.1em;flex:none;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Navbar */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);box-shadow:var(--shadow-md)}
+.nav .wrap{display:flex;align-items:center;gap:16px;min-height:60px;flex-wrap:wrap;padding-block:6px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:var(--f-display);font-weight:700;letter-spacing:.5px;font-size:1.1rem}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;flex-wrap:wrap}
+.nav ul a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.82);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem;transition:all .3s ease}
+.nav ul a:hover{color:#fff;background:rgba(255,255,255,.12)}
+
+/* Credits banner */
+.credits{background:linear-gradient(135deg,#2c3e50,#3498db);color:#fff;text-align:center;padding-block:14px;box-shadow:0 4px 10px rgba(0,0,0,.2);font-size:1rem}
+.credits strong{color:var(--gold)}
+.badge-acad{display:inline-block;background:rgba(255,255,255,.15);padding:4px 14px;border-radius:20px;font-size:.9rem;margin-left:8px}
+
+/* Hero */
+.hero{padding-block:48px 24px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.hero-main{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:36px;position:relative;overflow:hidden}
+.hero-main::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,226,.16),transparent 70%)}
+.eyebrow{font-family:var(--f-display);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2rem,4.5vw,3rem);color:var(--primary);margin-top:8px;font-weight:800}
+.hero .role{font-family:var(--f-display);font-size:1.15rem;color:var(--secondary);margin-top:6px;font-weight:600}
+.hero p.lead{max-width:62ch;color:#4a5568;margin:16px 0 0;font-size:1.05rem}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-weight:500;text-decoration:none;transition:all .3s ease;border:2px solid transparent;font-size:.95rem;cursor:pointer;font-family:var(--f-body)}
+.btn-primary{background:var(--secondary);color:#fff}
+.btn-primary:hover{background:var(--primary);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--secondary);color:var(--secondary);background:transparent}
+.btn-ghost:hover{background:var(--secondary);color:#fff}
+.hero-side{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:20px 16px;text-align:center;display:flex;flex-direction:column;justify-content:center;transition:all .3s ease}
+.stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.stat .ico{width:2rem;height:2rem;color:var(--accent);margin:0 auto 8px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.9rem;color:var(--secondary);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* Sections */
+section.block{padding-block:36px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sec-head h2{font-size:clamp(1.5rem,3vw,2rem);color:var(--primary);display:flex;align-items:center;gap:10px}
+.sec-head h2 .ico{color:var(--accent)}
+.sec-head p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+
+/* Filters */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:24px}
+.tab{background:none;border:none;border-bottom:3px solid transparent;padding:10px 16px;font:500 .95rem var(--f-body);color:var(--ink);cursor:pointer;transition:all .3s ease}
+.tab[aria-selected="true"]{color:var(--secondary);border-bottom-color:var(--secondary)}
+.tab:hover{color:var(--secondary)}
+
+/* Project groups */
+.project{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:28px;overflow:hidden}
+.project-head{padding:24px 28px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
+.project-head h3{font-size:1.35rem;color:var(--primary)}
+.project-head .meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;color:var(--muted);font-size:.9rem}
+.project-head .meta span{display:inline-flex;align-items:center;gap:6px}
+.project-head p{margin:12px 0 0;max-width:80ch}
+.pill{display:inline-block;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:20px;white-space:nowrap;letter-spacing:.3px}
+.pill.gold{background:var(--gold);color:var(--footer-a)}
+.island{padding:22px 28px 6px}
+.island h4{font-size:1rem;color:var(--secondary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.island h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px;padding-bottom:22px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));align-items:start}
+.map{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:all .3s ease}
+.map:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.thumb{position:relative;display:block;width:100%;padding:0;border:0;cursor:zoom-in;background:#eef2f7;aspect-ratio:4/3;overflow:hidden}
+.thumb.portrait{aspect-ratio:3/4}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease}
+.map:hover .thumb img{transform:scale(1.03)}
+.thumb .zoom{position:absolute;right:10px;bottom:10px;background:rgba(30,60,114,.88);color:#fff;border-radius:8px;padding:6px 10px;font-size:.8rem;display:flex;gap:6px;align-items:center}
+.map .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.map h5{font:600 1.02rem var(--f-display);margin:0;color:var(--ink)}
+.map p{margin:0;font-size:.92rem;color:#4a5568}
+.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.key{font-size:.76rem;background:#eef3fb;color:var(--secondary);padding:3px 9px;border-radius:6px;font-weight:500}
+.src{font-size:.78rem;color:var(--muted)}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px;padding:0 28px 26px}
+.finding{background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--accent)}
+.finding b{display:block;font-family:var(--f-display);font-size:1.5rem;color:var(--secondary);font-variant-numeric:tabular-nums}
+.finding span{font-size:.86rem;color:var(--muted)}
+.finding.ok{border-left-color:#28a745}.finding.warn{border-left-color:#ffc107}.finding.bad{border-left-color:#dc3545}
+.method{padding:0 28px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.step{border:1px dashed #c8d3e4;border-radius:10px;padding:14px 16px}
+.step h6{margin:0 0 4px;font:600 .95rem var(--f-display);color:var(--primary);display:flex;gap:8px;align-items:center}
+.step p{margin:0;font-size:.88rem;color:#4a5568}
+.web-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;padding:22px 28px 26px}
+.web{border:1px solid var(--line);border-radius:10px;padding:20px}
+.web .ico{width:2.2rem;height:2.2rem;color:var(--accent)}
+.web h5{font:600 1.05rem var(--f-display);margin:10px 0 6px}
+.web p{margin:0;font-size:.92rem;color:#4a5568}
+
+/* Timeline */
+.two-col{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start}
+.panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.timeline>li{position:relative;padding-left:32px;padding-bottom:22px}
+.timeline>li:last-child{padding-bottom:0}
+.timeline>li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--secondary)}
+.timeline>li.now::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(241,196,15,.25)}
+.when{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.timeline h4{font-size:1.02rem;margin-top:2px}
+.org{color:var(--muted);font-size:.9rem}
+.timeline ul{margin:6px 0 0;padding-left:18px;font-size:.92rem;color:#4a5568}
+.panel h3{font-size:1.1rem;color:var(--primary);margin-bottom:14px;display:flex;gap:8px;align-items:center}
+.panel h3 .ico{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{border:1px solid #cfdaeb;border-radius:20px;padding:5px 12px;font-size:.86rem;background:#f8fafd}
+.chip.strong{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.sub{font:600 .8rem var(--f-display);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 8px}
+.lang{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.lang:last-child{border-bottom:0}
+.dots{display:flex;gap:4px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--secondary)}
+.edu{list-style:none;padding:0;margin:0}
+.edu li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.edu li:last-child{border-bottom:0}
+.edu .y{font-weight:700;color:var(--secondary);font-variant-numeric:tabular-nums}
+.edu small{display:block;color:var(--muted)}
+
+/* Footer */
+.footer{background:linear-gradient(135deg,var(--footer-a),var(--footer-b));color:#fff;padding-block:48px 28px;margin-top:40px;box-shadow:0 -4px 10px rgba(0,0,0,.2)}
+.footer h5{color:var(--gold);font:700 1rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;margin:0 0 16px;display:flex;gap:8px;align-items:center}
+.f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px}
+.footer p,.footer a{color:var(--footer-ink);font-size:.93rem}
+.footer a:hover{color:var(--gold)}
+.footer .ico{color:var(--gold)}
+.f-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.f-row p{margin:0}.f-row b{color:#fff;display:block;font-weight:500}
+.copy{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:6px;cursor:pointer;font:500 .85rem var(--f-body);margin-top:8px;transition:all .3s ease}
+.copy:hover{background:var(--gold);color:var(--footer-a)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.6)}
+.f-bottom a{color:rgba(255,255,255,.75);font-size:.85rem}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:2000;background:rgba(10,20,40,.92);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 12px) max(12px,env(safe-area-inset-left,0px))}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;padding:4px 4px 10px}
+.lb-top h6{margin:0;font:600 1rem var(--f-display)}
+.lb-top small{color:rgba(255,255,255,.65)}
+.lb-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:10px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;flex:none}
+.lb-btn:hover{background:var(--gold);color:var(--footer-a)}
+.lb-cap{color:rgba(255,255,255,.85);font-size:.9rem;text-align:center;padding-top:10px;max-width:90ch;margin:0 auto}
+
+ .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } } 
+/* Photo */
+.hero-id{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.avatar{width:136px;height:136px;border-radius:50%;object-fit:cover;object-position:50% 25%;border:4px solid #fff;box-shadow:0 0 0 3px var(--gold),var(--shadow-md);flex:none;background:#eef2f7}
+.hero-id>div{min-width:0;flex:1 1 260px}
+
+/* Diaporama */
+.show{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr)}
+.show-stage{position:relative;background:#eef2f7;aspect-ratio:4/3;max-width:100%}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;display:flex;align-items:center;justify-content:center;padding:14px}
+.slide.on{opacity:1}
+.slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:var(--shadow-md);background:#fff}
+.show-stage .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--gold);width:0}
+.show-text{padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.show-text .eyebrow{color:var(--accent)}
+.show-text h3{font-size:1.4rem;color:var(--primary)}
+.show-text p{margin:0;color:#4a5568;font-size:.95rem}
+.show-ctrl{display:flex;align-items:center;gap:8px;margin-top:auto;flex-wrap:wrap}
+.cbtn{width:42px;height:42px;border-radius:8px;border:1px solid #cfdaeb;background:#f8fafd;color:var(--secondary);display:grid;place-items:center;cursor:pointer;transition:all .3s ease}
+.cbtn:hover{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem;margin-left:4px}
+.dotsnav{display:flex;flex-wrap:wrap;gap:6px}
+.dotsnav button{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dotsnav button[aria-current="true"]{background:var(--secondary);width:24px;border-radius:6px}
+
+/* Cartes interactives */
+.imaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px}
+.ipanel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column}
+.ipanel-head{padding:18px 22px;border-bottom:1px solid var(--line)}
+.ipanel-head h3{font-size:1.15rem;color:var(--primary);display:flex;gap:8px;align-items:center}
+.ipanel-head h3 .ico{color:var(--accent)}
+.ipanel-head p{margin:6px 0 0;font-size:.9rem;color:var(--muted)}
+.imap-wrap{position:relative;isolation:isolate}
+.imap{height:470px;max-width:100%}
+#map-km{background:#cfe3f3}
+#map-anj{background:#cfe3f3}
+.atlas-body .imap-wrap{min-height:600px}
+.imap.tall{position:absolute;inset:0;height:auto}
+.aside-block .pt{width:10px;height:10px;border-radius:50%;flex:none}
+.lg-row .sw{width:14px;height:12px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.12)}
+#anj-info{top:auto;bottom:28px}
+.atlas-body{display:grid;grid-template-columns:minmax(0,1fr) 290px}
+.atlas-side{border-left:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.aside-block label{display:flex;align-items:center;gap:8px;font-size:.9rem;line-height:1.5;padding:3px 0;cursor:pointer}
+.aside-block label small{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+.aside-block input[type=range]{width:100%;accent-color:var(--secondary)}
+.aside-block input[type=radio],.aside-block input[type=checkbox]{accent-color:var(--secondary)}
+.aside-block .range{justify-content:space-between;margin-top:8px}
+.aside-block output{font-variant-numeric:tabular-nums;color:var(--secondary);font-weight:600}
+.pt.big{width:12px;height:12px}.pt.sq{border-radius:3px}
+.lg-row{display:flex;align-items:center;gap:8px;font-size:.84rem;line-height:1.8}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;padding:18px 22px;border-top:1px solid var(--line);background:#fafbfd}
+.kpi b{display:block;font-family:var(--f-display);font-size:1.5rem;color:var(--secondary);font-variant-numeric:tabular-nums}
+.kpi span{font-size:.86rem;color:var(--muted)}
+.kpi-note{margin:8px 0 0;font-size:.85rem;color:#4a5568}
+.hbar{margin-top:10px;display:flex;flex-direction:column;gap:5px}
+.hb{display:grid;grid-template-columns:78px minmax(0,1fr) 34px;gap:8px;align-items:center;font-size:.78rem;color:#4a5568;font-variant-numeric:tabular-nums}
+.hb i{display:block;height:10px;border-radius:3px}
+.hb em{font-style:normal;text-align:right}
+.ico-mk{display:grid;place-items:center;border-radius:50%;color:#fff;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.ico-mk svg{width:62%;height:62%;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.dom-label{background:rgba(255,255,255,.85);border:0;border-radius:6px;box-shadow:var(--shadow-sm);font:600 .75rem var(--f-display);color:var(--primary);padding:3px 7px}
+.dom-label::before{display:none}
+@media (max-width:900px){.atlas-body{grid-template-columns:1fr}.atlas-side{border-left:0;border-top:1px solid var(--line)}.atlas-body .imap-wrap{min-height:460px}}
+.mlegend{position:absolute;z-index:500;right:12px;bottom:12px;background:rgba(255,255,255,.95);border-radius:8px;box-shadow:var(--shadow-sm);padding:10px 12px;font-size:.8rem;max-width:calc(100% - 24px)}
+.mlegend h6{margin:0 0 6px;font:600 .82rem var(--f-display);color:var(--secondary)}
+.mlegend .row{display:flex;align-items:center;gap:8px;line-height:1.7}
+.mlegend .sw{width:14px;height:12px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.12)}
+.mlegend .pt{width:10px;height:10px;border-radius:50%;flex:none}
+.mlegend label{display:flex;gap:8px;align-items:center;cursor:pointer;line-height:1.8}
+.minfo{position:absolute;z-index:500;right:12px;top:12px;background:rgba(255,255,255,.95);border-radius:8px;box-shadow:var(--shadow-sm);padding:10px 12px;font-size:.85rem;min-width:180px;max-width:calc(100% - 80px)}
+.minfo b{font-family:var(--f-display);color:var(--primary);display:block}
+.minfo span{color:var(--muted)}
+.ipanel-foot{padding:14px 22px;display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);align-items:center}
+.ipanel-foot small{color:var(--muted)}
+.leaflet-container{font-family:var(--f-body)}
+.isl-label{background:transparent;border:0;box-shadow:none;font:700 .8rem var(--f-display);color:var(--primary);text-shadow:0 0 3px #fff,0 0 3px #fff}
+.isl-label::before{display:none}
+.pop h6{margin:0 0 4px;font:600 .95rem var(--f-display);color:var(--primary)}
+.pop p{margin:0 0 8px;font-size:.85rem;color:#4a5568}
+.pop button{display:block;width:100%;text-align:left;margin-top:4px;background:#eef3fb;color:var(--secondary);border:0;border-radius:6px;padding:6px 8px;font:500 .82rem var(--f-body);cursor:pointer}
+.pop button:hover{background:var(--secondary);color:#fff}
+.lb-map{flex:1;min-width:0;height:100%;isolation:isolate;border-radius:6px;background:#fff}
+.lb-hint{color:rgba(255,255,255,.6);font-size:.8rem}
+
+.reveal{animation:fadeIn .6s ease both}
+@keyframes fadeIn{from{opacity:.001;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (max-width:900px){.show{grid-template-columns:1fr}.hero-grid,.two-col{grid-template-columns:1fr}.project-head{grid-template-columns:1fr}.nav ul{margin-left:0}}
+@media (max-width:560px){.avatar{width:96px;height:96px}.imap{height:400px}.show-text{padding:20px}.hero-main{padding:24px}.project-head,.island{padding-left:18px;padding-right:18px}.findings,.method,.web-grid{padding-left:18px;padding-right:18px}.lb-btn.side{display:none}.badge-acad{margin:6px 0 0}}
+</style>
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5-10-5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/></symbol>
+  <symbol id="i-sat" viewBox="0 0 24 24"><path d="m13 7 4 4M7 13l4 4M10 10l4 4M5 19l2-2M15 3l6 6-3 3-6-6zM3 15l6 6-3 3"/><path d="M17 17a4 4 0 0 0 4-4"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16"/><path d="M4 21c4-6 8-9 12-11"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18z"/><path d="M8 21l1-2M12 21l1-2M16 21l1-2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 4-4 4 4M12 16V8"/></symbol>
+</svg>
+
+<nav class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#profil"><svg class="ico"><use href="#i-globe"/></svg> Ameth Samb · Géomatique</a>
+    <ul>
+      <li><a href="#diaporama"><svg class="ico"><use href="#i-play"/></svg> Diaporama</a></li>
+      <li><a href="#interactif"><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</a></li>
+      <li><a href="#projets"><svg class="ico"><use href="#i-map"/></svg> Projets</a></li>
+      <li><a href="#parcours"><svg class="ico"><use href="#i-brief"/></svg> Parcours</a></li>
+      <li><a href="#competences"><svg class="ico"><use href="#i-tools"/></svg> Compétences</a></li>
+      <li><a href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="credits">
+  <div class="wrap">
+    <span>Portfolio de <strong>Ameth Samb</strong> · Géomaticien SIG &amp; cartographie <span class="badge-acad">Master 2 Géomatique et Modélisation Spatiale · AMU</span></span>
+  </div>
+</div>
+
+<header class="hero" id="profil">
+  <div class="wrap hero-grid">
+    <div class="hero-main reveal">
+      <div class="hero-id">
+        <img class="avatar" src="img/ameth-samb.jpg" alt="Portrait d'Ameth Samb" width="136" height="136">
+        <div>
+          <div class="eyebrow">Géomaticien · SIG &amp; Cartographie</div>
+          <h1>Ameth Samb</h1>
+          <div class="role">Cartographie thématique, télédétection et bases de données spatiales</div>
+        </div>
+      </div>
+      <p class="lead">Formé en géomatique à Aix-Marseille Université, j'ai travaillé en France et au Sénégal sur des SIG, des bases de données spatiales et des cartes appliquées à l'aménagement du territoire et au climat. Je contribue actuellement aux Schémas d'Aménagement du Territoire (SAT) des Comores.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projets"><svg class="ico"><use href="#i-map"/></svg> Voir les travaux</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ameth-samb-12b45724a" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in"/></svg> LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-side reveal">
+      <div class="stat"><svg class="ico"><use href="#i-map"/></svg><b>6</b><span>cartes du SAT des Comores</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-pin"/></svg><b>2</b><span>îles cartographiées</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-brief"/></svg><b>5</b><span>expériences en France et au Sénégal</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-globe"/></svg><b>72</b><span>entités sur l'atlas interactif</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="block" id="diaporama">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-play"/></svg> Diaporama des cartes</h2>
+        <p>Les principales cartes défilent automatiquement. Utilisez les flèches ou les points pour naviguer.</p>
+      </div>
+    </div>
+    <div class="show reveal" id="show" aria-roledescription="carrousel" aria-label="Diaporama des cartes">
+      <div class="show-stage" id="show-stage"><div class="bar" id="show-bar"></div></div>
+      <div class="show-text">
+        <div class="eyebrow" id="show-proj"></div>
+        <h3 id="show-title"></h3>
+        <p id="show-desc"></p>
+        <div class="dotsnav" id="show-dots" aria-label="Choisir une carte"></div>
+        <div class="show-ctrl">
+          <button class="cbtn" id="show-prev" type="button" aria-label="Carte précédente"><svg class="ico"><use href="#i-l"/></svg></button>
+          <button class="cbtn" id="show-play" type="button" aria-label="Mettre en pause"><svg class="ico"><use href="#i-pause"/></svg></button>
+          <button class="cbtn" id="show-next" type="button" aria-label="Carte suivante"><svg class="ico"><use href="#i-r"/></svg></button>
+          <span class="count" id="show-count"></span>
+          <button class="btn btn-primary" id="show-open" type="button" style="margin-left:auto"><svg class="ico"><use href="#i-full"/></svg> Explorer en zoom</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="interactif">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</h2>
+        <p>Survolez et cliquez sur les entités pour afficher leurs informations et ouvrir les cartes associées.</p>
+      </div>
+    </div>
+    <div class="atlas ipanel reveal" id="atlas-anjouan">
+      <div class="ipanel-head">
+        <h3><svg class="ico"><use href="#i-pin"/></svg> Atlas interactif d'Anjouan (Ndzuani)</h3>
+        <p>Les cartes du SAT sont géoréférencées et superposées. Choisissez un thème, réglez la transparence, puis cliquez sur les communes, ports, marchés et points d'eau.</p>
+      </div>
+      <div class="atlas-body">
+        <div class="imap-wrap">
+          <div class="imap tall" id="map-anj" role="region" aria-label="Atlas interactif d'Anjouan"></div>
+          <div class="minfo" id="anj-info"><b>Survolez un élément</b><span>pour afficher ses informations</span></div>
+        </div>
+        <aside class="atlas-side">
+          <div class="aside-block">
+            <p class="sub">Thème de fond</p>
+            <label class="radio"><input type="radio" name="theme" id="th-routes" value="routes" checked> Taux de dégradation routière</label>
+            <label class="radio"><input type="radio" name="theme" id="th-eau" value="eau"> Ressources en eau</label>
+            <label class="radio"><input type="radio" name="theme" id="th-peche" value="peche"> Routes et infrastructures de pêche</label>
+            <label class="radio"><input type="radio" name="theme" id="th-none" value="none"> Aucun (contour seul)</label>
+            <label class="range" for="th-op">Opacité du fond <output id="th-op-val">85 %</output></label>
+            <input type="range" id="th-op" min="20" max="100" value="85">
+          </div>
+          <div class="aside-block">
+            <p class="sub">Couches</p>
+            <label class="chk"><input type="checkbox" id="ly-com" checked><span class="pt" style="background:#0f3570"></span> Communes <small>20</small></label>
+            <label class="chk"><input type="checkbox" id="ly-port" checked><span class="pt" style="background:#b03cc8"></span> Ports de pêche <small>27</small></label>
+            <label class="chk"><input type="checkbox" id="ly-mar" checked><span class="pt big" style="background:#1f5fa8"></span> Marchés de poisson <small>11</small></label>
+            <label class="chk"><input type="checkbox" id="ly-inf" checked><span class="pt" style="background:#111"></span> Port international, aéroport <small>2</small></label>
+            <label class="chk"><input type="checkbox" id="ly-eau"><span class="pt" style="background:#2f8be0"></span> Lacs, rivières, captage <small>12</small></label>
+            <label class="chk"><input type="checkbox" id="ly-pnm"><span class="pt sq" style="background:#7fc98a"></span> Parcs nationaux <small>2</small></label>
+          </div>
+          <div class="aside-block" id="legend-anj"></div>
+          <button class="btn btn-ghost" id="anj-reset" type="button" style="width:100%;justify-content:center"><svg class="ico"><use href="#i-full"/></svg> Recentrer l'île</button>
+        </aside>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>6 / 20</b><span>communes avec 80 à 100 % de routes dégradées</span>
+          <div class="hbar" id="kpi-deg"></div></div>
+        <div class="kpi"><b>27 · 11</b><span>ports de pêche et marchés de poisson recensés</span>
+          <p class="kpi-note" id="kpi-port"></p></div>
+        <div class="kpi"><b>415 km³</b><span>répartis en 4 domaines hydrologiques</span>
+          <div class="hbar" id="kpi-eau"></div></div>
+      </div>
+      <div class="ipanel-foot"><small>Cartes : Groupe Huit, 2026 (sources OCHA, ESRI, SRTM, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC). Points numérisés depuis ces cartes. Distances à vol d'oiseau.</small></div>
+    </div>
+
+    <div class="ipanel reveal" style="margin-top:24px">
+      <div class="ipanel-head">
+        <h3><svg class="ico"><use href="#i-globe"/></svg> Archipel des Comores</h3>
+        <p>Cliquez sur une île pour voir les cartes produites pour le SAT.</p>
+      </div>
+      <div class="imap-wrap">
+        <div class="imap" id="map-km" role="region" aria-label="Carte interactive de l'archipel des Comores"></div>
+        <div class="mlegend" style="right:auto;left:12px">
+          <h6>Légende</h6>
+          <div class="row"><span class="sw" style="background:#2a5298"></span>Île cartographiée (SAT)</div>
+          <div class="row"><span class="sw" style="background:#9fb8dc"></span>Autre île de l'Union</div>
+          <div class="row"><span class="sw" style="background:#e3e7ee"></span>Mayotte (France)</div>
+          <div class="row"><span class="pt" style="background:#dc3545"></span>Chef-lieu</div>
+          <div class="row"><span class="pt" style="background:#8a5a12"></span>Sommet</div>
+          <div class="row"><span class="pt" style="background:#28a745"></span>Parc national</div>
+        </div>
+      </div>
+      <div class="ipanel-foot"><small>Contours : Natural Earth 1:10 M. Points : localisation indicative.</small></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="block" id="projets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-layers"/></svg> Résultats de mes travaux</h2>
+        <p>Cartes et analyses produites en entreprise et pendant le Master. Cliquez sur une carte pour l'ouvrir en grand.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Filtrer les projets">
+      <button class="tab" role="tab" id="tab-all" aria-selected="true" data-filter="all">Tous les projets</button>
+      <button class="tab" role="tab" id="tab-km" aria-selected="false" data-filter="comores">Comores · SAT</button>
+      <button class="tab" role="tab" id="tab-web" aria-selected="false" data-filter="web">Climat &amp; webmapping</button>
+    </div>
+
+    <!-- PROJET 1 : COMORES -->
+    <article class="project reveal" data-cat="comores">
+      <div class="project-head">
+        <div>
+          <h3>Schémas d'Aménagement du Territoire des Comores</h3>
+          <div class="meta">
+            <span><svg class="ico"><use href="#i-brief"/></svg> Groupe Huit · Marseille</span>
+            <span><svg class="ico"><use href="#i-cal"/></svg> 2026</span>
+            <span><svg class="ico"><use href="#i-pin"/></svg> Grande Comore (Ngazidja) et Anjouan (Ndzuani)</span>
+          </div>
+          <p>Atlas cartographique réalisé pour le diagnostic territorial du projet AMCC : localisation, occupation du sol, accessibilité routière, filière pêche et ressources en eau. J'ai collecté, harmonisé et structuré les données (OCHA, OSM, SRTM, Sentinel-2, sources nationales) puis produit les cartes sous SIG.</p>
+        </div>
+        <span class="pill gold">Projet professionnel</span>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-pin"/></svg> Grande Comore · Ngazidja</h4>
+        <div class="grid two">
+          <figure class="map" style="margin:0">
+            <button class="thumb portrait" data-full="img/gc-ocs.jpg" data-title="Changement d'occupation du sol 2018–2024" data-cap="Grande Comore. Sources : ESRI, OCHA, OSM, Sentinel-2, Projet AMCC, DGEF/PNC 2025. Réalisation : Groupe Huit, 2026."><img src="img/gc-ocs.jpg" alt="Carte du changement d'occupation du sol entre 2018 et 2024 en Grande Comore" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Changement d'occupation du sol 2018–2024</h5>
+              <p>Classification Sentinel-2 en 7 classes (forêt, agroforesterie, mélange cultures et savanes, végétation arbustive et herbacée, sol nu, surface bâtie, eau et plage) et détection des changements entre 2018 et 2024.</p>
+              <p>L'expansion urbaine se concentre autour de Moroni et le long du littoral. Des foyers de déforestation sans urbanisation apparaissent sur les pentes du Karthala, au cœur du parc national.</p>
+              <div class="keys"><span class="key">Sentinel-2</span><span class="key">Classification</span><span class="key">Détection de changement</span><span class="key">Aires protégées</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb portrait" data-full="img/gc-situation.jpg" data-title="Situation géographique de la Grande Comore" data-cap="Île de la Grande Comore (Ngazidja). Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/gc-situation.jpg" alt="Carte de situation géographique de la Grande Comore" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Situation géographique</h5>
+              <p>Carte de référence de Ngazidja : limites communales, taches urbaines, réseau routier hiérarchisé (national, régional, autres routes) et capitale Moroni.</p>
+              <p>Elle situe les trois aires protégées (parcs nationaux Coelacanthe, Karthala et Mitsamiouli Ndroude) avec deux encarts : l'Afrique et l'archipel des Comores.</p>
+              <div class="keys"><span class="key">Carte de localisation</span><span class="key">Réseau routier</span><span class="key">Encarts</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="island">
+        <h4><svg class="ico"><use href="#i-pin"/></svg> Anjouan · Ndzuani</h4>
+        <div class="grid two">
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-situation.jpg" data-title="Situation géographique d'Anjouan" data-cap="Île d'Anjouan (Ndzuani). Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-situation.jpg" alt="Carte de situation géographique d'Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Situation géographique</h5>
+              <p>Localisation d'Anjouan et de son chef-lieu Mutsamudu, communes, taches urbaines et réseau routier. Elle montre aussi les parcs nationaux du Mont Ntringui et de Shisiwani (aire marine).</p>
+              <div class="keys"><span class="key">Carte de localisation</span><span class="key">Aires protégées</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-routes.jpg" data-title="État du réseau routier et taux de dégradation par commune" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-routes.jpg" alt="Carte de l'état du réseau routier et du taux de dégradation par commune à Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>État du réseau routier et taux de dégradation</h5>
+              <p>Tronçons classés bon ou dégradé, puis agrégés en taux de dégradation par commune (5 classes, de 0 à 100 %).</p>
+              <p>L'ouest (Mutsamudu, Vouani, Moya) reste sous 20 %. L'est et le sud (Jimlimé, Bazimini, Koni, Ngandzalé, Mrémani, Chaweni) dépassent 80 %.</p>
+              <div class="keys"><span class="key">Analyse spatiale</span><span class="key">Agrégation communale</span><span class="key">Choroplèthe</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-peche.jpg" data-title="Répartition des ports de pêche et des marchés de poisson" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, SRTM, OSM, Projet AMCC. Réalisation : Groupe Huit, 2026."><img src="img/anj-peche.jpg" alt="Carte des ports de pêche et marchés de poisson à Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Ports de pêche et marchés de poisson</h5>
+              <p>Inventaire des ports de pêche, marchés de poisson, port international et aéroport, croisé avec l'état des routes, l'hydrographie et les zones protégées.</p>
+              <p>La carte montre que de nombreux points de débarquement de l'est et du sud ne sont desservis que par des routes dégradées.</p>
+              <div class="keys"><span class="key">Infrastructures</span><span class="key">Accessibilité</span><span class="key">Économie bleue</span></div>
+            </div>
+          </figure>
+          <figure class="map" style="margin:0">
+            <button class="thumb" data-full="img/anj-eau.jpg" data-title="Ressources en eau : domaines hydrologiques et réseau hydrographique" data-cap="Île d'Anjouan. Sources : OCHA, ESRI, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC. Réalisation : Groupe Huit, 2026."><img src="img/anj-eau.jpg" alt="Carte des domaines hydrologiques et du réseau hydrographique d'Anjouan" loading="lazy"><span class="zoom"><svg class="ico"><use href="#i-zoom"/></svg> Agrandir</span></button>
+            <div class="body">
+              <h5>Ressources en eau</h5>
+              <p>Quatre domaines hydrologiques : Est (171 km³), Sud-Ouest (120 km³), Nord-Ouest (100 km³), Nord (24 km³). La carte montre aussi les bassins versants, les cours d'eau pérennes et temporaires, les lacs et l'ouvrage de captage.</p>
+              <p>Le domaine Est concentre les principales rivières (Tratringa, Jomani, Ajaho), qui descendent du Mont Ntringui (1 595 m).</p>
+              <div class="keys"><span class="key">Hydrologie</span><span class="key">Bassins versants</span><span class="key">MNT SRTM</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 3 : WEB -->
+    <article class="project reveal" data-cat="web">
+      <div class="project-head">
+        <div>
+          <h3>Analyse climatique et applications de webmapping</h3>
+          <div class="meta">
+            <span><svg class="ico"><use href="#i-cap"/></svg> Master Géomatique · Aix-Marseille Université</span>
+            <span><svg class="ico"><use href="#i-code"/></svg> Python, HTML/CSS, JavaScript</span>
+          </div>
+          <p>Applications web développées pour le site de projet : traitement de données Météo-France, graphiques interactifs et cartes en ligne.</p>
+        </div>
+        <span class="pill">Projet académique</span>
+      </div>
+      <div class="web-grid">
+        <div class="web"><svg class="ico"><use href="#i-cloud"/></svg><h5>Analyse climatique de Marseille (2024–2025)</h5><p>Traitement des relevés mensuels Météo-France avec Pandas et graphiques Plotly : températures, précipitations, vent, humidité, fréquence des canicules, rose des vents et résumé saisonnier.</p><div class="keys" style="margin-top:12px"><span class="key">Pandas</span><span class="key">Plotly</span><span class="key">Météo-France</span></div></div>
+        <div class="web"><svg class="ico"><use href="#i-chart"/></svg><h5>Dashboard climatique national</h5><p>Tableau de bord interactif sur les principales villes françaises : carte Leaflet, indicateurs climatiques, satellitaires (NDVI, température de surface) et démographiques, comparaisons entre villes et export des données.</p><div class="keys" style="margin-top:12px"><span class="key">Leaflet</span><span class="key">Chart.js</span><span class="key">Bootstrap</span></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="parcours">
+  <div class="wrap two-col">
+    <div class="panel reveal">
+      <div class="sec-head" style="margin-bottom:18px"><h2><svg class="ico"><use href="#i-brief"/></svg> Expériences</h2></div>
+      <ol class="timeline">
+        <li class="now"><div class="when">Octobre – décembre 2026</div><h4>Chargé d'étude cartographie (intérim)</h4><div class="org">RH Avenir · France</div>
+          <ul><li>Appui à l'élaboration des Schémas d'Aménagement du Territoire (SAT) des Comores</li><li>Collecte, traitement et harmonisation des données géographiques du projet</li><li>Mise à jour et structuration des bases de données spatiales</li></ul></li>
+        <li><div class="when">Octobre 2025 – septembre 2026</div><h4>Chargé d'étude cartographie (alternance)</h4><div class="org">Groupe Huit · Marseille</div>
+          <ul><li>Cartes thématiques pour des études d'urbanisme et d'aménagement</li><li>Collecte, traitement et analyse spatiale de données géographiques</li><li>Gestion et contrôle qualité des bases de données spatiales</li></ul></li>
+        <li><div class="when">Avril – juin 2024</div><h4>Stagiaire recherche, traitement de données</h4><div class="org">CNRS · Dijon</div>
+          <ul><li>Traitement statistique et analyse de données climatiques (R, Python)</li><li>Exploitation d'imagerie satellitaire pour des études climatiques</li></ul></li>
+        <li><div class="when">Mars – août 2023</div><h4>Géomaticien</h4><div class="org">Cabinet GEOSIG · Saint-Louis, Sénégal</div>
+          <ul><li>Cartes thématiques pour les clients du cabinet</li><li>Conception de sites cartographiques interactifs</li><li>Administration de bases PostgreSQL/PostGIS</li></ul></li>
+        <li><div class="when">Mai – décembre 2022</div><h4>Stagiaire géomaticien</h4><div class="org">Cabinet GEOMATICA · Saint-Louis, Sénégal</div>
+          <ul><li>Cartographie et analyse spatiale</li><li>Animation de formations aux outils géomatiques</li><li>Développement web et webmapping</li></ul></li>
+      </ol>
+    </div>
+    <div class="panel reveal">
+      <div class="sec-head" style="margin-bottom:18px"><h2><svg class="ico"><use href="#i-cap"/></svg> Formation</h2></div>
+      <ul class="edu">
+        <li><span class="y">2025–2026</span><span>Master 2 Géomatique et Modélisation Spatiale<small>Aix-Marseille Université</small></span></li>
+        <li><span class="y">2024–2025</span><span>Master 1 Géomatique et Modélisation Spatiale<small>Aix-Marseille Université</small></span></li>
+        <li><span class="y">2023–2024</span><span>Master 1 Changement Climatique, Adaptation et Territoires<small>Université de Bourgogne</small></span></li>
+        <li><span class="y">2019–2022</span><span>Licence Géomatique et Climatologie<small>Université du Sine-Saloum, Sénégal</small></span></li>
+        <li><span class="y">2017–2018</span><span>Baccalauréat littéraire<small>Lycée Leona, Sénégal</small></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="competences">
+  <div class="wrap">
+    <div class="sec-head"><h2><svg class="ico"><use href="#i-tools"/></svg> Compétences</h2></div>
+    <div class="two-col" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-sat"/></svg> SIG et télédétection</h3>
+        <div class="chips"><span class="chip strong">SIG</span><span class="chip strong">Analyse spatiale</span><span class="chip strong">Télédétection</span><span class="chip">Bases de données spatiales</span><span class="chip">Google Earth Engine</span></div>
+        <p class="sub">Domaines</p>
+        <div class="chips" style="margin:0"><span class="chip">Aménagement du territoire</span><span class="chip">Climatologie</span><span class="chip">Qualité de l'air</span><span class="chip">Végétalisation urbaine</span></div>
+      </div>
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-code"/></svg> Logiciels et programmation</h3>
+        <div class="chips"><span class="chip strong">QGIS</span><span class="chip strong">ArcGIS</span><span class="chip">ENVI</span><span class="chip">TerrSet</span><span class="chip">Agisoft</span><span class="chip">PostgreSQL / PostGIS</span><span class="chip">QField</span><span class="chip">Mergin</span><span class="chip">KoboToolbox</span><span class="chip">GPS / DGPS</span><span class="chip">Photoshop</span></div>
+        <div class="chips" style="margin:0"><span class="chip strong">Python</span><span class="chip strong">R</span><span class="chip">Google Colab</span><span class="chip">HTML / CSS</span><span class="chip">Webmapping</span><span class="chip">uMap</span></div>
+      </div>
+      <div class="panel reveal">
+        <h3><svg class="ico"><use href="#i-globe"/></svg> Langues</h3>
+        <div class="lang"><span>Wolof <small style="color:var(--muted)">· langue maternelle</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="lang"><span>Français <small style="color:var(--muted)">· courant</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="lang"><span>Anglais <small style="color:var(--muted)">· bon niveau</small></span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h5><svg class="ico"><use href="#i-user"/></svg> Profil</h5>
+        <div class="f-row"><svg class="ico"><use href="#i-cap"/></svg><p><b>Ameth Samb</b>Géomaticien · SIG &amp; cartographie<br>Master 2 Géomatique et Modélisation Spatiale</p></div>
+        <div class="f-row"><svg class="ico"><use href="#i-pin"/></svg><p><b>Localisation</b>Marseille, France</p></div>
+      </div>
+      <div>
+        <h5><svg class="ico"><use href="#i-mail"/></svg> Contact</h5>
+        <div class="f-row"><svg class="ico"><use href="#i-mail"/></svg><p><b>E-mail</b><span id="email">amethsamb43@gmail.com</span><br><button class="copy" id="copy-email" type="button"><svg class="ico"><use href="#i-copy"/></svg> <span>Copier l'adresse</span></button></p></div>
+        <div class="f-row"><svg class="ico"><use href="#i-in"/></svg><p><b>LinkedIn</b><a href="https://www.linkedin.com/in/ameth-samb-12b45724a" target="_blank" rel="noopener">linkedin.com/in/ameth-samb-12b45724a</a></p></div>
+      </div>
+      <div>
+        <h5><svg class="ico"><use href="#i-layers"/></svg> Sources des cartes</h5>
+        <p>Comores : OCHA, ESRI, SRTM, OSM, Sentinel-2, Projet AMCC, DGEF/PNC, PROGEAU, IPAC. Cartes réalisées chez Groupe Huit, 2026.</p>
+        <p>Analyse climatique : Météo-France.</p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Ameth Samb · Portfolio géomatique</span>
+      <a href="#top"><svg class="ico"><use href="#i-up"/></svg> Retour en haut</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-top">
+    <div><h6 id="lb-title"></h6><small id="lb-count"></small> <span class="lb-hint">· molette, pincement ou boutons +/− pour zoomer</span></div>
+    <button class="lb-btn" id="lb-close" type="button" aria-label="Fermer"><svg class="ico"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="lb-stage">
+    <button class="lb-btn side" id="lb-prev" type="button" aria-label="Carte précédente"><svg class="ico"><use href="#i-l"/></svg></button>
+    <div class="lb-map" id="lb-map" role="img"></div>
+    <button class="lb-btn side" id="lb-next" type="button" aria-label="Carte suivante"><svg class="ico"><use href="#i-r"/></svg></button>
+  </div>
+  <p class="lb-cap" id="lb-cap"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>const KM_DATA={"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Mohéli"},"geometry":{"type":"Polygon","coordinates":[[[43.789,-12.3075],[43.7962,-12.3109],[43.8502,-12.3463],[43.861,-12.3632],[43.8574,-12.3716],[43.843,-12.3733],[43.8178,-12.3733],[43.753,-12.3598],[43.681,-12.3581],[43.6666,-12.3531],[43.6594,-12.3446],[43.663,-12.3277],[43.6594,-12.3176],[43.6486,-12.3109],[43.6414,-12.3058],[43.6342,-12.3007],[43.6306,-12.2872],[43.6306,-12.2518],[43.6342,-12.2366],[43.6522,-12.2433],[43.6666,-12.2501],[43.7098,-12.2585],[43.7278,-12.2636],[43.7782,-12.2974],[43.789,-12.3075]]]}},{"type":"Feature","properties":{"name":"Anjouan"},"geometry":{"type":"Polygon","coordinates":[[[44.5306,-12.2332],[44.527,-12.3548],[44.5234,-12.3733],[44.5126,-12.3801],[44.5018,-12.3767],[44.491,-12.3683],[44.4838,-12.3581],[44.4802,-12.3497],[44.4802,-12.3362],[44.473,-12.3294],[44.401,-12.2805],[44.3902,-12.267],[44.3866,-12.2518],[44.3686,-12.245],[44.329,-12.2366],[44.2678,-12.2045],[44.2606,-12.1977],[44.221,-12.1758],[44.2066,-12.1606],[44.221,-12.1606],[44.2354,-12.164],[44.2606,-12.1741],[44.2786,-12.1792],[44.311,-12.1825],[44.3218,-12.1876],[44.329,-12.1842],[44.3398,-12.1792],[44.3434,-12.1741],[44.3722,-12.1808],[44.401,-12.1572],[44.4154,-12.1201],[44.4118,-12.0863],[44.4226,-12.0829],[44.437,-12.0745],[44.4478,-12.0711],[44.4514,-12.0694],[44.455,-12.066],[44.4586,-12.0643],[44.4658,-12.0643],[44.473,-12.0677],[44.4802,-12.0829],[44.4838,-12.0863],[44.527,-12.2197],[44.5306,-12.2332]]]}},{"type":"Feature","properties":{"name":"Grande Comore"},"geometry":{"type":"Polygon","coordinates":[[[43.465,-11.8212],[43.4686,-11.8313],[43.4758,-11.8431],[43.4974,-11.8735],[43.4974,-11.882],[43.4866,-11.9005],[43.483,-11.9107],[43.483,-11.9174],[43.4794,-11.9225],[43.4722,-11.9276],[43.4614,-11.9309],[43.4506,-11.9326],[43.4362,-11.9309],[43.4326,-11.9242],[43.4254,-11.9124],[43.3714,-11.86],[43.3534,-11.8549],[43.3138,-11.8516],[43.303,-11.8499],[43.2886,-11.8431],[43.2706,-11.8279],[43.2634,-11.8178],[43.2598,-11.8094],[43.2598,-11.8009],[43.2526,-11.7908],[43.2274,-11.7654],[43.2166,-11.7503],[43.213,-11.7249],[43.2166,-11.7165],[43.2238,-11.7047],[43.2454,-11.6726],[43.2454,-11.6624],[43.2418,-11.6523],[43.2418,-11.6405],[43.2526,-11.4632],[43.2526,-11.4514],[43.2454,-11.4412],[43.2562,-11.4227],[43.267,-11.399],[43.2778,-11.3788],[43.2886,-11.3788],[43.3318,-11.3653],[43.357,-11.3619],[43.375,-11.3686],[43.3858,-11.3838],[43.3966,-11.4007],[43.4002,-11.4176],[43.3786,-11.605],[43.3858,-11.6456],[43.429,-11.708],[43.447,-11.7486],[43.447,-11.7587],[43.447,-11.7806],[43.447,-11.7908],[43.4506,-11.7975],[43.4578,-11.8043],[43.465,-11.811],[43.465,-11.8212]]]}},{"type":"Feature","properties":{"name":"Mayotte"},"geometry":{"type":"Polygon","coordinates":[[[45.2615,-12.7634],[45.2759,-12.7482],[45.2831,-12.7431],[45.2903,-12.76],[45.2903,-12.7735],[45.2867,-12.7887],[45.2831,-12.8056],[45.2759,-12.8056],[45.2615,-12.7634]]]}},{"type":"Feature","properties":{"name":"Mayotte"},"geometry":{"type":"Polygon","coordinates":[[[45.2003,-12.7229],[45.2183,-12.7347],[45.2255,-12.7465],[45.2255,-12.76],[45.2219,-12.7769],[45.1967,-12.8124],[45.1895,-12.8174],[45.1895,-12.8293],[45.1967,-12.8411],[45.2147,-12.8512],[45.2111,-12.8647],[45.2039,-12.8782],[45.2003,-12.8833],[45.1931,-12.9052],[45.1751,-12.9238],[45.1679,-12.9441],[45.1859,-12.9694],[45.1823,-12.9762],[45.1787,-12.9812],[45.1715,-12.9846],[45.1643,-12.9897],[45.1607,-12.9778],[45.1535,-12.9795],[45.1427,-12.9863],[45.1319,-12.9897],[45.1211,-12.9863],[45.1139,-12.9812],[45.1067,-12.9778],[45.0959,-12.9829],[45.0995,-12.9677],[45.0959,-12.9576],[45.0851,-12.9542],[45.0707,-12.9542],[45.0707,-12.9491],[45.0887,-12.9407],[45.0887,-12.9238],[45.0815,-12.9086],[45.0635,-12.8985],[45.0671,-12.8934],[45.0743,-12.8884],[45.0851,-12.8867],[45.0887,-12.8917],[45.1067,-12.912],[45.1247,-12.9221],[45.1355,-12.9171],[45.1355,-12.9036],[45.1319,-12.8867],[45.1247,-12.8748],[45.1139,-12.863],[45.0851,-12.8394],[45.0995,-12.8326],[45.1031,-12.8326],[45.1031,-12.8259],[45.0995,-12.8174],[45.0959,-12.8022],[45.0923,-12.7735],[45.0887,-12.76],[45.0779,-12.7533],[45.0671,-12.7499],[45.0563,-12.7431],[45.0491,-12.7347],[45.0455,-12.7246],[45.0419,-12.7144],[45.0419,-12.6992],[45.0923,-12.6469],[45.0959,-12.6536],[45.0959,-12.657],[45.0959,-12.6604],[45.0923,-12.6621],[45.0887,-12.6638],[45.0851,-12.6671],[45.0923,-12.6671],[45.0923,-12.6688],[45.0959,-12.6722],[45.0959,-12.6739],[45.1103,-12.6857],[45.1283,-12.7077],[45.1391,-12.7144],[45.1535,-12.7178],[45.1823,-12.7178],[45.2003,-12.7229]]]}}]};
+const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.064063177972516, 44.57014834587262]], "peche": [[-12.391178675408222, 44.17285577744667], [-12.062981938961292, 44.57331527515677]], "eau": [[-12.391106689017727, 44.191481467782936], [-12.062732785758506, 44.57275843983117]]}, "communes": [{"n": "Jimlimé", "c": 4, "p": [-12.11203, 44.46565]}, {"n": "Ouani", "c": 3, "p": [-12.1509, 44.45382]}, {"n": "Bambao Mtsanga", "c": 2, "p": [-12.16949, 44.50385]}, {"n": "Mirontsi", "c": 0, "p": [-12.16713, 44.42036]}, {"n": "Bazimini", "c": 4, "p": [-12.17625, 44.45889]}, {"n": "Bandrani ya Mtsangani", "c": 0, "p": [-12.1847, 44.31388]}, {"n": "Bambao Mtrouni", "c": 2, "p": [-12.1891, 44.46937]}, {"n": "Bandrani ya Chironkamba", "c": 0, "p": [-12.20431, 44.35749]}, {"n": "Mutsamudu", "c": 0, "p": [-12.20093, 44.41596]}, {"n": "Sima", "c": 1, "p": [-12.21276, 44.29495]}, {"n": "Koni", "c": 4, "p": [-12.23101, 44.48796]}, {"n": "Vouani", "c": 0, "p": [-12.22763, 44.35647]}, {"n": "Domoni", "c": 2, "p": [-12.254, 44.52075]}, {"n": "Ngandzalé", "c": 4, "p": [-12.25231, 44.46835]}, {"n": "Moya", "c": 0, "p": [-12.26752, 44.43557]}, {"n": "Adda", "c": 2, "p": [-12.29456, 44.46565]}, {"n": "Ongojou", "c": 2, "p": [-12.31653, 44.51906]}, {"n": "Mrémani", "c": 4, "p": [-12.32667, 44.48695]}, {"n": "Chaweni", "c": 4, "p": [-12.3723, 44.50047]}, {"n": "Mramani", "c": 3, "p": [-12.36047, 44.52514]}], "ports": [[-12.28761, 44.41608], [-12.20641, 44.51861], [-12.2622, 44.53243], [-12.37893, 44.49716], [-12.24892, 44.37167], [-12.32045, 44.45528], [-12.38365, 44.51826], [-12.19147, 44.23127], [-12.1664, 44.39153], [-12.31387, 44.4388], [-12.22916, 44.30154], [-12.38088, 44.5018], [-12.38423, 44.51221], [-12.14592, 44.419], [-12.18904, 44.33616], [-12.19714, 44.30943], [-12.22987, 44.5272], [-12.23949, 44.32102], [-12.27099, 44.39727], [-12.23641, 44.34077], [-12.25408, 44.38512], [-12.30768, 44.43373], [-12.22069, 44.52183], [-12.23756, 44.31738], [-12.19378, 44.23519], [-12.15719, 44.41458], [-12.2365, 44.31242]], "markets": [[-12.11979, 44.48646], [-12.13594, 44.42292], [-12.15862, 44.41064], [-12.16462, 44.4018], [-12.17155, 44.39302], [-12.2174, 44.44649], [-12.23279, 44.313], [-12.25434, 44.52952], [-12.28473, 44.40866], [-12.3129, 44.49813], [-12.33169, 44.49315]], "infra": [{"n": "Port international de Mutsamudu", "t": "port", "p": [-12.16111, 44.39723]}, {"n": "Aéroport de Ouani", "t": "air", "p": [-12.13137, 44.42955]}], "hydro": [{"n": "Mont Ntringui", "t": "sommet", "d": "Point culminant d’Anjouan, 1 595 m", "p": [-12.21558, 44.42541]}, {"n": "Lac Dzialandzé", "t": "lac", "d": "Lac de cratère", "p": [-12.22471, 44.43217]}, {"n": "Lac Dzialaoutsounga", "t": "lac", "d": "Lac d’altitude du domaine Est", "p": [-12.2264, 44.45684]}, {"n": "Lac Boini", "t": "lac", "d": "Domaine Nord-Ouest", "p": [-12.19631, 44.42507]}, {"n": "Ouvrage de captage", "t": "captage", "d": "Captage sur la rivière Mutsamudu", "p": [-12.18515, 44.40919]}, {"n": "Rivière Mutsamudu", "t": "riviere", "d": "Cours d’eau pérenne, domaine Nord-Ouest", "p": [-12.16825, 44.39195]}, {"n": "Rivière Tratringa", "t": "riviere", "d": "Cours d’eau pérenne, domaine Est", "p": [-12.18143, 44.51464]}, {"n": "Rivière Jomani", "t": "riviere", "d": "Cours d’eau pérenne, domaine Est", "p": [-12.24837, 44.53188]}, {"n": "Rivière Ajaho", "t": "riviere", "d": "Cours d’eau pérenne, domaine Est", "p": [-12.27542, 44.52951]}, {"n": "Rivière Vouani", "t": "riviere", "d": "Cours d’eau pérenne, domaine Sud-Ouest", "p": [-12.24837, 44.37133]}, {"n": "Rivière Lingoni", "t": "riviere", "d": "Cours d’eau pérenne, domaine Sud-Ouest", "p": [-12.28454, 44.40344]}, {"n": "Rivière Pomoni", "t": "riviere", "d": "Cours d’eau pérenne, domaine Sud-Ouest", "p": [-12.28759, 44.41425]}], "domains": [{"n": "Est", "v": 171, "p": [-12.26527, 44.48861]}, {"n": "Sud-Ouest", "v": 120, "p": [-12.26189, 44.3737]}, {"n": "Nord-Ouest", "v": 100, "p": [-12.18414, 44.3737]}, {"n": "Nord", "v": 24, "p": [-12.08947, 44.46495]}]};</script>
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const hasL=typeof L!=='undefined';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Filtres ----------
+  const tabs=$$('.tab'), projects=$$('.project');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.setAttribute('aria-selected',x===t));
+    const f=t.dataset.filter;
+    projects.forEach(p=>p.hidden=!(f==='all'||p.dataset.cat===f));
+  }));
+
+  // ---------- Catalogue des cartes (lu depuis les vignettes) ----------
+  const thumbs=$$('.thumb');
+  const items=thumbs.map(b=>({
+    btn:b, src:b.dataset.full, title:b.dataset.title, cap:b.dataset.cap||'', alt:b.querySelector('img').alt,
+    proj:b.closest('.project').querySelector('h3').textContent,
+    desc:(b.parentElement.querySelector('.body p')||{}).textContent||''
+  }));
+
+  // ---------- Visionneuse zoomable ----------
+  const lb=$('#lb'), ttl=$('#lb-title'), cap=$('#lb-cap'), cnt=$('#lb-count'), lbDiv=$('#lb-map');
+  let list=items, i=0, last=null, viewer=null, overlay=null, fallbackImg=null;
+  function show(){
+    const it=list[i]; ttl.textContent=it.title; cap.textContent=it.cap; cnt.textContent=(i+1)+' / '+list.length; lbDiv.setAttribute('aria-label',it.alt);
+    if(!hasL){ if(!fallbackImg){fallbackImg=document.createElement('img');fallbackImg.style.cssText='max-width:100%;max-height:100%;object-fit:contain;display:block;margin:auto';lbDiv.appendChild(fallbackImg)} fallbackImg.src=it.src; return }
+    const im=new Image();
+    im.onload=()=>{
+      const w=im.naturalWidth,h=im.naturalHeight,bounds=[[0,0],[h,w]];
+      if(!viewer){viewer=L.map(lbDiv,{crs:L.CRS.Simple,minZoom:-5,maxZoom:3,zoomSnap:.25,keyboard:false,attributionControl:false})}
+      if(overlay) viewer.removeLayer(overlay);
+      overlay=L.imageOverlay(it.src,bounds).addTo(viewer);
+      viewer.invalidateSize();
+      viewer.setMaxBounds(L.latLngBounds(bounds).pad(.5));
+      viewer.fitBounds(bounds);
+      viewer.setMinZoom(viewer.getZoom()-1);
+    };
+    im.src=it.src;
+  }
+  function open(idx,subset){list=subset||items; i=Math.max(0,idx); last=document.activeElement; lb.hidden=false; document.body.style.overflow='hidden'; requestAnimationFrame(show); $('#lb-close').focus(); pause(true)}
+  function close(){lb.hidden=true; document.body.style.overflow=''; if(last&&last.focus) last.focus()}
+  function step(d){i=(i+d+list.length)%list.length; show()}
+  thumbs.forEach((b,k)=>b.addEventListener('click',()=>{
+    const vis=items.filter(it=>!it.btn.closest('.project').hidden); open(vis.indexOf(items[k]),vis)}));
+  $('#lb-close').addEventListener('click',close);
+  $('#lb-prev').addEventListener('click',()=>step(-1));
+  $('#lb-next').addEventListener('click',()=>step(1));
+  document.addEventListener('keydown',e=>{if(lb.hidden) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') step(-1); if(e.key==='ArrowRight') step(1)});
+  window.openMap=(src)=>{const k=items.findIndex(it=>it.src===src); if(k>-1) open(k,items)};
+
+  // ---------- Diaporama ----------
+  const stage=$('#show-stage'), dots=$('#show-dots'), bar=$('#show-bar');
+  const slides=items.map((it,k)=>{
+    const d=document.createElement('div'); d.className='slide'; d.setAttribute('role','group'); d.setAttribute('aria-roledescription','diapositive');
+    const im=document.createElement('img'); im.alt=it.alt; im.loading=k<2?'eager':'lazy'; im.src=it.src; d.appendChild(im);
+    d.addEventListener('click',()=>open(k,items)); d.style.cursor='zoom-in';
+    stage.insertBefore(d,bar);
+    const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Carte '+(k+1)+' : '+it.title); b.addEventListener('click',()=>go(k,true)); dots.appendChild(b);
+    return d;
+  });
+  let cur=0, playing=!reduce, timer=null, t0=0; const DUR=6000;
+  function go(k,user){
+    cur=(k+slides.length)%slides.length;
+    slides.forEach((s,j)=>{s.classList.toggle('on',j===cur); s.setAttribute('aria-hidden',j!==cur)});
+    [...dots.children].forEach((b,j)=>b.setAttribute('aria-current',j===cur));
+    const it=items[cur]; $('#show-proj').textContent=it.proj; $('#show-title').textContent=it.title; $('#show-desc').textContent=it.desc; $('#show-count').textContent=(cur+1)+' / '+slides.length;
+    t0=performance.now(); if(user&&playing){}
+  }
+  function tick(now){
+    if(playing&&lb.hidden){const p=Math.min(1,(now-t0)/DUR); bar.style.width=(p*100)+'%'; if(p>=1) go(cur+1)}
+    else t0=now-(parseFloat(bar.style.width)||0)/100*DUR;
+    timer=requestAnimationFrame(tick);
+  }
+  function setPlay(v){playing=v; const btn=$('#show-play'); btn.setAttribute('aria-label',v?'Mettre en pause':'Lancer le diaporama'); btn.querySelector('use').setAttribute('href',v?'#i-pause':'#i-play'); if(!v) bar.style.width='0%'; t0=performance.now()}
+  function pause(){if(playing) setPlay(false)}
+  $('#show-play').addEventListener('click',()=>setPlay(!playing));
+  $('#show-prev').addEventListener('click',()=>go(cur-1,true));
+  $('#show-next').addEventListener('click',()=>go(cur+1,true));
+  $('#show-open').addEventListener('click',()=>open(cur,items));
+  let sx=null; stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  stage.addEventListener('touchend',e=>{if(sx===null)return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1),true); sx=null});
+  go(0); setPlay(playing); requestAnimationFrame(tick);
+
+  // ---------- Carte interactive : Comores ----------
+  if(hasL){
+    const km=L.map('map-km',{zoomSnap:.25,scrollWheelZoom:false,attributionControl:false}).setView([-12.05,44.0],8.5);
+    L.control.attribution({prefix:false}).addAttribution('Natural Earth').addTo(km);
+    const mapsOf={'Grande Comore':items.filter(it=>it.src.includes('/gc-')),'Anjouan':items.filter(it=>it.src.includes('/anj-'))};
+    const info={'Grande Comore':'Ngazidja · capitale Moroni · volcan Karthala (2 361 m)','Anjouan':'Ndzuani · chef-lieu Mutsamudu · Mont Ntringui (1 595 m)','Mohéli':'Mwali · chef-lieu Fomboni','Mayotte':'Département français, hors de l’Union des Comores'};
+    function popupHTML(name){
+      const ms=mapsOf[name]||[];
+      return '<div class="pop"><h6>'+name+'</h6><p>'+info[name]+'</p>'+(name==='Anjouan'?'<button type="button" data-atlas="1" style="background:#f1c40f;color:#1a252f">Explorer l\u2019atlas interactif</button>':'')+(ms.length?ms.map(m=>'<button type="button" data-src="'+m.src+'">'+m.title+'</button>').join(''):'<p><em>Pas de carte dans ce portfolio.</em></p>')+'</div>';
+    }
+    const isl=L.geoJSON(KM_DATA,{
+      style:f=>{const n=f.properties.name, sat=!!mapsOf[n]; return {color:n==='Mayotte'?'#9aa6b8':'#1e3c72',weight:sat?2:1.2,dashArray:n==='Mayotte'?'4 4':null,fillColor:sat?'#2a5298':(n==='Mayotte'?'#e3e7ee':'#9fb8dc'),fillOpacity:sat?.75:.7}},
+      onEachFeature:(f,l)=>{
+        l.bindTooltip(f.properties.name,{permanent:true,direction:'center',className:'isl-label'});
+        l.bindPopup(()=>popupHTML(f.properties.name),{maxWidth:260});
+        l.on('mouseover',()=>l.setStyle({fillOpacity:.95})); l.on('mouseout',()=>isl.resetStyle(l));
+      }
+    }).addTo(km);
+    km.fitBounds(isl.getBounds(),{padding:[20,20]});
+    const pts=[
+      ['Moroni','Capitale de l’Union des Comores',-11.7022,43.2551,'#dc3545'],
+      ['Mutsamudu','Chef-lieu d’Anjouan',-12.1675,44.3994,'#dc3545'],
+      ['Fomboni','Chef-lieu de Mohéli',-12.2800,43.7425,'#dc3545'],
+      ['Mont Karthala','Volcan actif, 2 361 m',-11.7500,43.3800,'#8a5a12'],
+      ['Mont Ntringui','Point culminant d’Anjouan, 1 595 m',-12.2030,44.4200,'#8a5a12'],
+      ['Parc national du Karthala','Aire protégée centrale de Ngazidja',-11.82,43.40,'#28a745'],
+      ['Parc national Mitsamiouli Ndroude','Littoral nord de Ngazidja',-11.37,43.33,'#28a745'],
+      ['Parc national Coelacanthe','Littoral sud-est de Ngazidja',-11.90,43.50,'#28a745'],
+      ['Parc national Shisiwani','Presqu’île de Sima, Anjouan',-12.20,44.24,'#28a745']
+    ];
+    pts.forEach(([n,d,la,lo,c])=>L.circleMarker([la,lo],{radius:6,color:'#fff',weight:2,fillColor:c,fillOpacity:1}).bindPopup('<div class="pop"><h6>'+n+'</h6><p style="margin:0">'+d+'</p></div>').bindTooltip(n,{direction:'top',offset:[0,-6]}).addTo(km));
+    km.on('popupopen',e=>{const el=e.popup.getElement(); el.querySelectorAll('button[data-src]').forEach(b=>b.addEventListener('click',()=>{km.closePopup(); window.openMap(b.dataset.src)}));
+      el.querySelectorAll('button[data-atlas]').forEach(b=>b.addEventListener('click',()=>{km.closePopup(); $('#atlas-anjouan').scrollIntoView({behavior:reduce?'auto':'smooth'})}))});
+
+    // ---------- Atlas interactif : Anjouan ----------
+    const D=ANJ, anj=L.map('map-anj',{zoomSnap:.25,scrollWheelZoom:false,attributionControl:false,minZoom:9,maxZoom:16});
+    L.control.attribution({prefix:false}).addAttribution('Groupe Huit 2026 · Natural Earth').addTo(anj);
+    L.control.scale({imperial:false,position:'bottomleft'}).addTo(anj);
+    const anjFeat=KM_DATA.features.filter(f=>f.properties.name==='Anjouan');
+    const outline=L.geoJSON({type:'FeatureCollection',features:anjFeat},{style:{color:'#1e3c72',weight:1.5,fillColor:'#eef2f7',fillOpacity:.9},interactive:false});
+    const ovs={}; ['routes','eau','peche'].forEach(n=>ovs[n]=L.imageOverlay('img/ov-'+n+'.webp',D.bounds[n],{opacity:.85,interactive:false}));
+    const home=L.latLngBounds(D.bounds.routes);
+    anj.fitBounds(home,{padding:[4,4]}); anj.setMaxBounds(home.pad(.6));
+    const hav=(a,b)=>{const r=Math.PI/180,dl=(b[0]-a[0])*r,dg=(b[1]-a[1])*r,x=Math.sin(dl/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dg/2)**2;return 12742*Math.asin(Math.sqrt(x))};
+    const fmtk=v=>v.toLocaleString('fr-FR',{maximumFractionDigits:1})+' km';
+    const infoA=$('#anj-info'); const say=(t,s)=>{infoA.innerHTML='<b>'+t+'</b><span>'+s+'</span>'};
+    const svg={anchor:'<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0 0 14 0M8 10h8"/></svg>',
+      plane:'<svg viewBox="0 0 24 24"><path d="M2 13l20-6-6 14-3-6-6-2z"/></svg>',
+      fish:'<svg viewBox="0 0 24 24"><path d="M3 12c3-5 9-6 14-2l4-3v10l-4-3c-5 4-11 3-14-2z"/><circle cx="8" cy="11" r=".6"/></svg>',
+      drop:'<svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>',
+      peak:'<svg viewBox="0 0 24 24"><path d="M3 20l7-12 4 6 2-3 5 9z"/></svg>',
+      tap:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>'};
+    const mk=(s,bg,size)=>L.divIcon({className:'',html:'<div class="ico-mk" style="width:'+size+'px;height:'+size+'px;background:'+bg+'">'+s+'</div>',iconSize:[size,size],iconAnchor:[size/2,size/2],popupAnchor:[0,-size/2]});
+    const openBtn=(src,txt)=>'<button type="button" data-src="img/'+src+'.jpg">'+txt+'</button>';
+    const CL=['0 – 20 %','20 – 40 %','40 – 60 %','60 – 80 %','80 – 100 %'], CC=['#eef3fa','#c6dbef','#6baed6','#2f7fc1','#0f3570'];
+    // Communes
+    const lyCom=L.layerGroup(D.communes.map(c=>{
+      const near=D.markets.map(m=>hav(c.p,m)).sort((a,b)=>a-b)[0];
+      const ports=D.ports.filter(p=>hav(c.p,p)<=5).length;
+      const m=L.circleMarker(c.p,{radius:7,color:'#1e3c72',weight:2,fillColor:CC[c.c],fillOpacity:1});
+      m.bindTooltip(c.n,{direction:'top',offset:[0,-6]});
+      m.bindPopup('<div class="pop"><h6>'+c.n+'</h6><p>Taux de dégradation routière : <strong>'+CL[c.c]+'</strong><br>Marché de poisson le plus proche : '+fmtk(near)+'<br>Ports de pêche à moins de 5 km : '+ports+'</p>'+openBtn('anj-routes','Ouvrir la carte routière')+'</div>');
+      m.on('mouseover',()=>say(c.n,'Dégradation routière '+CL[c.c]+' · marché à '+fmtk(near)));
+      return m}));
+    // Ports
+    const portInfo=D.ports.map((p,k)=>{const d=D.markets.map(m=>hav(p,m)); return {p,k,near:Math.min(...d)}});
+    const lyPort=L.layerGroup(portInfo.map(o=>{
+      const m=L.marker(o.p,{icon:mk(svg.anchor,'#b03cc8',20)});
+      m.bindPopup('<div class="pop"><h6>Port de pêche n° '+(o.k+1)+'</h6><p>Marché de poisson le plus proche : '+fmtk(o.near)+'</p>'+openBtn('anj-peche','Ouvrir la carte de la pêche')+'</div>');
+      m.on('mouseover',()=>say('Port de pêche n° '+(o.k+1),'Marché le plus proche à '+fmtk(o.near)));
+      return m}));
+    const lyMar=L.layerGroup(D.markets.map((p,k)=>{
+      const n=D.ports.filter(q=>hav(p,q)<=5).length;
+      const m=L.marker(p,{icon:mk(svg.fish,'#1f5fa8',26),zIndexOffset:500});
+      m.bindPopup('<div class="pop"><h6>Marché de poisson n° '+(k+1)+'</h6><p>'+n+' port'+(n>1?'s':'')+' de pêche à moins de 5 km</p>'+openBtn('anj-peche','Ouvrir la carte de la pêche')+'</div>');
+      m.on('mouseover',()=>say('Marché de poisson n° '+(k+1),n+' port(s) de pêche à moins de 5 km'));
+      return m}));
+    const lyInf=L.layerGroup(D.infra.map(o=>{const m=L.marker(o.p,{icon:mk(o.t==='air'?svg.plane:svg.anchor,'#111',28),zIndexOffset:800});
+      m.bindPopup('<div class="pop"><h6>'+o.n+'</h6><p>Infrastructure structurante de l’île</p></div>'); m.on('mouseover',()=>say(o.n,'Infrastructure de transport')); return m}));
+    const hcol={lac:'#2f8be0',riviere:'#1c64b8',captage:'#0b3d75',sommet:'#a0442b'};
+    const lyEau=L.layerGroup(D.hydro.map(o=>{const m=L.marker(o.p,{icon:mk(o.t==='sommet'?svg.peak:(o.t==='captage'?svg.tap:svg.drop),hcol[o.t],22)});
+      m.bindPopup('<div class="pop"><h6>'+o.n+'</h6><p>'+o.d+'</p>'+openBtn('anj-eau','Ouvrir la carte des ressources en eau')+'</div>'); m.on('mouseover',()=>say(o.n,o.d)); return m}));
+    const lyDom=L.layerGroup(D.domains.map(o=>L.marker(o.p,{icon:L.divIcon({className:'',html:'',iconSize:[0,0]}),interactive:false}).bindTooltip('Domaine '+o.n+' · '+o.v+' km³',{permanent:true,direction:'center',className:'dom-label'})));
+    const parks=[{n:'Parc national du Mont Ntringui',p:[-12.215,44.43],d:'Aire protégée terrestre du massif central'},{n:'Parc national de Shisiwani',p:[-12.215,44.255],d:'Aire marine le long de la presqu’île de Sima'}];
+    const lyPnm=L.layerGroup(parks.map(o=>L.circleMarker(o.p,{radius:9,color:'#2e7d32',weight:2,fillColor:'#7fc98a',fillOpacity:.9}).bindPopup('<div class="pop"><h6>'+o.n+'</h6><p>'+o.d+'</p>'+openBtn('anj-situation','Ouvrir la carte de situation')+'</div>').on('mouseover',()=>say(o.n,o.d))));
+    const layers={'ly-com':lyCom,'ly-port':lyPort,'ly-mar':lyMar,'ly-inf':lyInf,'ly-eau':lyEau,'ly-pnm':lyPnm};
+    Object.entries(layers).forEach(([id,l])=>{const cbx=$('#'+id); if(cbx.checked) l.addTo(anj); cbx.addEventListener('change',()=>cbx.checked?l.addTo(anj):anj.removeLayer(l))});
+    // Légende dynamique
+    const legends={
+      routes:'<p class="sub">Dégradation routière par commune</p>'+CC.map((c,k)=>'<div class="lg-row"><span class="sw" style="background:'+c+'"></span>'+CL[k]+'</div>').join('')+'<div class="lg-row"><span class="sw" style="background:#2db34a;height:3px"></span>Route en bon état</div><div class="lg-row"><span class="sw" style="background:#e02424;height:3px"></span>Route dégradée</div>',
+      eau:'<p class="sub">Domaines hydrologiques</p>'+[['#f7c9cf','Est · 171 km³'],['#fbf6c4','Sud-Ouest · 120 km³'],['#d6f5d6','Nord-Ouest · 100 km³'],['#7fe0d0','Nord · 24 km³']].map(([c,l])=>'<div class="lg-row"><span class="sw" style="background:'+c+'"></span>'+l+'</div>').join(''),
+      peche:'<p class="sub">Réseau routier</p><div class="lg-row"><span class="sw" style="background:#2db34a;height:3px"></span>Route en bon état</div><div class="lg-row"><span class="sw" style="background:#e02424;height:3px"></span>Route dégradée</div><div class="lg-row"><span class="sw" style="background:#c9c9c9"></span>Tache urbaine</div>',
+      none:'<p class="sub">Fond</p><div class="lg-row"><span class="sw" style="background:#eef2f7"></span>Contour de l’île (Natural Earth)</div>'};
+    let theme='routes';
+    function setTheme(n){
+      theme=n; Object.values(ovs).forEach(o=>anj.removeLayer(o)); anj.removeLayer(outline); anj.removeLayer(lyDom);
+      if(n==='none') outline.addTo(anj); else { ovs[n].setOpacity($('#th-op').value/100).addTo(anj); ovs[n].bringToBack(); }
+      if(n==='eau') lyDom.addTo(anj);
+      $('#legend-anj').innerHTML=legends[n];
+    }
+    document.querySelectorAll('input[name=theme]').forEach(r=>r.addEventListener('change',()=>{ if(r.checked){ setTheme(r.value); if(r.value==='eau'&&!$('#ly-eau').checked){$('#ly-eau').checked=true; lyEau.addTo(anj)} } }));
+    $('#th-op').addEventListener('input',e=>{$('#th-op-val').textContent=e.target.value+' %'; if(ovs[theme]) ovs[theme].setOpacity(e.target.value/100)});
+    $('#anj-reset').addEventListener('click',()=>anj.flyToBounds(home,{padding:[4,4],duration:.8}));
+    setTheme('routes');
+    anj.on('popupopen',e=>{e.popup.getElement().querySelectorAll('button[data-src]').forEach(b=>b.addEventListener('click',()=>{anj.closePopup(); window.openMap(b.dataset.src)}))});
+    // Indicateurs
+    const cnt=[0,0,0,0,0]; D.communes.forEach(c=>cnt[c.c]++);
+    $('#kpi-deg').innerHTML=cnt.map((v,k)=>'<div class="hb"><span>'+CL[k]+'</span><i style="width:'+(v/6*100)+'%;background:'+CC[k]+';border:1px solid rgba(0,0,0,.08)"></i><em>'+v+'</em></div>').join('');
+    const far=portInfo.filter(o=>o.near>5).length, avg=portInfo.reduce((s,o)=>s+o.near,0)/portInfo.length;
+    $('#kpi-port').textContent='Un port est en moyenne à '+fmtk(avg)+' du marché le plus proche ; '+far+' ports sur 27 sont à plus de 5 km d’un marché.';
+    $('#kpi-eau').innerHTML=D.domains.map(o=>'<div class="hb"><span>'+o.n+'</span><i style="width:'+(o.v/171*100)+'%;background:#4a90e2"></i><em>'+o.v+'</em></div>').join('');
+    window.anjMap=anj;
+  } else {
+    ['map-km','map-anj'].forEach(id=>{$('#'+id).innerHTML='<p style="padding:20px;color:#6b7686">La bibliothèque cartographique n’a pas pu se charger. Rechargez la page.</p>'});
+  }
+
+  // ---------- Copier l'e-mail ----------
+  const cb=$('#copy-email');
+  cb.addEventListener('click',()=>{
+    const t=$('#email').textContent, lab=cb.querySelector('span');
+    const done=()=>{lab.textContent='Adresse copiée'; setTimeout(()=>lab.textContent="Copier l'adresse",2000)};
+    const sel=()=>{const r=document.createRange(); r.selectNodeContents($('#email')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); lab.textContent='Adresse sélectionnée'};
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
+  });
+})();
+</script>
+</body></html>
