@@ -257,6 +257,46 @@ section.block{padding-block:36px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media (max-width:900px){.show{grid-template-columns:1fr}.hero-grid,.two-col{grid-template-columns:1fr}.project-head{grid-template-columns:1fr}.nav ul{margin-left:0}}
 @media (max-width:560px){.avatar{width:96px;height:96px}.imap{height:400px}.show-text{padding:20px}.hero-main{padding:24px}.project-head,.island{padding-left:18px;padding-right:18px}.findings,.method,.web-grid{padding-left:18px;padding-right:18px}.lb-btn.side{display:none}.badge-acad{margin:6px 0 0}}
+
+/* Extensions QGIS */
+.ext{display:grid;grid-template-columns:272px minmax(0,1fr);gap:0}
+.ext-list{display:flex;flex-direction:column;gap:4px;padding:18px;border-right:1px solid var(--line);background:#fafbfd}
+.ext-list button{all:unset;cursor:pointer;display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;align-items:center;padding:9px 10px;border-radius:10px;border:1px solid transparent;transition:all .2s ease}
+.ext-list button:hover{background:#eef3fb}
+.ext-list button[aria-pressed=true]{background:#fff;border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.ext-list button:focus-visible{outline:3px solid var(--gold)}
+.ext-ic{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:grid;place-items:center;color:#fff}
+.ext-ic .ico{width:20px;height:20px}
+.ext-list b{display:block;font:600 .95rem var(--f-display);color:var(--primary);line-height:1.2}
+.ext-list small{color:var(--muted);font-size:.82rem}
+.ext-stage{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;padding:22px 26px 26px;align-items:start}
+.qwin{background:#eef1f4;color:#1d2733;border:1px solid #cfd6de;border-radius:10px;box-shadow:var(--shadow-lg);overflow:hidden;font-size:.84rem}
+.qwin-t{display:flex;align-items:center;gap:7px;padding:8px 12px;background:#dfe5eb;border-bottom:1px solid #cfd6de;font-weight:600}
+.qwin-t i{width:10px;height:10px;border-radius:50%;background:#c3ccd5}
+.qwin-t i:first-child{background:#e2574c}
+.qwin-tabs{display:flex;flex-wrap:wrap;gap:2px;padding:7px 10px 0;border-bottom:1px solid #cfd6de}
+.qwin-tabs span{padding:5px 9px;border-radius:6px 6px 0 0;color:#566577;border:1px solid transparent;border-bottom:none}
+.qwin-tabs span.on{background:#fff;border-color:#cfd6de;color:#1d2733;font-weight:600;margin-bottom:-1px}
+.qwin-b{padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.qg{font-weight:600;color:var(--secondary);margin-top:3px}
+.qr{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:10px;align-items:center}
+.qi{background:#fff;border:1px solid #cfd6de;border-radius:5px;padding:4px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi.cb::after{content:"▾";float:right;color:#6b7a89;margin-left:6px}
+.qk{display:flex;gap:8px;align-items:center}
+.qk i{width:14px;height:14px;border:1px solid #8b98a6;border-radius:3px;background:#fff;flex:none;display:grid;place-items:center;font-style:normal;font-size:10px;color:#fff}
+.qk i.y{background:var(--secondary);border-color:var(--secondary)}
+.qk i.y::after{content:"✓"}
+.qwin-f{display:flex;justify-content:flex-end;gap:8px;padding:9px 14px;border-top:1px solid #cfd6de;background:#e6eaee}
+.qwin-f span{padding:5px 13px;border-radius:6px;border:1px solid #cfd6de;background:#fff}
+.qwin-f span.go{background:var(--secondary);border-color:var(--secondary);color:#fff;font-weight:600}
+.ext-det h3{font-size:1.3rem;color:var(--primary)}
+.ext-det .keys{margin:8px 0 12px;padding-top:0}
+.ext-det p{margin:0 0 12px;color:#4a5568}
+.ext-det ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:.93rem}
+.ext-use{margin-top:14px;padding:10px 14px;border-left:3px solid var(--gold);background:#fffbea;border-radius:0 8px 8px 0;font-size:.93rem}
+.ext-note{padding:0 26px 18px;color:var(--muted);font-size:.82rem;margin:0}
+@media(max-width:1000px){.ext-stage{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.ext{grid-template-columns:minmax(0,1fr)}.ext-list{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line)}.ext-list button{flex:none;grid-template-columns:32px auto}.ext-ic{width:32px;height:32px}.ext-list small{display:none}.ext-stage{padding:18px 16px}.qr{grid-template-columns:minmax(0,1fr)}.ext-note{padding:0 16px 16px}}
 </style>
 </head><body>
 
@@ -296,6 +336,7 @@ section.block{padding-block:36px}
       <li><a href="#diaporama"><svg class="ico"><use href="#i-play"/></svg> Diaporama</a></li>
       <li><a href="#interactif"><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</a></li>
       <li><a href="#projets"><svg class="ico"><use href="#i-map"/></svg> Projets</a></li>
+      <li><a href="#extensions"><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS</a></li>
       <li><a href="#parcours"><svg class="ico"><use href="#i-brief"/></svg> Parcours</a></li>
       <li><a href="#competences"><svg class="ico"><use href="#i-tools"/></svg> Compétences</a></li>
       <li><a href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Contact</a></li>
@@ -554,6 +595,25 @@ section.block{padding-block:36px}
   </div>
 </section>
 
+
+<section class="block" id="extensions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS développées en Python</h2>
+        <p>Six extensions PyQGIS (environ 11 000 lignes de code) qui automatisent des tâches que je réalisais à la main. Choisissez une extension pour voir son interface et ses fonctionnalités.</p>
+      </div>
+    </div>
+    <article class="project reveal">
+      <div class="ext">
+        <nav class="ext-list" id="ext-list" aria-label="Extensions QGIS"></nav>
+        <div class="ext-stage" id="ext-stage" aria-live="polite"></div>
+      </div>
+      <p class="ext-note">Interfaces reproduites à partir des libellés réels du code ; les valeurs saisies sont des exemples.</p>
+    </article>
+  </div>
+</section>
+
 <section class="block" id="parcours">
   <div class="wrap two-col">
     <div class="panel reveal">
@@ -597,7 +657,7 @@ section.block{padding-block:36px}
       <div class="panel reveal">
         <h3><svg class="ico"><use href="#i-code"/></svg> Logiciels et programmation</h3>
         <div class="chips"><span class="chip strong">QGIS</span><span class="chip strong">ArcGIS</span><span class="chip">ENVI</span><span class="chip">TerrSet</span><span class="chip">Agisoft</span><span class="chip">PostgreSQL / PostGIS</span><span class="chip">QField</span><span class="chip">Mergin</span><span class="chip">KoboToolbox</span><span class="chip">GPS / DGPS</span><span class="chip">Photoshop</span></div>
-        <div class="chips" style="margin:0"><span class="chip strong">Python</span><span class="chip strong">R</span><span class="chip">Google Colab</span><span class="chip">HTML / CSS</span><span class="chip">Webmapping</span><span class="chip">uMap</span></div>
+        <div class="chips" style="margin:0"><span class="chip strong">Python</span><span class="chip strong">PyQGIS</span><span class="chip strong">R</span><span class="chip">Google Colab</span><span class="chip">HTML / CSS</span><span class="chip">Webmapping</span><span class="chip">uMap</span></div>
       </div>
       <div class="panel reveal">
         <h3><svg class="ico"><use href="#i-globe"/></svg> Langues</h3>
@@ -862,5 +922,80 @@ const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.0
     try{navigator.clipboard.writeText(t).then(done,sel)}catch(e){sel()}
   });
 })();
+</script>
+<script>
+{
+const P=[
+{id:'opengeo',name:'OpenGeoDownload',short:'Données ouvertes',ver:'v3.0.0',cat:'Web',qgis:'QGIS 3.16+',lines:'3 500 lignes',
+ desc:"Télécharge et découpe sur la zone d'étude les grandes bases de données géographiques ouvertes, sans quitter QGIS. La zone est définie une seule fois (shapefile ou emprise de la carte) et sert à toutes les sources.",
+ feat:["OpenStreetMap par région Geofabrik ou par requête Overpass","MNT SRTM (NASA, via OpenTopography)","Occupation du sol ESRI Sentinel-2 (2017-2025) et GLC-FCS30D (1985-2022)","Population et bâti Copernicus/JRC (GHS-POP, GHS-BUILT-S)","Limites administratives GADM ou HDX/OCHA, tous niveaux ADM","Téléchargements en arrière-plan, journal, interface FR/EN"],
+ use:"Préparer en quelques minutes toutes les données de base d'un nouveau territoire.",
+ tabs:['Geofabrik','Overpass','Données thématiques','Limites admin','Paramètres','Journal'],on:2,
+ rows:[['g',"Zone d'étude"],['f','Shapefile','zone_etude_anjouan.shp'],['k','Emprise canvas',false],['g','1.  Source de données'],['c','Source','ESRI Land Cover (Sentinel-2)'],['c','Année','2024'],['g','2.  Options'],['k',"Découper le raster sur la zone d'étude",true],['k','Ajouter la couche dans QGIS',true]],
+ go:'Télécharger'},
+{id:'layout',name:'Quick Layout',short:'Mises en page',ver:'v3.12.5',cat:'Mise en page',qgis:'QGIS 3.16+',lines:'3 100 lignes',
+ desc:"Génère automatiquement des mises en page complètes à partir de gabarits QPT intégrés (A0 à A4, portrait ou paysage, format rapport), avec thèmes de carte et atlas par région.",
+ feat:["Série de cartes : titre, sous-titre, n° de projet, copyright, sources","Atlas automatique : une page par entité d'une couche de régions","Nord, échelle, légende et cadre ajoutés et placés","Masque hors zone et carte de repérage paramétrables","Grille de coordonnées et légende entièrement réglable","15 gabarits intégrés, interface FR/EN"],
+ use:"Produire un atlas de dizaines de cartes homogènes en un clic.",
+ tabs:['Mise en page','Éléments','Masque & repérage','Légende'],on:0,
+ rows:[['f','Nom de la série','Atlas du territoire'],['f','Sous-titre','Occupation du sol 2024'],['f','Projet N°','2026-014'],['c','Thème QGIS','Occupation du sol'],['c','Couche de régions','communes'],['c','Champ nom de région','NOM_COM'],['k','Nord',true],['k','Échelle',true],['k','Légende',true]],
+ go:'⚡ Générer'},
+{id:'georef',name:'Georeferencer',short:'Géoréférencement',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.0+',lines:'2 600 lignes',
+ desc:"Importe une image (carte ancienne, plan, scan) et l'aligne visuellement sur le fond satellite ou les données du projet, en plaçant des points de contrôle sur l'image puis sur la carte.",
+ feat:["Images JPG, PNG, TIFF, BMP","Points de contrôle : un clic sur l'image, un clic sur la carte QGIS","Transformations linéaire (2 points), affine (3) ou polynomiale (4+)","Erreur RMS affichée en temps réel","Sortie GeoTIFF géoréférencé et World File optionnel (.jgw, .pgw, .tfw)","Résultat ajouté automatiquement au projet, interface FR/EN"],
+ use:"Intégrer un plan papier ou un PLU scanné dans un SIG.",
+ tabs:['Image','Points de contrôle','Résultat'],on:1,
+ rows:[['f','Image','plan_cadastral_1962.jpg'],['c','Transformation','Affine (3 points minimum)'],['g','Points de contrôle'],['f','Point 1','image 412, 188  →  carte 44.41, -12.17'],['f','Point 2','image 1530, 240  →  carte 44.45, -12.17'],['f','Point 3','image 980, 1105  →  carte 44.43, -12.21'],['f','Erreur RMS','0,8 pixel'],['k','Créer un World File',true]],
+ go:'Géoréférencer'},
+{id:'mnt',name:'MNT Analyst',short:'Analyse du relief',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.16+',lines:'1 200 lignes',
+ desc:"Centralise toutes les analyses de terrain à partir d'un modèle numérique de terrain (GeoTIFF). Les calculs s'appuient sur GDAL et tournent en arrière-plan sans bloquer QGIS.",
+ feat:["Pente en degrés ou en pourcentage","Exposition, avec option 0° pour les zones plates","Ombrage simple ou multidirectionnel (azimut, altitude, exagération)","Courbes de niveau : intervalle, altitude de base, format de sortie","Indices TRI, TPI et rugosité de surface","Traitement par lot de toutes les analyses choisies"],
+ use:"Caractériser un relief pour une étude de risques ou d'aménagement.",
+ tabs:['Pente','Exposition','Ombrage','Courbes','Indices','Lot'],on:2,
+ rows:[['f','MNT source','srtm_anjouan_30m.tif'],['f','Dossier de sortie','D:/projets/relief/'],['g','Paramètres de la source lumineuse'],['f','Azimut du soleil (0-360°)','315'],['f','Altitude du soleil (0-90°)','45'],['f','Exagération verticale (Z)','1,5'],['k','Ombrage multidirectionnel',true]],
+ go:'▶  Calculer'},
+{id:'buffer',name:'Expansion urbaine',short:'Buffer concentrique',ver:'v1.0.0',cat:'Vecteur',qgis:'QGIS 3.0+',lines:'770 lignes',
+ desc:"Projette l'expansion urbaine à une année cible. L'extension mesure le taux d'expansion du bâti entre deux périodes, calibre un rayon de zone tampon, l'applique au bâti récent et retire le bâti existant pour obtenir les zones d'extension nettes.",
+ feat:["Deux couches de bâti (période 1 et période 2) et une année cible","Rayon calculé automatiquement d'après le taux historique, ou fixé à la main","Filtre par superficie des polygones","Filtre de compacité qui écarte routes et formes allongées","Fusion des zones adjacentes et soustraction du bâti existant","Résultat en GeoPackage, ajouté au projet"],
+ use:"Anticiper les secteurs d'urbanisation future dans une étude d'aménagement.",
+ tabs:['Couches & années','Filtres','Calibrage','Sortie'],on:0,
+ rows:[['c','Période 1','bati_2010'],['f','Année P1','2010'],['c','Période 2','bati_2020'],['f','Année P2','2020'],['f','Année cible','2035'],['c',"Mode de calcul",'Automatique (taux historique)'],['k','Soustraire le bâti existant (P2)',true],['f','Sortie (.gpkg)','expansion_2035.gpkg']],
+ go:'▶  Lancer'},
+{id:'chartes',name:'Gestionnaire de chartes',short:'Chartes graphiques',ver:'v1.0.0',cat:'Symbologie',qgis:'QGIS 3.0+',lines:'390 lignes',
+ desc:"Enregistre la symbologie d'un ensemble de couches comme une charte graphique nommée, puis la réapplique à n'importe quel projet : chaque couche retrouve son style d'après son nom.",
+ feat:["Styles QML complets : symboles, étiquettes, rendu","Couches vecteur et raster","Correspondance par nom de couche, sans tenir compte des majuscules","Chartes conservées dans le profil QGIS, d'un projet à l'autre","Partage simple avec des collègues (dossier .qml + charte.json)","Renommer, supprimer, appliquer d'un double-clic"],
+ use:"Respecter la charte d'une collectivité sur tous les projets.",
+ tabs:['Chartes enregistrées'],on:0,
+ rows:[['g','Chartes'],['f','','Charte PLU intercommunal'],['f','','Charte Risques naturels'],['f','','Charte Réseaux'],['g','Contenu de la charte sélectionnée'],['f','Couches','Zonage, Parcelles, Bâti, Voirie, Servitudes']],
+ go:'🎨 Appliquer la charte'}
+];
+const EI={"opengeo": "i-globe", "layout": "i-map", "georef": "i-pin", "mnt": "i-layers", "buffer": "i-sat", "chartes": "i-leaf"};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const list=document.getElementById('ext-list'),stage=document.getElementById('ext-stage');
+if(list&&stage){
+list.innerHTML=P.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="false"><span class="ext-ic"><svg class="ico"><use href="#${EI[p.id]}"/></svg></span><span><b>${esc(p.name)}</b><small>${esc(p.short)}</small></span></button>`).join('');
+const row=r=>{
+  if(r[0]==='g')return `<div class="qg">${esc(r[1])}</div>`;
+  if(r[0]==='k')return `<div class="qk"><i class="${r[2]?'y':''}"></i>${esc(r[1])}</div>`;
+  const box=`<div class="qi${r[0]==='c'?' cb':''}">${esc(r[2])}</div>`;
+  return r[1]?`<div class="qr"><span>${esc(r[1])}</span>${box}</div>`:box;
+};
+const show=id=>{
+  const p=P.find(x=>x.id===id)||P[0];
+  list.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===p.id));
+  stage.innerHTML=`<div class="qwin" role="img" aria-label="Interface de l'extension ${esc(p.name)}">
+    <div class="qwin-t"><i></i><i></i><i></i><span>${esc(p.name)}</span></div>
+    <div class="qwin-tabs">${p.tabs.map((t,i)=>`<span class="${i===p.on?'on':''}">${esc(t)}</span>`).join('')}</div>
+    <div class="qwin-b">${p.rows.map(row).join('')}</div>
+    <div class="qwin-f"><span>Fermer</span><span class="go">${esc(p.go)}</span></div></div>
+  <div class="ext-det"><h3>${esc(p.name)}</h3>
+    <div class="keys"><span class="key">${esc(p.ver)}</span><span class="key">${esc(p.cat)}</span><span class="key">${esc(p.qgis)}</span><span class="key">${esc(p.lines)}</span></div>
+    <p>${esc(p.desc)}</p><ul>${p.feat.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
+    <div class="ext-use"><b>Usage type :</b> ${esc(p.use)}</div></div>`;
+};
+list.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.id)});
+show(P[0].id);
+}
+}
 </script>
 </body></html>
