@@ -594,25 +594,6 @@ section.block{padding-block:36px}
       <div class="ipanel-foot"><small>Cartes : Groupe Huit, 2026 (sources OCHA, ESRI, SRTM, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC). Points numérisés depuis ces cartes. Distances à vol d'oiseau.</small></div>
     </div>
 
-    <div class="ipanel reveal" style="margin-top:24px">
-      <div class="ipanel-head">
-        <h3><svg class="ico"><use href="#i-globe"/></svg> Archipel des Comores</h3>
-        <p>Cliquez sur une île pour voir les cartes produites pour le SAT.</p>
-      </div>
-      <div class="imap-wrap">
-        <div class="imap" id="map-km" role="region" aria-label="Carte interactive de l'archipel des Comores"></div>
-        <div class="mlegend" style="right:auto;left:12px">
-          <h6>Légende</h6>
-          <div class="row"><span class="sw" style="background:#2a5298"></span>Île cartographiée (SAT)</div>
-          <div class="row"><span class="sw" style="background:#9fb8dc"></span>Autre île de l'Union</div>
-          <div class="row"><span class="sw" style="background:#e3e7ee"></span>Mayotte (France)</div>
-          <div class="row"><span class="pt" style="background:#dc3545"></span>Chef-lieu</div>
-          <div class="row"><span class="pt" style="background:#8a5a12"></span>Sommet</div>
-          <div class="row"><span class="pt" style="background:#28a745"></span>Parc national</div>
-        </div>
-      </div>
-      <div class="ipanel-foot"><small>Contours : Natural Earth 1:10 M. Points : localisation indicative.</small></div>
-    </div>
 
   </div>
 </section>
@@ -840,6 +821,7 @@ const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.0
 
   // ---------- Carte interactive : Comores ----------
   if(hasL){
+    if(document.getElementById('map-km')){
     const km=L.map('map-km',{zoomSnap:.25,scrollWheelZoom:false,attributionControl:false}).setView([-12.05,44.0],8.5);
     L.control.attribution({prefix:false}).addAttribution('Natural Earth').addTo(km);
     const mapsOf={'Grande Comore':items.filter(it=>it.src.includes('/gc-')),'Anjouan':items.filter(it=>it.src.includes('/anj-'))};
@@ -871,6 +853,7 @@ const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.0
     pts.forEach(([n,d,la,lo,c])=>L.circleMarker([la,lo],{radius:6,color:'#fff',weight:2,fillColor:c,fillOpacity:1}).bindPopup('<div class="pop"><h6>'+n+'</h6><p style="margin:0">'+d+'</p></div>').bindTooltip(n,{direction:'top',offset:[0,-6]}).addTo(km));
     km.on('popupopen',e=>{const el=e.popup.getElement(); el.querySelectorAll('button[data-src]').forEach(b=>b.addEventListener('click',()=>{km.closePopup(); window.openMap(b.dataset.src)}));
       el.querySelectorAll('button[data-atlas]').forEach(b=>b.addEventListener('click',()=>{km.closePopup(); $('#atlas-anjouan').scrollIntoView({behavior:reduce?'auto':'smooth'})}))});
+    }
 
     // ---------- Atlas interactif : Anjouan ----------
     const D=ANJ, anj=L.map('map-anj',{zoomSnap:.25,scrollWheelZoom:false,attributionControl:false,minZoom:9,maxZoom:16});
@@ -951,7 +934,7 @@ const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.0
     $('#kpi-eau').innerHTML=D.domains.map(o=>'<div class="hb"><span>'+o.n+'</span><i style="width:'+(o.v/171*100)+'%;background:#4a90e2"></i><em>'+o.v+'</em></div>').join('');
     window.anjMap=anj;
   } else {
-    ['map-km','map-anj'].forEach(id=>{$('#'+id).innerHTML='<p style="padding:20px;color:#6b7686">La bibliothèque cartographique n’a pas pu se charger. Rechargez la page.</p>'});
+    ['map-km','map-anj'].filter(id=>document.getElementById(id)).forEach(id=>{$('#'+id).innerHTML='<p style="padding:20px;color:#6b7686">La bibliothèque cartographique n’a pas pu se charger. Rechargez la page.</p>'});
   }
 
   // ---------- Copier l'e-mail ----------
