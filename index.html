@@ -259,7 +259,7 @@ section.block{padding-block:36px}
 @media (max-width:560px){.avatar{width:96px;height:96px}.imap{height:400px}.show-text{padding:20px}.hero-main{padding:24px}.project-head,.island{padding-left:18px;padding-right:18px}.findings,.method,.web-grid{padding-left:18px;padding-right:18px}.lb-btn.side{display:none}.badge-acad{margin:6px 0 0}}
 
 /* Extensions QGIS */
-.ext{display:grid;grid-template-columns:272px minmax(0,1fr);gap:0}
+.ext{display:grid;grid-template-columns:250px minmax(0,1fr)}
 .ext-list{display:flex;flex-direction:column;gap:4px;padding:18px;border-right:1px solid var(--line);background:#fafbfd}
 .ext-list button{all:unset;cursor:pointer;display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;align-items:center;padding:9px 10px;border-radius:10px;border:1px solid transparent;transition:all .2s ease}
 .ext-list button:hover{background:#eef3fb}
@@ -269,34 +269,56 @@ section.block{padding-block:36px}
 .ext-ic .ico{width:20px;height:20px}
 .ext-list b{display:block;font:600 .95rem var(--f-display);color:var(--primary);line-height:1.2}
 .ext-list small{color:var(--muted);font-size:.82rem}
-.ext-stage{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;padding:22px 26px 26px;align-items:start}
-.qwin{background:#eef1f4;color:#1d2733;border:1px solid #cfd6de;border-radius:10px;box-shadow:var(--shadow-lg);overflow:hidden;font-size:.84rem}
+.ext-main{padding:22px 24px 10px;display:flex;flex-direction:column;gap:22px}
+.ext-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.qwin{background:#eef1f4;color:#1d2733;border:1px solid #cfd6de;border-radius:10px;box-shadow:var(--shadow-lg);overflow:hidden;font-size:.86rem}
 .qwin-t{display:flex;align-items:center;gap:7px;padding:8px 12px;background:#dfe5eb;border-bottom:1px solid #cfd6de;font-weight:600}
 .qwin-t i{width:10px;height:10px;border-radius:50%;background:#c3ccd5}
 .qwin-t i:first-child{background:#e2574c}
 .qwin-tabs{display:flex;flex-wrap:wrap;gap:2px;padding:7px 10px 0;border-bottom:1px solid #cfd6de}
-.qwin-tabs span{padding:5px 9px;border-radius:6px 6px 0 0;color:#566577;border:1px solid transparent;border-bottom:none}
-.qwin-tabs span.on{background:#fff;border-color:#cfd6de;color:#1d2733;font-weight:600;margin-bottom:-1px}
-.qwin-b{padding:12px 14px;display:flex;flex-direction:column;gap:7px}
-.qg{font-weight:600;color:var(--secondary);margin-top:3px}
+.qwin-tabs button{all:unset;cursor:pointer;padding:6px 10px;border-radius:6px 6px 0 0;color:#566577;border:1px solid transparent;border-bottom:none}
+.qwin-tabs button:hover{color:var(--secondary)}
+.qwin-tabs button.on{background:#fff;border-color:#cfd6de;color:#1d2733;font-weight:600;margin-bottom:-1px}
+.qwin-tabs button:focus-visible{outline:2px solid var(--gold)}
+.qwin-b{padding:12px 14px;display:flex;flex-direction:column;gap:9px;min-height:250px}
+.qg{font-weight:600;color:var(--secondary);margin-top:2px}
 .qr{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:10px;align-items:center}
-.qi{background:#fff;border:1px solid #cfd6de;border-radius:5px;padding:4px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.qi.cb::after{content:"▾";float:right;color:#6b7a89;margin-left:6px}
-.qk{display:flex;gap:8px;align-items:center}
-.qk i{width:14px;height:14px;border:1px solid #8b98a6;border-radius:3px;background:#fff;flex:none;display:grid;place-items:center;font-style:normal;font-size:10px;color:#fff}
-.qk i.y{background:var(--secondary);border-color:var(--secondary)}
-.qk i.y::after{content:"✓"}
-.qwin-f{display:flex;justify-content:flex-end;gap:8px;padding:9px 14px;border-top:1px solid #cfd6de;background:#e6eaee}
-.qwin-f span{padding:5px 13px;border-radius:6px;border:1px solid #cfd6de;background:#fff}
-.qwin-f span.go{background:var(--secondary);border-color:var(--secondary);color:#fff;font-weight:600}
-.ext-det h3{font-size:1.3rem;color:var(--primary)}
-.ext-det .keys{margin:8px 0 12px;padding-top:0}
+.qr label b.qv{color:var(--secondary);font-weight:700}
+.qi{font:inherit;background:#fff;border:1px solid #cfd6de;border-radius:5px;padding:5px 8px;width:100%;color:#1d2733;min-width:0}
+.qi.ro{color:#6b7686;background:#f7f8fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi:focus{outline:2px solid var(--accent);outline-offset:0}
+.qr input[type=range]{width:100%;accent-color:var(--secondary)}
+.qk{display:flex;gap:8px;align-items:center;cursor:pointer}
+.qk input{width:16px;height:16px;accent-color:var(--secondary)}
+.qnote{margin:2px 0 0;color:#6b7686;font-size:.8rem}
+.qwin-f{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:9px 14px;border-top:1px solid #cfd6de;background:#e6eaee}
+.qprog{flex:1;height:6px;border-radius:3px;background:#d3dae2;overflow:hidden;opacity:0;transition:opacity .2s}
+.qprog.on{opacity:1}
+.qprog span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--secondary),var(--accent));transition:width .3s ease}
+.qbtn{font:inherit;cursor:pointer;padding:6px 13px;border-radius:6px;border:1px solid #cfd6de;background:#fff;color:#1d2733}
+.qbtn.go{background:var(--secondary);border-color:var(--secondary);color:#fff;font-weight:600}
+.qbtn.go:hover{background:var(--primary)}
+.qbtn:disabled{opacity:.6;cursor:wait}
+.ext-prev{display:flex;flex-direction:column;gap:8px}
+.pv-box{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#eef3f8;aspect-ratio:10/7}
+.pv-box svg,.pv-box canvas{display:block;width:100%;height:100%}
+.pv-box canvas{image-rendering:auto}
+.pv-cap{margin:0;font-weight:600;color:var(--primary);font-size:.92rem}
+.pv-pages{display:flex;flex-wrap:wrap;gap:6px}
+.pv-pages button{font:inherit;font-size:.8rem;cursor:pointer;padding:4px 10px;border-radius:14px;border:1px solid #cfdaeb;background:#f8fafd;color:var(--secondary)}
+.pv-pages button.on{background:var(--secondary);color:#fff;border-color:var(--secondary)}
+.pv-log{margin:0;padding:8px 10px 8px 28px;background:#1a252f;color:#cfe3f3;border-radius:8px;font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;min-height:44px;max-height:150px;overflow:auto}
+.pv-log:empty::before{content:"Journal : lancez le traitement pour voir les étapes.";color:#8aa3b8;margin-left:-18px}
+.pv-log li:last-child{color:#f1c40f}
+.ext-det{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;padding-top:18px;border-top:1px solid var(--line)}
+.ext-det h3{font-size:1.25rem;color:var(--primary)}
+.ext-det .keys{margin:8px 0 10px;padding-top:0}
 .ext-det p{margin:0 0 12px;color:#4a5568}
-.ext-det ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:.93rem}
-.ext-use{margin-top:14px;padding:10px 14px;border-left:3px solid var(--gold);background:#fffbea;border-radius:0 8px 8px 0;font-size:.93rem}
-.ext-note{padding:0 26px 18px;color:var(--muted);font-size:.82rem;margin:0}
-@media(max-width:1000px){.ext-stage{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:760px){.ext{grid-template-columns:minmax(0,1fr)}.ext-list{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line)}.ext-list button{flex:none;grid-template-columns:32px auto}.ext-ic{width:32px;height:32px}.ext-list small{display:none}.ext-stage{padding:18px 16px}.qr{grid-template-columns:minmax(0,1fr)}.ext-note{padding:0 16px 16px}}
+.ext-det ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:.93rem;align-content:start}
+.ext-use{padding:10px 14px;border-left:3px solid var(--gold);background:#fffbea;border-radius:0 8px 8px 0;font-size:.93rem}
+.ext-note{padding:0 24px 18px;color:var(--muted);font-size:.82rem;margin:0}
+@media(max-width:1100px){.ext-stage{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.ext{grid-template-columns:minmax(0,1fr)}.ext-list{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line)}.ext-list button{flex:none;grid-template-columns:32px auto}.ext-ic{width:32px;height:32px}.ext-list small{display:none}.ext-main{padding:16px}.ext-det{grid-template-columns:minmax(0,1fr)}.qr{grid-template-columns:minmax(0,1fr);gap:4px}.qwin-b{min-height:0}.ext-note{padding:0 16px 16px}}
 
 /* Mise en valeur du profil */
 .avail{display:inline-flex;align-items:center;gap:8px;background:#e8f7ee;color:#1d7a46;font-weight:600;font-size:.85rem;padding:4px 12px;border-radius:20px}
@@ -413,15 +435,21 @@ section.block{padding-block:36px}
     <div class="sec-head">
       <div>
         <h2><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS développées en Python</h2>
-        <p>Six extensions PyQGIS (environ 11 000 lignes de code) qui automatisent des tâches que je réalisais à la main. Choisissez une extension pour voir son interface et ses fonctionnalités.</p>
+        <p>Six extensions PyQGIS (environ 11 000 lignes de code) qui automatisent des tâches que je réalisais à la main. Testez-les directement : chaque réglage met à jour l'aperçu du résultat.</p>
       </div>
     </div>
     <article class="project reveal">
       <div class="ext">
         <nav class="ext-list" id="ext-list" aria-label="Extensions QGIS"></nav>
-        <div class="ext-stage" id="ext-stage" aria-live="polite"></div>
+        <div class="ext-main">
+          <div class="ext-stage">
+            <div class="qwin" id="ext-win"></div>
+            <div class="ext-prev" id="ext-prev" aria-live="polite"></div>
+          </div>
+          <div class="ext-det" id="ext-det"></div>
+        </div>
       </div>
-      <p class="ext-note">Interfaces reproduites à partir des libellés réels du code ; les valeurs saisies sont des exemples.</p>
+      <p class="ext-note">Démonstration interactive : modifiez les réglages, changez d'onglet puis lancez le traitement. Les interfaces reprennent les libellés réels du code ; les données affichées sont simulées.</p>
     </article>
   </div>
 </section>
@@ -949,76 +977,228 @@ const ANJ={"bounds": {"routes": [[-12.392382564175673, 44.1888488948929], [-12.0
 </script>
 <script>
 {
-const P=[
-{id:'opengeo',name:'OpenGeoDownload',short:'Données ouvertes',ver:'v3.0.0',cat:'Web',qgis:'QGIS 3.16+',lines:'3 500 lignes',
- desc:"Télécharge et découpe sur la zone d'étude les grandes bases de données géographiques ouvertes, sans quitter QGIS. La zone est définie une seule fois (shapefile ou emprise de la carte) et sert à toutes les sources.",
- feat:["OpenStreetMap par région Geofabrik ou par requête Overpass","MNT SRTM (NASA, via OpenTopography)","Occupation du sol ESRI Sentinel-2 (2017-2025) et GLC-FCS30D (1985-2022)","Population et bâti Copernicus/JRC (GHS-POP, GHS-BUILT-S)","Limites administratives GADM ou HDX/OCHA, tous niveaux ADM","Téléchargements en arrière-plan, journal, interface FR/EN"],
- use:"Préparer en quelques minutes toutes les données de base d'un nouveau territoire.",
- tabs:['Geofabrik','Overpass','Données thématiques','Limites admin','Paramètres','Journal'],on:2,
- rows:[['g',"Zone d'étude"],['f','Shapefile','zone_etude_anjouan.shp'],['k','Emprise canvas',false],['g','1.  Source de données'],['c','Source','ESRI Land Cover (Sentinel-2)'],['c','Année','2024'],['g','2.  Options'],['k',"Découper le raster sur la zone d'étude",true],['k','Ajouter la couche dans QGIS',true]],
- go:'Télécharger'},
-{id:'layout',name:'Quick Layout',short:'Mises en page',ver:'v3.12.5',cat:'Mise en page',qgis:'QGIS 3.16+',lines:'3 100 lignes',
- desc:"Génère automatiquement des mises en page complètes à partir de gabarits QPT intégrés (A0 à A4, portrait ou paysage, format rapport), avec thèmes de carte et atlas par région.",
- feat:["Série de cartes : titre, sous-titre, n° de projet, copyright, sources","Atlas automatique : une page par entité d'une couche de régions","Nord, échelle, légende et cadre ajoutés et placés","Masque hors zone et carte de repérage paramétrables","Grille de coordonnées et légende entièrement réglable","15 gabarits intégrés, interface FR/EN"],
- use:"Produire un atlas de dizaines de cartes homogènes en un clic.",
- tabs:['Mise en page','Éléments','Masque & repérage','Légende'],on:0,
- rows:[['f','Nom de la série','Atlas du territoire'],['f','Sous-titre','Occupation du sol 2024'],['f','Projet N°','2026-014'],['c','Thème QGIS','Occupation du sol'],['c','Couche de régions','communes'],['c','Champ nom de région','NOM_COM'],['k','Nord',true],['k','Échelle',true],['k','Légende',true]],
- go:'⚡ Générer'},
-{id:'georef',name:'Georeferencer',short:'Géoréférencement',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.0+',lines:'2 600 lignes',
- desc:"Importe une image (carte ancienne, plan, scan) et l'aligne visuellement sur le fond satellite ou les données du projet, en plaçant des points de contrôle sur l'image puis sur la carte.",
- feat:["Images JPG, PNG, TIFF, BMP","Points de contrôle : un clic sur l'image, un clic sur la carte QGIS","Transformations linéaire (2 points), affine (3) ou polynomiale (4+)","Erreur RMS affichée en temps réel","Sortie GeoTIFF géoréférencé et World File optionnel (.jgw, .pgw, .tfw)","Résultat ajouté automatiquement au projet, interface FR/EN"],
- use:"Intégrer un plan papier ou un PLU scanné dans un SIG.",
- tabs:['Image','Points de contrôle','Résultat'],on:1,
- rows:[['f','Image','plan_cadastral_1962.jpg'],['c','Transformation','Affine (3 points minimum)'],['g','Points de contrôle'],['f','Point 1','image 412, 188  →  carte 44.41, -12.17'],['f','Point 2','image 1530, 240  →  carte 44.45, -12.17'],['f','Point 3','image 980, 1105  →  carte 44.43, -12.21'],['f','Erreur RMS','0,8 pixel'],['k','Créer un World File',true]],
- go:'Géoréférencer'},
-{id:'mnt',name:'MNT Analyst',short:'Analyse du relief',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.16+',lines:'1 200 lignes',
- desc:"Centralise toutes les analyses de terrain à partir d'un modèle numérique de terrain (GeoTIFF). Les calculs s'appuient sur GDAL et tournent en arrière-plan sans bloquer QGIS.",
- feat:["Pente en degrés ou en pourcentage","Exposition, avec option 0° pour les zones plates","Ombrage simple ou multidirectionnel (azimut, altitude, exagération)","Courbes de niveau : intervalle, altitude de base, format de sortie","Indices TRI, TPI et rugosité de surface","Traitement par lot de toutes les analyses choisies"],
- use:"Caractériser un relief pour une étude de risques ou d'aménagement.",
- tabs:['Pente','Exposition','Ombrage','Courbes','Indices','Lot'],on:2,
- rows:[['f','MNT source','srtm_anjouan_30m.tif'],['f','Dossier de sortie','D:/projets/relief/'],['g','Paramètres de la source lumineuse'],['f','Azimut du soleil (0-360°)','315'],['f','Altitude du soleil (0-90°)','45'],['f','Exagération verticale (Z)','1,5'],['k','Ombrage multidirectionnel',true]],
- go:'▶  Calculer'},
-{id:'buffer',name:'Expansion urbaine',short:'Buffer concentrique',ver:'v1.0.0',cat:'Vecteur',qgis:'QGIS 3.0+',lines:'770 lignes',
- desc:"Projette l'expansion urbaine à une année cible. L'extension mesure le taux d'expansion du bâti entre deux périodes, calibre un rayon de zone tampon, l'applique au bâti récent et retire le bâti existant pour obtenir les zones d'extension nettes.",
- feat:["Deux couches de bâti (période 1 et période 2) et une année cible","Rayon calculé automatiquement d'après le taux historique, ou fixé à la main","Filtre par superficie des polygones","Filtre de compacité qui écarte routes et formes allongées","Fusion des zones adjacentes et soustraction du bâti existant","Résultat en GeoPackage, ajouté au projet"],
- use:"Anticiper les secteurs d'urbanisation future dans une étude d'aménagement.",
- tabs:['Couches & années','Filtres','Calibrage','Sortie'],on:0,
- rows:[['c','Période 1','bati_2010'],['f','Année P1','2010'],['c','Période 2','bati_2020'],['f','Année P2','2020'],['f','Année cible','2035'],['c',"Mode de calcul",'Automatique (taux historique)'],['k','Soustraire le bâti existant (P2)',true],['f','Sortie (.gpkg)','expansion_2035.gpkg']],
- go:'▶  Lancer'},
-{id:'chartes',name:'Gestionnaire de chartes',short:'Chartes graphiques',ver:'v1.0.0',cat:'Symbologie',qgis:'QGIS 3.0+',lines:'390 lignes',
- desc:"Enregistre la symbologie d'un ensemble de couches comme une charte graphique nommée, puis la réapplique à n'importe quel projet : chaque couche retrouve son style d'après son nom.",
- feat:["Styles QML complets : symboles, étiquettes, rendu","Couches vecteur et raster","Correspondance par nom de couche, sans tenir compte des majuscules","Chartes conservées dans le profil QGIS, d'un projet à l'autre","Partage simple avec des collègues (dossier .qml + charte.json)","Renommer, supprimer, appliquer d'un double-clic"],
- use:"Respecter la charte d'une collectivité sur tous les projets.",
- tabs:['Chartes enregistrées'],on:0,
- rows:[['g','Chartes'],['f','','Charte PLU intercommunal'],['f','','Charte Risques naturels'],['f','','Charte Réseaux'],['g','Contenu de la charte sélectionnée'],['f','Couches','Zonage, Parcelles, Bâti, Voirie, Servitudes']],
- go:'🎨 Appliquer la charte'}
-];
-const EI={"opengeo": "i-globe", "layout": "i-map", "georef": "i-pin", "mnt": "i-layers", "buffer": "i-sat", "chartes": "i-leaf"};
+/* ---------- Démonstration interactive des extensions QGIS ---------- */
+const $e=id=>document.getElementById(id);
+const list=$e('ext-list'),win=$e('ext-win'),prev=$e('ext-prev'),det=$e('ext-det');
+if(list&&win&&prev&&det){
+const RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const list=document.getElementById('ext-list'),stage=document.getElementById('ext-stage');
-if(list&&stage){
-list.innerHTML=P.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="false"><span class="ext-ic"><svg class="ico"><use href="#${EI[p.id]}"/></svg></span><span><b>${esc(p.name)}</b><small>${esc(p.short)}</small></span></button>`).join('');
-const row=r=>{
-  if(r[0]==='g')return `<div class="qg">${esc(r[1])}</div>`;
-  if(r[0]==='k')return `<div class="qk"><i class="${r[2]?'y':''}"></i>${esc(r[1])}</div>`;
-  const box=`<div class="qi${r[0]==='c'?' cb':''}">${esc(r[2])}</div>`;
-  return r[1]?`<div class="qr"><span>${esc(r[1])}</span>${box}</div>`:box;
-};
-const show=id=>{
-  const p=P.find(x=>x.id===id)||P[0];
-  list.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===p.id));
-  stage.innerHTML=`<div class="qwin" role="img" aria-label="Interface de l'extension ${esc(p.name)}">
-    <div class="qwin-t"><i></i><i></i><i></i><span>${esc(p.name)}</span></div>
-    <div class="qwin-tabs">${p.tabs.map((t,i)=>`<span class="${i===p.on?'on':''}">${esc(t)}</span>`).join('')}</div>
-    <div class="qwin-b">${p.rows.map(row).join('')}</div>
-    <div class="qwin-f"><span>Fermer</span><span class="go">${esc(p.go)}</span></div></div>
-  <div class="ext-det"><h3>${esc(p.name)}</h3>
-    <div class="keys"><span class="key">${esc(p.ver)}</span><span class="key">${esc(p.cat)}</span><span class="key">${esc(p.qgis)}</span><span class="key">${esc(p.lines)}</span></div>
-    <p>${esc(p.desc)}</p><ul>${p.feat.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
-    <div class="ext-use"><b>Usage type :</b> ${esc(p.use)}</div></div>`;
-};
-list.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.id)});
-show(P[0].id);
+const ISL='M70,150 C58,108 112,78 150,96 C192,58 252,52 292,84 C342,96 352,152 322,192 C300,232 228,244 190,220 C150,236 88,214 70,150Z';
+const noise=(x,y)=>(Math.sin(x*.045)+Math.cos(y*.06)+Math.sin((x+y)*.03)+Math.cos((x-y)*.05)+4)/8;
+let seed=7;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+const svg=(inner,vb='0 0 400 280')=>`<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" role="img">${inner}</svg>`;
+const sea='<rect width="400" height="280" fill="#dbe9f6"/>';
+
+const EXT=[
+{id:'opengeo',name:'OpenGeoDownload',short:'Données ouvertes',ver:'v3.0.0',cat:'Web',qgis:'QGIS 3.16+',lines:'3 500 lignes',go:'Télécharger',
+ desc:"Télécharge et découpe sur la zone d'étude les grandes bases de données géographiques ouvertes, sans quitter QGIS. La zone est définie une seule fois et sert à toutes les sources.",
+ feat:["OpenStreetMap par région Geofabrik ou par requête Overpass","MNT SRTM (NASA, via OpenTopography)","Occupation du sol ESRI Sentinel-2 (2017-2025) et GLC-FCS30D (1985-2022)","Population et bâti Copernicus/JRC (GHS-POP, GHS-BUILT-S)","Limites administratives GADM ou HDX/OCHA, tous niveaux","Téléchargements en arrière-plan, journal, interface FR/EN"],
+ use:"Préparer en quelques minutes toutes les données de base d'un nouveau territoire.",
+ init:{src:'Occupation du sol (ESRI Sentinel-2)',year:'2024',clip:true,add:true},
+ tabs:[{t:'Données thématiques',rows:[['grp',"Zone d'étude"],['ro','Shapefile','zone_etude.shp'],['grp','1. Source de données'],['sel','src','Source',['Occupation du sol (ESRI Sentinel-2)','MNT SRTM (NASA)','OpenStreetMap : routes','Limites administratives (GADM)']],['sel','year','Année',['2017','2020','2024']],['grp','2. Options'],['chk','clip',"Découper sur la zone d'étude"],['chk','add','Ajouter la couche dans QGIS']]},
+       {t:'Paramètres',rows:[['ro','Dossier de sortie','D:/projets/donnees/'],['ro','Serveur Overpass','overpass-api.de'],['note','Les téléchargements tournent en arrière-plan : QGIS reste utilisable.']]}],
+ log:st=>[`Zone d'étude chargée (zone_etude.shp)`,`Connexion à la source : ${st.src}`,'Téléchargement des tuiles…',st.clip?"Découpage sur la zone d'étude":'Découpage désactivé : emprise complète',st.add?'Couche ajoutée au projet QGIS':'Fichier enregistré dans le dossier de sortie']},
+{id:'layout',name:'Quick Layout',short:'Mises en page',ver:'v3.12.5',cat:'Mise en page',qgis:'QGIS 3.16+',lines:'3 100 lignes',go:'⚡ Générer',
+ desc:"Génère automatiquement des mises en page complètes à partir de gabarits QPT intégrés (A0 à A4, portrait ou paysage, format rapport), avec thèmes de carte et atlas par région.",
+ feat:["Titre, sous-titre, n° de projet, copyright et sources","Atlas automatique : une page par entité d'une couche de régions","Nord, échelle, légende et cadre ajoutés et placés","Masque hors zone et carte de repérage paramétrables","Grille de coordonnées et légende entièrement réglable","15 gabarits intégrés, interface FR/EN"],
+ use:"Produire un atlas de dizaines de cartes homogènes en un clic.",
+ init:{title:'Atlas du territoire',sub:'Occupation du sol 2024',proj:'2026-014',fmt:'A4 paysage',nord:true,ech:true,leg:true,mask:true,inset:true,page:0},
+ tabs:[{t:'Mise en page',rows:[['txt','title','Nom de la série'],['txt','sub','Sous-titre'],['txt','proj','Projet N°'],['sel','fmt','Gabarit',['A4 paysage','A4 portrait','A3 paysage']]]},
+       {t:'Éléments',rows:[['chk','nord','Nord'],['chk','ech','Échelle'],['chk','leg','Légende']]},
+       {t:'Masque & repérage',rows:[['chk','mask','Masque hors région'],['chk','inset','Carte de repérage'],['note',"Le bouton Générer crée une page d'atlas par région."]]}],
+ log:st=>[`Gabarit chargé : ${st.fmt}`,'Thème de carte appliqué : Occupation du sol','Atlas : 3 régions détectées (couche communes)','Placement du nord, de l’échelle et de la légende','3 pages générées']},
+{id:'georef',name:'Georeferencer',short:'Géoréférencement',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.0+',lines:'2 600 lignes',go:'Géoréférencer',
+ desc:"Importe une image (carte ancienne, plan, scan) et l'aligne sur le fond satellite ou les données du projet, en plaçant des points de contrôle sur l'image puis sur la carte.",
+ feat:["Images JPG, PNG, TIFF, BMP","Points de contrôle : un clic sur l'image, un clic sur la carte","Transformations linéaire (2 points), affine (3) ou polynomiale (4+)","Erreur RMS affichée en temps réel","Sortie GeoTIFF et World File optionnel (.jgw, .pgw, .tfw)","Résultat ajouté automatiquement au projet, interface FR/EN"],
+ use:"Intégrer un plan papier ou un PLU scanné dans un SIG.",
+ init:{tr:'Affine (3 points)',n:3,op:70,wf:true},
+ tabs:[{t:'Points de contrôle',rows:[['ro','Image','plan_scanne_1962.jpg'],['sel','tr','Transformation',['Linéaire (2 points)','Affine (3 points)','Polynomiale (4 points)']],['rng','n','Points de contrôle',0,6,1,''],['rng','op',"Transparence de l'image",20,100,5,' %']]},
+       {t:'Résultat',rows:[['chk','wf','Créer un World File (.jgw)'],['ro','Sortie','plan_scanne_1962_georef.tif']]}],
+ log:st=>{const min=st.tr.startsWith('Lin')?2:st.tr.startsWith('Aff')?3:4;return st.n<min?[`${st.n} points de contrôle`,`Transformation : ${st.tr}`,`Erreur : il faut au moins ${min} points pour cette transformation`]:[`${st.n} points de contrôle`,`Transformation : ${st.tr}`,'Calcul des paramètres et de l’erreur RMS','GeoTIFF écrit : plan_scanne_1962_georef.tif',st.wf?'World File créé (.jgw)':'Sans World File']}},
+{id:'mnt',name:'MNT Analyst',short:'Analyse du relief',ver:'v1.0.0',cat:'Raster',qgis:'QGIS 3.16+',lines:'1 200 lignes',go:'▶ Calculer',
+ desc:"Centralise toutes les analyses de terrain à partir d'un modèle numérique de terrain. Les calculs s'appuient sur GDAL et tournent en arrière-plan sans bloquer QGIS.",
+ feat:["Pente en degrés ou en pourcentage","Exposition, avec option 0° pour les zones plates","Ombrage simple ou multidirectionnel","Courbes de niveau : intervalle et altitude de base","Indices TRI, TPI et rugosité","Traitement par lot de toutes les analyses"],
+ use:"Caractériser un relief pour une étude de risques ou d'aménagement.",
+ init:{an:'Ombrage',az:315,alt:45,z:1.5,iv:100},
+ tabs:[{t:'Analyse',rows:[['ro','MNT source','srtm_30m.tif'],['sel','an','Analyse',['Ombrage','Pente','Exposition','Courbes de niveau']]]},
+       {t:'Ombrage',rows:[['rng','az','Azimut du soleil',0,360,5,'°'],['rng','alt','Altitude du soleil',5,90,5,'°'],['rng','z','Exagération verticale',0.5,3,0.1,'×']]},
+       {t:'Courbes',rows:[['rng','iv','Intervalle',20,300,10,' m']]}],
+ log:st=>['MNT chargé : srtm_30m.tif (30 m)',`Analyse : ${st.an}`,'Calcul GDAL en arrière-plan…','Raster écrit dans le dossier de sortie','Couche ajoutée au projet']},
+{id:'buffer',name:'Expansion urbaine',short:'Buffer concentrique',ver:'v1.0.0',cat:'Vecteur',qgis:'QGIS 3.0+',lines:'770 lignes',go:'▶ Lancer',
+ desc:"Projette l'expansion urbaine à une année cible : l'extension mesure le taux d'expansion du bâti entre deux dates, calibre un rayon de zone tampon, l'applique au bâti récent et retire le bâti existant.",
+ feat:["Deux couches de bâti (deux périodes) et une année cible","Rayon automatique d'après le taux historique, ou manuel","Filtre par superficie des polygones","Filtre de compacité qui écarte routes et formes allongées","Fusion des zones et soustraction du bâti existant","Résultat en GeoPackage, ajouté au projet"],
+ use:"Anticiper les secteurs d'urbanisation future dans une étude d'aménagement.",
+ init:{p1:2010,p2:2020,cible:2035,mode:'Automatique (taux historique)',pct:30,diss:true,sub:true},
+ tabs:[{t:'Couches & années',rows:[['ro','Bâti période 1','bati_P1.gpkg'],['rng','p1','Année P1',2000,2015,1,''],['ro','Bâti période 2','bati_P2.gpkg'],['rng','p2','Année P2',2016,2024,1,''],['rng','cible','Année cible',2025,2050,1,'']]},
+       {t:'Calibrage',rows:[['sel','mode','Mode',['Automatique (taux historique)','Manuel']],['rng','pct','Surface ajoutée (manuel)',5,80,5,' %']]},
+       {t:'Sortie',rows:[['chk','diss','Fusionner les zones adjacentes'],['chk','sub','Soustraire le bâti existant'],['ro','Sortie','expansion.gpkg']]}],
+ log:st=>[`Bâti P1 (${st.p1}) et P2 (${st.p2}) chargés`,'Calcul du taux d’expansion annuel',`Projection jusqu’en ${st.cible}`,st.diss?'Fusion des zones adjacentes':'Zones conservées séparées',st.sub?'Soustraction du bâti existant : zones nettes':'Bâti existant conservé','expansion.gpkg ajouté au projet']},
+{id:'chartes',name:'Gestionnaire de chartes',short:'Chartes graphiques',ver:'v1.0.0',cat:'Symbologie',qgis:'QGIS 3.0+',lines:'390 lignes',go:'🎨 Appliquer',
+ desc:"Enregistre la symbologie d'un ensemble de couches comme une charte graphique nommée, puis la réapplique à n'importe quel projet : chaque couche retrouve son style d'après son nom.",
+ feat:["Styles QML complets : symboles, étiquettes, rendu","Couches vecteur et raster","Correspondance par nom de couche, sans tenir compte des majuscules","Chartes conservées dans le profil QGIS","Partage simple avec des collègues (.qml + charte.json)","Renommer, supprimer, appliquer d'un double-clic"],
+ use:"Respecter la charte d'une collectivité sur tous les projets.",
+ init:{ch:'Charte PLU intercommunal',applied:'Styles par défaut'},
+ tabs:[{t:'Chartes enregistrées',rows:[['sel','ch','Charte',['Charte PLU intercommunal','Charte Risques naturels','Charte Réseaux','Styles par défaut']],['ro','Couches','Zonage, Parcelles, Voirie, Cours d’eau'],['note','Choisissez une charte puis cliquez sur Appliquer.']]}],
+ log:st=>[`Charte sélectionnée : ${st.ch}`,'Lecture des styles QML','Correspondance par nom : 4 couches trouvées','Styles appliqués','Carte rafraîchie']}
+];
+
+/* ---------- aperçus ---------- */
+const PREV={
+opengeo(st){
+  const pal={'Occupation du sol (ESRI Sentinel-2)':v=>v<.33?'#2e7d32':v<.5?'#9ccc65':v<.62?'#e6d690':v<.72?'#d84315':'#1565c0','MNT SRTM (NASA)':v=>`hsl(${120-v*120},55%,${70-v*30}%)`};
+  let body='';
+  if(!st.done) body=`<path d="${ISL}" fill="#eef3ea" stroke="#1e3c72" stroke-width="1.5"/><text x="200" y="262" text-anchor="middle" font-size="12" fill="#2a5298">Zone d'étude prête · cliquez sur Télécharger</text>`;
+  else{
+    let data='';
+    if(pal[st.src]){const f=pal[st.src];for(let y=40;y<250;y+=10)for(let x=40;x<370;x+=10)data+=`<rect x="${x}" y="${y}" width="10.4" height="10.4" fill="${f(noise(x+ +st.year,y))}"/>`;}
+    else if(st.src.startsWith('Open')){seed=11;for(let i=0;i<14;i++){let x=60+rnd()*280,y=70+rnd()*150,d=`M${x},${y}`;for(let k=0;k<5;k++){x+=rnd()*60-30;y+=rnd()*40-20;d+=` L${x},${y}`}data+=`<path d="${d}" fill="none" stroke="${i<4?'#e53935':'#6d4c41'}" stroke-width="${i<4?2.4:1.2}"/>`}}
+    else{data=`<path d="${ISL}" fill="#c5d6ee"/><path d="M150,96 C170,150 160,190 190,220" stroke="#1e3c72" stroke-width="1.5" fill="none"/><path d="M240,60 C230,130 250,170 322,192" stroke="#1e3c72" stroke-width="1.5" fill="none"/>`+[['Nord-Ouest',115,145],['Centre',205,140],['Est',290,140]].map(([n,x,y])=>`<text x="${x}" y="${y}" font-size="11" text-anchor="middle" fill="#1e3c72">${n}</text>`).join('')}
+    body=`<defs><clipPath id="og-clip"><path d="${ISL}"/></clipPath></defs><g ${st.clip?'clip-path="url(#og-clip)"':''}>${data}</g><path d="${ISL}" fill="none" stroke="#1e3c72" stroke-width="1.5"/>`;
+  }
+  return {svg:svg(sea+`<rect x="40" y="40" width="330" height="210" fill="none" stroke="#2a5298" stroke-dasharray="5 4"/>`+body),cap:st.done?`${st.src}${st.src.includes('ESRI')?' · '+st.year:''} · ${st.clip?'découpé sur la zone':'emprise complète'}`:'En attente du téléchargement'};
+},
+layout(st){
+  const land=st.fmt!=='A4 portrait',W=land?360:200,H=land?250:270,x0=(400-W)/2,y0=(280-H)/2;
+  const regs=['Nord-Ouest','Centre','Est'],r=st.page||0;
+  const mx=x0+10,my=y0+38,mw=W-(st.leg?100:20),mh=H-62;
+  const k=Math.min(mw/340,mh/235),tr=`translate(${(mx+mw/2-205*k).toFixed(1)},${(my+mh/2-148*k).toFixed(1)}) scale(${k.toFixed(3)})`;
+  const clipX=[[50,180],[180,260],[260,360]][r];
+  let g=`<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="#fff" stroke="#9aa6b8"/>`;
+  g+=`<text x="${x0+10}" y="${y0+18}" font-size="13" font-weight="700" fill="#1e3c72">${esc(st.title).slice(0,40)}</text><text x="${x0+10}" y="${y0+31}" font-size="9" fill="#4a5568">${esc(st.sub).slice(0,50)} · ${regs[r]}</text>`;
+  g+=`<defs><clipPath id="ql-m"><rect x="${mx}" y="${my}" width="${mw}" height="${mh}"/></clipPath><clipPath id="ql-r"><rect x="${clipX[0]}" y="0" width="${clipX[1]-clipX[0]}" height="300"/></clipPath></defs>`;
+  g+=`<rect x="${mx}" y="${my}" width="${mw}" height="${mh}" fill="#dbe9f6" stroke="#1e3c72"/><g clip-path="url(#ql-m)"><g transform="${tr}"><path d="${ISL}" fill="${st.mask?'#cfd6de':'#a5d6a7'}"/><g clip-path="url(#ql-r)"><path d="${ISL}" fill="#66bb6a" stroke="#1e3c72" stroke-width="2"/></g></g></g>`;
+  if(st.nord)g+=`<g transform="translate(${mx+mw-18},${my+20})"><path d="M0,-12 L6,8 L0,4 L-6,8Z" fill="#1e3c72"/><text y="20" font-size="8" text-anchor="middle">N</text></g>`;
+  if(st.ech)g+=`<g transform="translate(${mx+8},${my+mh-12})"><rect width="30" height="4" fill="#1e3c72"/><rect x="30" width="30" height="4" fill="#fff" stroke="#1e3c72" stroke-width=".6"/><text y="-3" font-size="7">0</text><text x="56" y="-3" font-size="7">5 km</text></g>`;
+  if(st.inset)g+=`<g transform="translate(${mx+mw-62},${my+mh-46})"><rect width="56" height="40" fill="#fff" stroke="#1e3c72" stroke-width=".8"/><g transform="translate(-6,-12) scale(.18)"><path d="${ISL}" fill="#cfd6de"/></g><rect x="${(clipX[0]*.18-6).toFixed(1)}" y="2" width="${((clipX[1]-clipX[0])*.18).toFixed(1)}" height="30" fill="none" stroke="#e53935" stroke-width="1.2"/></g>`;
+  if(st.leg){const lx=x0+W-84;g+=`<g transform="translate(${lx},${my})"><text font-size="9" font-weight="700" fill="#1e3c72" y="8">Légende</text>`+[['#66bb6a',regs[r]],['#a5d6a7','Autres régions'],['#dbe9f6','Mer']].map(([c,t],i)=>`<rect y="${16+i*14}" width="10" height="8" fill="${c}" stroke="#9aa6b8" stroke-width=".5"/><text x="14" y="${23+i*14}" font-size="8">${t}</text>`).join('')+'</g>';}
+  g+=`<text x="${x0+10}" y="${y0+H-8}" font-size="7.5" fill="#6b7686">Projet N° ${esc(st.proj).slice(0,14)} · Sources : ESRI, OSM · Page ${r+1}/3</text>`;
+  return {svg:svg('<rect width="400" height="280" fill="#e9edf2"/>'+g),cap:st.done?`Atlas généré : 3 pages · ${st.fmt}`:`Aperçu du gabarit ${st.fmt}`,pages:st.done};
+},
+georef(st){
+  const min=st.tr.startsWith('Lin')?2:st.tr.startsWith('Aff')?3:4,ok=st.n>=min;
+  const m=st.done&&ok?0:ok?.12:1-st.n/(min+1)*.55;
+  const t=`translate(${(55*m).toFixed(1)},${(-30*m).toFixed(1)}) rotate(${(16*m).toFixed(1)} 200 140) scale(${(1+.18*m).toFixed(3)})`;
+  const P=[[110,120],[290,90],[240,215],[150,200],[200,70],[315,175]].slice(0,st.n);
+  let g=sea;for(let i=40;i<400;i+=40)g+=`<path d="M${i},0V280M0,${i}H400" stroke="#c4d6ea" stroke-width=".6"/>`;
+  g+=`<path d="${ISL}" fill="#e8f0e3" stroke="#1e3c72" stroke-width="1.5"/>`;
+  g+=`<g transform="${t}" opacity="${st.op/100}"><rect x="60" y="45" width="280" height="190" fill="#f3e3c3" stroke="#8a6a3a"/><path d="${ISL}" fill="none" stroke="#7a4f1d" stroke-width="2.2" stroke-dasharray="1 0"/><text x="70" y="60" font-size="9" fill="#7a4f1d">Plan de 1962</text></g>`;
+  P.forEach(([x,y],i)=>{g+=`<g><circle cx="${x}" cy="${y}" r="5" fill="none" stroke="#e53935" stroke-width="1.6"/><path d="M${x-8},${y}H${x+8}M${x},${y-8}V${y+8}" stroke="#e53935"/><text x="${x+8}" y="${y-6}" font-size="9" fill="#e53935">${i+1}</text></g>`});
+  const rms=ok?(st.done?(1.6/(st.n-min+1)):(2.8/(st.n-min+1))).toFixed(1).replace('.',',')+' px':null;
+  return {svg:svg(g),cap:ok?`${st.done?'Image géoréférencée · ':''}Erreur RMS : ${rms}`:`Points insuffisants : ${st.n}/${min} pour la transformation choisie`};
+},
+mnt(st){return {canvas:true,cap:{Ombrage:`Ombrage · azimut ${st.az}° · altitude ${st.alt}°`,Pente:'Pente en degrés (vert faible, rouge forte)',Exposition:"Exposition (teinte = direction de la pente)",'Courbes de niveau':`Courbes de niveau tous les ${st.iv} m`}[st.an]};},
+buffer(st){
+  seed=5;const B=[];for(let i=0;i<140;i++){const a=rnd()*6.283,d=Math.sqrt(rnd())*105;B.push([200+Math.cos(a)*d*1.35,140+Math.sin(a)*d*.85,d])}
+  const b1=B.filter(b=>b[2]<62),b2=B.filter(b=>b[2]<92);
+  const span=Math.max(1,st.p2-st.p1),rate=Math.pow(b2.length/b1.length,1/span)-1;
+  const F=st.mode.startsWith('Auto')?Math.pow(1+rate,st.cible-st.p2):1+st.pct/100;
+  const s=6,d=Math.max(0,s*(Math.sqrt(F)-1)/2)*1.6;
+  let g='<rect width="400" height="280" fill="#f4f1ea"/>';
+  if(st.done){g+=b2.map(b=>`<rect x="${(b[0]-s/2-d).toFixed(1)}" y="${(b[1]-s/2-d).toFixed(1)}" width="${(s+2*d).toFixed(1)}" height="${(s+2*d).toFixed(1)}" rx="${d.toFixed(1)}" fill="#ff8a65" fill-opacity="${st.diss?1:.45}" ${st.diss?'':'stroke="#e64a19" stroke-width=".8"'}/>`).join('');}
+  g+=b2.map(b=>`<rect x="${(b[0]-s/2).toFixed(1)}" y="${(b[1]-s/2).toFixed(1)}" width="${s}" height="${s}" fill="${st.done&&st.sub?'#f4f1ea':b[2]<62?'#37474f':'#78909c'}" ${st.done&&st.sub?'stroke="#bf360c" stroke-width=".6"':''}/>`).join('');
+  g+=`<g font-size="10"><rect x="10" y="236" width="10" height="8" fill="#37474f"/><text x="24" y="244">Bâti ${st.p1}</text><rect x="90" y="236" width="10" height="8" fill="#78909c"/><text x="104" y="244">Bâti ${st.p2}</text>${st.done?`<rect x="170" y="236" width="10" height="8" fill="#ff8a65"/><text x="184" y="244">Expansion ${st.cible}</text>`:''}</g>`;
+  return {svg:svg(g),cap:`Taux annuel : ${(rate*100).toFixed(1).replace('.',',')} % · surface ×${F.toFixed(2).replace('.',',')} · rayon ≈ ${Math.round(d*5)} m`};
+},
+chartes(st){
+  const C={'Charte PLU intercommunal':{z:['#f8bbd0','#fff59d','#c5e1a5'],p:'#ad1457',v:'#424242',e:'#0288d1'},'Charte Risques naturels':{z:['#ffcdd2','#ffe0b2','#fff9c4'],p:'#6d4c41',v:'#757575',e:'#d32f2f'},'Charte Réseaux':{z:['#e3f2fd','#ede7f6','#e0f2f1'],p:'#90a4ae',v:'#ff6f00',e:'#00838f'},'Styles par défaut':{z:['#b39ddb','#80cbc4','#ffab91'],p:'#5c6bc0',v:'#8d6e63',e:'#4db6ac'}}[st.applied];
+  let g=`<rect width="400" height="280" fill="#fff"/><path d="M0,0H170V140H0Z" fill="${C.z[0]}"/><path d="M170,0H400V120H170Z" fill="${C.z[1]}"/><path d="M0,140H170V280H0ZM170,120H400V280H170Z" fill="${C.z[2]}"/>`;
+  for(let x=0;x<400;x+=34)for(let y=0;y<280;y+=28)g+=`<rect x="${x+2}" y="${y+2}" width="30" height="24" fill="none" stroke="${C.p}" stroke-width=".7"/>`;
+  g+=`<path d="M0,190 C120,170 220,210 400,150" stroke="${C.e}" stroke-width="7" fill="none" opacity=".85"/><path d="M60,0V280M0,95H400M250,0 L300,280" stroke="${C.v}" stroke-width="4" fill="none"/>`;
+  return {svg:svg(g),cap:st.applied===st.ch?`Charte appliquée : ${st.applied} · 4 couches restylées`:`Charte affichée : ${st.applied} · cliquez sur Appliquer pour « ${st.ch} »`};
+}};
+
+/* MNT : calcul réel sur un MNT synthétique */
+const DEM=(()=>{const W=360,H=252,h=new Float32Array(W*H);seed=3;
+  const oct=[[8,6,420],[16,12,190],[32,23,85],[64,45,36],[128,90,14]].map(([gx,gy,amp])=>{const g=[];for(let i=0;i<(gx+1)*(gy+1);i++)g.push(rnd());return{gx,gy,amp,g}});
+  const sm=t=>t*t*(3-2*t);
+  const peaks=[[120,105,70,1150],[245,145,55,820],[200,55,40,520],[300,70,35,380]];
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++){let v=0;
+    for(const o of oct){const fx=x/W*o.gx,fy=y/H*o.gy,ix=Math.floor(fx),iy=Math.floor(fy),tx=sm(fx-ix),ty=sm(fy-iy),G=(i,j)=>o.g[Math.min(j,o.gy)*(o.gx+1)+Math.min(i,o.gx)];
+      v+=o.amp*((G(ix,iy)*(1-tx)+G(ix+1,iy)*tx)*(1-ty)+(G(ix,iy+1)*(1-tx)+G(ix+1,iy+1)*tx)*ty)}
+    for(const[px,py,r,a]of peaks)v+=a*Math.exp(-((x-px)**2+(y-py)**2)/(2*r*r));
+    h[y*W+x]=Math.max(0,v-260)}return{W,H,h}})();
+function drawMNT(cv,st){
+  const {W,H,h}=DEM,ctx=cv.getContext('2d'),img=ctx.createImageData(W,H),cs=30;img.data.fill(255);
+  const az=(360-st.az+90)*Math.PI/180,ze=(90-st.alt)*Math.PI/180;
+  for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){
+    const i=y*W+x,dx=(h[i+1]-h[i-1])/(2*cs)*st.z,dy=(h[i+W]-h[i-W])/(2*cs)*st.z,sl=Math.atan(Math.hypot(dx,dy)),as=Math.atan2(dy,-dx);
+    let r,g,b;
+    if(st.an==='Pente'){const t=Math.min(1,sl/(Math.PI/4));r=60+195*t;g=180-120*t*t;b=70-40*t}
+    else if(st.an==='Exposition'){const hue=((as*180/Math.PI)+360)%360;[r,g,b]=hsl(hue,.6,.55)}
+    else{let hs=Math.cos(ze)*Math.cos(sl)+Math.sin(ze)*Math.sin(sl)*Math.cos(az-as);hs=Math.max(0,hs);
+      if(st.an==='Ombrage'){const e=Math.min(1,h[i]/1500),f=.28+.72*hs;r=f*(120+120*e);g=f*(170+30*(1-e)-20*e);b=f*(110+40*e)}
+      else{r=g=b=200+hs*50;const k=Math.floor(h[i]/st.iv);if(k!==Math.floor(h[i+1]/st.iv)||k!==Math.floor(h[i+W]/st.iv)){r=140;g=80;b=30}}}
+    img.data.set([r,g,b,255],i*4)}
+  ctx.putImageData(img,0,0);
+}
+function hsl(hh,s,l){const a=s*Math.min(l,1-l),f=n=>{const k=(n+hh/30)%12;return 255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))};return[f(0),f(8),f(4)]}
+
+/* ---------- état et rendu ---------- */
+const S={};EXT.forEach(p=>S[p.id]=Object.assign({tab:0,done:false},p.init));
+let cur=EXT[0];
+list.innerHTML=EXT.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="false"><span class="ext-ic"><svg class="ico"><use href="#${{opengeo:'i-globe',layout:'i-map',georef:'i-pin',mnt:'i-layers',buffer:'i-sat',chartes:'i-leaf'}[p.id]}"/></svg></span><span><b>${esc(p.name)}</b><small>${esc(p.short)}</small></span></button>`).join('');
+const fmtV=(r,v)=>String(v).replace('.',',')+(r[6]||'');
+function rowHTML(r,st){
+  const id='x-'+cur.id+'-'+(r[1]||'');
+  if(r[0]==='grp')return `<div class="qg">${esc(r[1])}</div>`;
+  if(r[0]==='note')return `<p class="qnote">${esc(r[1])}</p>`;
+  if(r[0]==='ro')return `<div class="qr"><span>${esc(r[1])}</span><div class="qi ro">${esc(r[2])}</div></div>`;
+  if(r[0]==='chk')return `<label class="qk"><input type="checkbox" id="${id}" data-k="${r[1]}" ${st[r[1]]?'checked':''}> ${esc(r[2])}</label>`;
+  if(r[0]==='txt')return `<div class="qr"><label for="${id}">${esc(r[2])}</label><input class="qi" id="${id}" data-k="${r[1]}" value="${esc(st[r[1]])}" maxlength="40"></div>`;
+  if(r[0]==='sel')return `<div class="qr"><label for="${id}">${esc(r[2])}</label><select class="qi" id="${id}" data-k="${r[1]}">${r[3].map(o=>`<option ${o===st[r[1]]?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`;
+  if(r[0]==='rng')return `<div class="qr"><label for="${id}">${esc(r[2])} <b class="qv" data-v="${r[1]}">${fmtV(r,st[r[1]])}</b></label><input type="range" id="${id}" data-k="${r[1]}" min="${r[3]}" max="${r[4]}" step="${r[5]}" value="${st[r[1]]}"></div>`;
+  return '';
+}
+function renderWin(){
+  const p=cur,st=S[p.id];
+  win.innerHTML=`<div class="qwin-t"><i></i><i></i><i></i><span>${esc(p.name)}</span></div>
+  <div class="qwin-tabs" role="tablist">${p.tabs.map((t,i)=>`<button type="button" role="tab" data-tab="${i}" aria-selected="${i===st.tab}" class="${i===st.tab?'on':''}">${esc(t.t)}</button>`).join('')}</div>
+  <div class="qwin-b">${p.tabs[st.tab].rows.map(r=>rowHTML(r,st)).join('')}</div>
+  <div class="qwin-f"><div class="qprog" id="qprog"><span></span></div><button type="button" class="qbtn" id="q-reset">Réinitialiser</button><button type="button" class="qbtn go" id="q-run">${esc(p.go)}</button></div>`;
+}
+function renderPrev(){
+  const p=cur,st=S[p.id],o=PREV[p.id](st);
+  if(o.canvas){prev.innerHTML=`<div class="pv-box"><canvas id="mnt-cv" width="${DEM.W}" height="${DEM.H}"></canvas></div>`;drawMNT($e('mnt-cv'),st)}
+  else prev.innerHTML=`<div class="pv-box">${o.svg}</div>`;
+  let pages='';
+  if(o.pages)pages=`<div class="pv-pages">${['Nord-Ouest','Centre','Est'].map((n,i)=>`<button type="button" data-page="${i}" class="${i===(st.page||0)?'on':''}">Page ${i+1} · ${n}</button>`).join('')}</div>`;
+  prev.insertAdjacentHTML('beforeend',`<p class="pv-cap">${esc(o.cap)}</p>${pages}<ol class="pv-log" id="pv-log">${(st.logShown||[]).map(l=>`<li>${esc(l)}</li>`).join('')}</ol>`);
+}
+function renderDet(){
+  const p=cur;
+  det.innerHTML=`<div><h3>${esc(p.name)}</h3><div class="keys"><span class="key">${esc(p.ver)}</span><span class="key">${esc(p.cat)}</span><span class="key">${esc(p.qgis)}</span><span class="key">${esc(p.lines)}</span></div><p>${esc(p.desc)}</p><div class="ext-use"><b>Usage type :</b> ${esc(p.use)}</div></div><ul>${p.feat.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`;
+}
+function show(id){
+  cur=EXT.find(x=>x.id===id)||EXT[0];
+  list.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===cur.id));
+  renderWin();renderPrev();renderDet();
+}
+let timer=null;
+function run(){
+  const p=cur,st=S[p.id],lines=p.log(st),bar=$e('qprog'),btn=$e('q-run');
+  clearInterval(timer);st.logShown=[];st.done=false;
+  if(p.id==='chartes')st.applied=st.ch;
+  btn.disabled=true;bar.classList.add('on');renderPrev();
+  let k=0;const step=()=>{st.logShown.push(lines[k]);k++;bar.firstElementChild.style.width=(k/lines.length*100)+'%';
+    const lg=$e('pv-log');if(lg)lg.insertAdjacentHTML('beforeend',`<li>${esc(lines[k-1])}</li>`);
+    if(k>=lines.length){clearInterval(timer);const fail=/^Erreur/.test(lines[lines.length-1]);st.done=!fail;st.logShown.push(fail?'Échec : corrigez les réglages':'Terminé ✓');btn.disabled=false;setTimeout(()=>bar.classList.remove('on'),400);renderPrev()}};
+  if(RM){while(k<lines.length)step()}else timer=setInterval(step,380);
+}
+list.addEventListener('click',e=>{const b=e.target.closest('button');if(b){clearInterval(timer);show(b.dataset.id)}});
+win.addEventListener('click',e=>{
+  const t=e.target.closest('[data-tab]');if(t){S[cur.id].tab=+t.dataset.tab;renderWin();return}
+  if(e.target.closest('#q-run'))run();
+  if(e.target.closest('#q-reset')){clearInterval(timer);S[cur.id]=Object.assign({tab:S[cur.id].tab,done:false},cur.init);renderWin();renderPrev()}
+});
+win.addEventListener('input',e=>{
+  const el=e.target,k=el.dataset.k;if(!k)return;const st=S[cur.id];
+  st[k]=el.type==='checkbox'?el.checked:el.type==='range'?+el.value:el.value;
+  const lbl=win.querySelector(`[data-v="${k}"]`);if(lbl){const r=cur.tabs[st.tab].rows.find(r=>r[1]===k);lbl.textContent=fmtV(r,st[k])}
+  if(cur.id==='opengeo'&&(k==='src'||k==='year'))st.done=false;
+  renderPrev();
+});
+prev.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(b){S[cur.id].page=+b.dataset.page;renderPrev()}});
+show(EXT[0].id);
 }
 }
 </script>
