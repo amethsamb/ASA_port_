@@ -297,6 +297,24 @@ section.block{padding-block:36px}
 .ext-note{padding:0 26px 18px;color:var(--muted);font-size:.82rem;margin:0}
 @media(max-width:1000px){.ext-stage{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.ext{grid-template-columns:minmax(0,1fr)}.ext-list{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line)}.ext-list button{flex:none;grid-template-columns:32px auto}.ext-ic{width:32px;height:32px}.ext-list small{display:none}.ext-stage{padding:18px 16px}.qr{grid-template-columns:minmax(0,1fr)}.ext-note{padding:0 16px 16px}}
+
+/* Mise en valeur du profil */
+.avail{display:inline-flex;align-items:center;gap:8px;background:#e8f7ee;color:#1d7a46;font-weight:600;font-size:.85rem;padding:4px 12px;border-radius:20px}
+.avail .dot{width:8px;height:8px;border-radius:50%;background:#27ae60;box-shadow:0 0 0 3px rgba(39,174,96,.2)}
+.nav ul a.nav-cta{background:var(--gold);color:var(--footer-a);font-weight:700}
+.nav ul a.nav-cta:hover{background:#f7d23e;color:var(--footer-a)}
+.assets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+.asset{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--accent);transition:all .25s ease}
+.asset:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.asset .ico{width:2rem;height:2rem;color:var(--accent)}
+.asset h3{font-size:1.1rem;color:var(--primary)}
+.asset p{margin:0;font-size:.93rem;color:#4a5568;flex:1}
+.asset span{font-weight:600;color:var(--secondary);font-size:.9rem}
+.research{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px}
+.rcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px;display:flex;flex-direction:column;gap:10px}
+.rcard h3{font-size:1.08rem;color:var(--primary)}
+.rcard p{margin:0;font-size:.93rem;color:#4a5568;flex:1}
+.rcard .keys{margin-top:4px}
 </style>
 </head><body>
 
@@ -333,20 +351,20 @@ section.block{padding-block:36px}
   <div class="wrap">
     <a class="brand" href="#profil"><svg class="ico"><use href="#i-globe"/></svg> Ameth Samb · Géomatique</a>
     <ul>
-      <li><a href="#diaporama"><svg class="ico"><use href="#i-play"/></svg> Diaporama</a></li>
-      <li><a href="#interactif"><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</a></li>
-      <li><a href="#projets"><svg class="ico"><use href="#i-map"/></svg> Projets</a></li>
       <li><a href="#extensions"><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS</a></li>
+      <li><a href="#projets"><svg class="ico"><use href="#i-map"/></svg> Réalisations</a></li>
+      <li><a href="#interactif"><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</a></li>
+      <li><a href="#recherche"><svg class="ico"><use href="#i-sat"/></svg> Recherche</a></li>
       <li><a href="#parcours"><svg class="ico"><use href="#i-brief"/></svg> Parcours</a></li>
       <li><a href="#competences"><svg class="ico"><use href="#i-tools"/></svg> Compétences</a></li>
-      <li><a href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Contact</a></li>
+      <li><a class="nav-cta" href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Me contacter</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="credits">
   <div class="wrap">
-    <span>Portfolio de <strong>Ameth Samb</strong> · Géomaticien SIG &amp; cartographie <span class="badge-acad">Master 2 Géomatique et Modélisation Spatiale · AMU</span></span>
+    <span>Portfolio de <strong>Ameth Samb</strong> · Géomaticien SIG &amp; développeur PyQGIS <span class="badge-acad">Master 2 Géomatique et Modélisation Spatiale · AMU</span></span>
   </div>
 </div>
 
@@ -356,126 +374,55 @@ section.block{padding-block:36px}
       <div class="hero-id">
         <img class="avatar" src="img/ameth-samb.jpg" alt="Portrait d'Ameth Samb" width="136" height="136">
         <div>
-          <div class="eyebrow">Géomaticien · SIG &amp; Cartographie</div>
+          <div class="avail"><span class="dot"></span> Disponible à temps plein</div>
           <h1>Ameth Samb</h1>
-          <div class="role">Cartographie thématique, télédétection et bases de données spatiales</div>
+          <div class="role">Géomaticien SIG &amp; développeur PyQGIS</div>
         </div>
       </div>
-      <p class="lead">Formé en géomatique à Aix-Marseille Université, j'ai travaillé en France et au Sénégal sur des SIG, des bases de données spatiales et des cartes appliquées à l'aménagement du territoire et au climat. Je contribue actuellement aux Schémas d'Aménagement du Territoire (SAT) des Comores.</p>
+      <p class="lead">Je transforme des données géographiques en bases fiables, en cartes claires et en outils qui font gagner du temps. Titulaire d'un Master 2 Géomatique et Modélisation Spatiale (Aix-Marseille Université), j'ai travaillé en France, au Sénégal et sur les Comores, et j'ai développé six extensions QGIS en Python.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#projets"><svg class="ico"><use href="#i-map"/></svg> Voir les travaux</a>
+        <a class="btn btn-primary" href="#contact"><svg class="ico"><use href="#i-mail"/></svg> Me contacter</a>
+        <a class="btn btn-ghost" href="#projets"><svg class="ico"><use href="#i-map"/></svg> Voir mes réalisations</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/ameth-samb-12b45724a" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in"/></svg> LinkedIn</a>
       </div>
     </div>
     <div class="hero-side reveal">
-      <div class="stat"><svg class="ico"><use href="#i-map"/></svg><b>6</b><span>cartes du SAT des Comores</span></div>
-      <div class="stat"><svg class="ico"><use href="#i-pin"/></svg><b>2</b><span>îles cartographiées</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-code"/></svg><b>6</b><span>extensions QGIS développées</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-db"/></svg><b>11 000</b><span>lignes de Python</span></div>
       <div class="stat"><svg class="ico"><use href="#i-brief"/></svg><b>5</b><span>expériences en France et au Sénégal</span></div>
-      <div class="stat"><svg class="ico"><use href="#i-globe"/></svg><b>72</b><span>entités sur l'atlas interactif</span></div>
+      <div class="stat"><svg class="ico"><use href="#i-sat"/></svg><b>3</b><span>travaux de recherche en télédétection</span></div>
     </div>
   </div>
 </header>
 
-<main>
-<section class="block" id="diaporama">
+<section class="block" id="atouts">
   <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <h2><svg class="ico"><use href="#i-play"/></svg> Diaporama des cartes</h2>
-        <p>Les principales cartes défilent automatiquement. Utilisez les flèches ou les points pour naviguer.</p>
-      </div>
-    </div>
-    <div class="show reveal" id="show" aria-roledescription="carrousel" aria-label="Diaporama des cartes">
-      <div class="show-stage" id="show-stage"><div class="bar" id="show-bar"></div></div>
-      <div class="show-text">
-        <div class="eyebrow" id="show-proj"></div>
-        <h3 id="show-title"></h3>
-        <p id="show-desc"></p>
-        <div class="dotsnav" id="show-dots" aria-label="Choisir une carte"></div>
-        <div class="show-ctrl">
-          <button class="cbtn" id="show-prev" type="button" aria-label="Carte précédente"><svg class="ico"><use href="#i-l"/></svg></button>
-          <button class="cbtn" id="show-play" type="button" aria-label="Mettre en pause"><svg class="ico"><use href="#i-pause"/></svg></button>
-          <button class="cbtn" id="show-next" type="button" aria-label="Carte suivante"><svg class="ico"><use href="#i-r"/></svg></button>
-          <span class="count" id="show-count"></span>
-          <button class="btn btn-primary" id="show-open" type="button" style="margin-left:auto"><svg class="ico"><use href="#i-full"/></svg> Explorer en zoom</button>
-        </div>
-      </div>
+    <div class="sec-head"><div><h2><svg class="ico"><use href="#i-user"/></svg> Ce que j'apporte à votre équipe</h2><p>Quatre compétences, chacune prouvée par des réalisations concrètes plus bas sur la page.</p></div></div>
+    <div class="assets">
+      <a class="asset reveal" href="#parcours"><svg class="ico"><use href="#i-db"/></svg><h3>Données fiables</h3><p>Collecte, structuration et contrôle qualité de bases PostgreSQL/PostGIS, en bureau d'études comme sur des projets nationaux.</p><span>Voir le parcours →</span></a>
+      <a class="asset reveal" href="#extensions"><svg class="ico"><use href="#i-code"/></svg><h3>Automatisation</h3><p>Six extensions PyQGIS pour télécharger des données, mettre en page, géoréférencer et analyser le relief en quelques clics.</p><span>Voir les extensions →</span></a>
+      <a class="asset reveal" href="#projets"><svg class="ico"><use href="#i-map"/></svg><h3>Cartographie et atlas</h3><p>Cartes thématiques et atlas interactifs pour l'aménagement du territoire, dont les Schémas d'Aménagement des Comores.</p><span>Voir les cartes →</span></a>
+      <a class="asset reveal" href="#recherche"><svg class="ico"><use href="#i-sat"/></svg><h3>Télédétection</h3><p>Sentinel-2, LiDAR, MODIS et Landsat traités dans Google Earth Engine, avec des modèles de machine learning.</p><span>Voir la recherche →</span></a>
     </div>
   </div>
 </section>
 
-<section class="block" id="interactif">
+<main>
+<section class="block" id="extensions">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <h2><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</h2>
-        <p>Survolez et cliquez sur les entités pour afficher leurs informations et ouvrir les cartes associées.</p>
+        <h2><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS développées en Python</h2>
+        <p>Six extensions PyQGIS (environ 11 000 lignes de code) qui automatisent des tâches que je réalisais à la main. Choisissez une extension pour voir son interface et ses fonctionnalités.</p>
       </div>
     </div>
-    <div class="atlas ipanel reveal" id="atlas-anjouan">
-      <div class="ipanel-head">
-        <h3><svg class="ico"><use href="#i-pin"/></svg> Atlas interactif d'Anjouan (Ndzuani)</h3>
-        <p>Les cartes du SAT sont géoréférencées et superposées. Choisissez un thème, réglez la transparence, puis cliquez sur les communes, ports, marchés et points d'eau.</p>
+    <article class="project reveal">
+      <div class="ext">
+        <nav class="ext-list" id="ext-list" aria-label="Extensions QGIS"></nav>
+        <div class="ext-stage" id="ext-stage" aria-live="polite"></div>
       </div>
-      <div class="atlas-body">
-        <div class="imap-wrap">
-          <div class="imap tall" id="map-anj" role="region" aria-label="Atlas interactif d'Anjouan"></div>
-          <div class="minfo" id="anj-info"><b>Survolez un élément</b><span>pour afficher ses informations</span></div>
-        </div>
-        <aside class="atlas-side">
-          <div class="aside-block">
-            <p class="sub">Thème de fond</p>
-            <label class="radio"><input type="radio" name="theme" id="th-routes" value="routes" checked> Taux de dégradation routière</label>
-            <label class="radio"><input type="radio" name="theme" id="th-eau" value="eau"> Ressources en eau</label>
-            <label class="radio"><input type="radio" name="theme" id="th-peche" value="peche"> Routes et infrastructures de pêche</label>
-            <label class="radio"><input type="radio" name="theme" id="th-none" value="none"> Aucun (contour seul)</label>
-            <label class="range" for="th-op">Opacité du fond <output id="th-op-val">85 %</output></label>
-            <input type="range" id="th-op" min="20" max="100" value="85">
-          </div>
-          <div class="aside-block">
-            <p class="sub">Couches</p>
-            <label class="chk"><input type="checkbox" id="ly-com" checked><span class="pt" style="background:#0f3570"></span> Communes <small>20</small></label>
-            <label class="chk"><input type="checkbox" id="ly-port" checked><span class="pt" style="background:#b03cc8"></span> Ports de pêche <small>27</small></label>
-            <label class="chk"><input type="checkbox" id="ly-mar" checked><span class="pt big" style="background:#1f5fa8"></span> Marchés de poisson <small>11</small></label>
-            <label class="chk"><input type="checkbox" id="ly-inf" checked><span class="pt" style="background:#111"></span> Port international, aéroport <small>2</small></label>
-            <label class="chk"><input type="checkbox" id="ly-eau"><span class="pt" style="background:#2f8be0"></span> Lacs, rivières, captage <small>12</small></label>
-            <label class="chk"><input type="checkbox" id="ly-pnm"><span class="pt sq" style="background:#7fc98a"></span> Parcs nationaux <small>2</small></label>
-          </div>
-          <div class="aside-block" id="legend-anj"></div>
-          <button class="btn btn-ghost" id="anj-reset" type="button" style="width:100%;justify-content:center"><svg class="ico"><use href="#i-full"/></svg> Recentrer l'île</button>
-        </aside>
-      </div>
-      <div class="kpis">
-        <div class="kpi"><b>6 / 20</b><span>communes avec 80 à 100 % de routes dégradées</span>
-          <div class="hbar" id="kpi-deg"></div></div>
-        <div class="kpi"><b>27 · 11</b><span>ports de pêche et marchés de poisson recensés</span>
-          <p class="kpi-note" id="kpi-port"></p></div>
-        <div class="kpi"><b>415 km³</b><span>répartis en 4 domaines hydrologiques</span>
-          <div class="hbar" id="kpi-eau"></div></div>
-      </div>
-      <div class="ipanel-foot"><small>Cartes : Groupe Huit, 2026 (sources OCHA, ESRI, SRTM, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC). Points numérisés depuis ces cartes. Distances à vol d'oiseau.</small></div>
-    </div>
-
-    <div class="ipanel reveal" style="margin-top:24px">
-      <div class="ipanel-head">
-        <h3><svg class="ico"><use href="#i-globe"/></svg> Archipel des Comores</h3>
-        <p>Cliquez sur une île pour voir les cartes produites pour le SAT.</p>
-      </div>
-      <div class="imap-wrap">
-        <div class="imap" id="map-km" role="region" aria-label="Carte interactive de l'archipel des Comores"></div>
-        <div class="mlegend" style="right:auto;left:12px">
-          <h6>Légende</h6>
-          <div class="row"><span class="sw" style="background:#2a5298"></span>Île cartographiée (SAT)</div>
-          <div class="row"><span class="sw" style="background:#9fb8dc"></span>Autre île de l'Union</div>
-          <div class="row"><span class="sw" style="background:#e3e7ee"></span>Mayotte (France)</div>
-          <div class="row"><span class="pt" style="background:#dc3545"></span>Chef-lieu</div>
-          <div class="row"><span class="pt" style="background:#8a5a12"></span>Sommet</div>
-          <div class="row"><span class="pt" style="background:#28a745"></span>Parc national</div>
-        </div>
-      </div>
-      <div class="ipanel-foot"><small>Contours : Natural Earth 1:10 M. Points : localisation indicative.</small></div>
-    </div>
-
+      <p class="ext-note">Interfaces reproduites à partir des libellés réels du code ; les valeurs saisies sont des exemples.</p>
+    </article>
   </div>
 </section>
 
@@ -595,22 +542,116 @@ section.block{padding-block:36px}
   </div>
 </section>
 
-
-<section class="block" id="extensions">
+<section class="block" id="interactif">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <h2><svg class="ico"><use href="#i-code"/></svg> Extensions QGIS développées en Python</h2>
-        <p>Six extensions PyQGIS (environ 11 000 lignes de code) qui automatisent des tâches que je réalisais à la main. Choisissez une extension pour voir son interface et ses fonctionnalités.</p>
+        <h2><svg class="ico"><use href="#i-globe"/></svg> Cartes interactives</h2>
+        <p>Survolez et cliquez sur les entités pour afficher leurs informations et ouvrir les cartes associées.</p>
       </div>
     </div>
-    <article class="project reveal">
-      <div class="ext">
-        <nav class="ext-list" id="ext-list" aria-label="Extensions QGIS"></nav>
-        <div class="ext-stage" id="ext-stage" aria-live="polite"></div>
+    <div class="atlas ipanel reveal" id="atlas-anjouan">
+      <div class="ipanel-head">
+        <h3><svg class="ico"><use href="#i-pin"/></svg> Atlas interactif d'Anjouan (Ndzuani)</h3>
+        <p>Les cartes du SAT sont géoréférencées et superposées. Choisissez un thème, réglez la transparence, puis cliquez sur les communes, ports, marchés et points d'eau.</p>
       </div>
-      <p class="ext-note">Interfaces reproduites à partir des libellés réels du code ; les valeurs saisies sont des exemples.</p>
-    </article>
+      <div class="atlas-body">
+        <div class="imap-wrap">
+          <div class="imap tall" id="map-anj" role="region" aria-label="Atlas interactif d'Anjouan"></div>
+          <div class="minfo" id="anj-info"><b>Survolez un élément</b><span>pour afficher ses informations</span></div>
+        </div>
+        <aside class="atlas-side">
+          <div class="aside-block">
+            <p class="sub">Thème de fond</p>
+            <label class="radio"><input type="radio" name="theme" id="th-routes" value="routes" checked> Taux de dégradation routière</label>
+            <label class="radio"><input type="radio" name="theme" id="th-eau" value="eau"> Ressources en eau</label>
+            <label class="radio"><input type="radio" name="theme" id="th-peche" value="peche"> Routes et infrastructures de pêche</label>
+            <label class="radio"><input type="radio" name="theme" id="th-none" value="none"> Aucun (contour seul)</label>
+            <label class="range" for="th-op">Opacité du fond <output id="th-op-val">85 %</output></label>
+            <input type="range" id="th-op" min="20" max="100" value="85">
+          </div>
+          <div class="aside-block">
+            <p class="sub">Couches</p>
+            <label class="chk"><input type="checkbox" id="ly-com" checked><span class="pt" style="background:#0f3570"></span> Communes <small>20</small></label>
+            <label class="chk"><input type="checkbox" id="ly-port" checked><span class="pt" style="background:#b03cc8"></span> Ports de pêche <small>27</small></label>
+            <label class="chk"><input type="checkbox" id="ly-mar" checked><span class="pt big" style="background:#1f5fa8"></span> Marchés de poisson <small>11</small></label>
+            <label class="chk"><input type="checkbox" id="ly-inf" checked><span class="pt" style="background:#111"></span> Port international, aéroport <small>2</small></label>
+            <label class="chk"><input type="checkbox" id="ly-eau"><span class="pt" style="background:#2f8be0"></span> Lacs, rivières, captage <small>12</small></label>
+            <label class="chk"><input type="checkbox" id="ly-pnm"><span class="pt sq" style="background:#7fc98a"></span> Parcs nationaux <small>2</small></label>
+          </div>
+          <div class="aside-block" id="legend-anj"></div>
+          <button class="btn btn-ghost" id="anj-reset" type="button" style="width:100%;justify-content:center"><svg class="ico"><use href="#i-full"/></svg> Recentrer l'île</button>
+        </aside>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>6 / 20</b><span>communes avec 80 à 100 % de routes dégradées</span>
+          <div class="hbar" id="kpi-deg"></div></div>
+        <div class="kpi"><b>27 · 11</b><span>ports de pêche et marchés de poisson recensés</span>
+          <p class="kpi-note" id="kpi-port"></p></div>
+        <div class="kpi"><b>415 km³</b><span>répartis en 4 domaines hydrologiques</span>
+          <div class="hbar" id="kpi-eau"></div></div>
+      </div>
+      <div class="ipanel-foot"><small>Cartes : Groupe Huit, 2026 (sources OCHA, ESRI, SRTM, OSM, Projet AMCC, N. Mirhani, PROGEAU, IPAC). Points numérisés depuis ces cartes. Distances à vol d'oiseau.</small></div>
+    </div>
+
+    <div class="ipanel reveal" style="margin-top:24px">
+      <div class="ipanel-head">
+        <h3><svg class="ico"><use href="#i-globe"/></svg> Archipel des Comores</h3>
+        <p>Cliquez sur une île pour voir les cartes produites pour le SAT.</p>
+      </div>
+      <div class="imap-wrap">
+        <div class="imap" id="map-km" role="region" aria-label="Carte interactive de l'archipel des Comores"></div>
+        <div class="mlegend" style="right:auto;left:12px">
+          <h6>Légende</h6>
+          <div class="row"><span class="sw" style="background:#2a5298"></span>Île cartographiée (SAT)</div>
+          <div class="row"><span class="sw" style="background:#9fb8dc"></span>Autre île de l'Union</div>
+          <div class="row"><span class="sw" style="background:#e3e7ee"></span>Mayotte (France)</div>
+          <div class="row"><span class="pt" style="background:#dc3545"></span>Chef-lieu</div>
+          <div class="row"><span class="pt" style="background:#8a5a12"></span>Sommet</div>
+          <div class="row"><span class="pt" style="background:#28a745"></span>Parc national</div>
+        </div>
+      </div>
+      <div class="ipanel-foot"><small>Contours : Natural Earth 1:10 M. Points : localisation indicative.</small></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="block" id="diaporama">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2><svg class="ico"><use href="#i-play"/></svg> Diaporama des cartes</h2>
+        <p>Les principales cartes défilent automatiquement. Utilisez les flèches ou les points pour naviguer.</p>
+      </div>
+    </div>
+    <div class="show reveal" id="show" aria-roledescription="carrousel" aria-label="Diaporama des cartes">
+      <div class="show-stage" id="show-stage"><div class="bar" id="show-bar"></div></div>
+      <div class="show-text">
+        <div class="eyebrow" id="show-proj"></div>
+        <h3 id="show-title"></h3>
+        <p id="show-desc"></p>
+        <div class="dotsnav" id="show-dots" aria-label="Choisir une carte"></div>
+        <div class="show-ctrl">
+          <button class="cbtn" id="show-prev" type="button" aria-label="Carte précédente"><svg class="ico"><use href="#i-l"/></svg></button>
+          <button class="cbtn" id="show-play" type="button" aria-label="Mettre en pause"><svg class="ico"><use href="#i-pause"/></svg></button>
+          <button class="cbtn" id="show-next" type="button" aria-label="Carte suivante"><svg class="ico"><use href="#i-r"/></svg></button>
+          <span class="count" id="show-count"></span>
+          <button class="btn btn-primary" id="show-open" type="button" style="margin-left:auto"><svg class="ico"><use href="#i-full"/></svg> Explorer en zoom</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="recherche">
+  <div class="wrap">
+    <div class="sec-head"><div><h2><svg class="ico"><use href="#i-sat"/></svg> Travaux de recherche en télédétection</h2><p>Trois mémoires qui combinent imagerie satellitaire, séries temporelles et modélisation.</p></div></div>
+    <div class="research">
+      <article class="rcard reveal"><div class="rhead"><span class="pill">Master 2 · 2025–2026</span></div><h3>Sécheresse agricole au Surkhandarya (Ouzbékistan)</h3><p>Série temporelle MODIS de vingt ans (2004–2023) : calcul des indices VCI, TCI et VHI dans Google Earth Engine et comparaison avec les pluies CHIRPS.</p><div class="keys"><span class="key">MODIS</span><span class="key">Google Earth Engine</span><span class="key">Séries temporelles</span></div></article>
+      <article class="rcard reveal"><div class="rhead"><span class="pill">Master 1 · 2024–2025</span></div><h3>Densité de la canopée forestière (Bouches-du-Rhône)</h3><p>Modélisation à partir d'images Sentinel-2 et de données LiDAR, avec comparaison de la forêt aléatoire, de la régression linéaire et des réseaux de neurones.</p><div class="keys"><span class="key">Sentinel-2</span><span class="key">LiDAR</span><span class="key">Random Forest</span></div></article>
+      <article class="rcard reveal"><div class="rhead"><span class="pill">Licence · 2021–2022</span></div><h3>Dynamique du typha dans le delta du fleuve Sénégal</h3><p>Cartographie de quatre décennies d'évolution (1979–2020) par classification multidate d'images Landsat, et analyse du rôle des aménagements hydro-agricoles.</p><div class="keys"><span class="key">Landsat</span><span class="key">Classification</span><span class="key">Détection de changements</span></div></article>
+    </div>
   </div>
 </section>
 
@@ -675,7 +716,7 @@ section.block{padding-block:36px}
     <div class="f-grid">
       <div>
         <h5><svg class="ico"><use href="#i-user"/></svg> Profil</h5>
-        <div class="f-row"><svg class="ico"><use href="#i-cap"/></svg><p><b>Ameth Samb</b>Géomaticien · SIG &amp; cartographie<br>Master 2 Géomatique et Modélisation Spatiale</p></div>
+        <div class="f-row"><svg class="ico"><use href="#i-cap"/></svg><p><b>Ameth Samb</b>Géomaticien SIG &amp; développeur PyQGIS<br>Master 2 Géomatique et Modélisation Spatiale<br>Disponible à temps plein</p></div>
         <div class="f-row"><svg class="ico"><use href="#i-pin"/></svg><p><b>Localisation</b>Marseille, France</p></div>
       </div>
       <div>
